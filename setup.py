@@ -1,0 +1,35 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="yerbamate",
+    description="A cowsay clone for python in one file.",
+    author="Giulio Zani, Ali Rahimi",
+    author_email="yerba.mate.dl@proton.me",
+    url="https://github.com/ilex-paraguariensis/yerbamate",
+    python_requires=">=3.9",
+    version="0.8.12",
+    packages=find_packages("packages", exclude=["tests"]),
+    include_package_data=True,
+    package_dir={"": "packages/"},
+    license="Apache License 2.0",
+    license_files=("LICENSE.md",),
+    install_requires=[
+        "bomba",
+        "flask",
+        "ipdb",
+        "websockets",
+        "flask_cors",
+        "pipreqs",
+        "dirhash",
+        "docstring-parser",
+    ],
+    classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Environment :: Console",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: Apache Software License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3",
+    ],
+    scripts=["./src/mate", "./src/mateboard"],
+)
