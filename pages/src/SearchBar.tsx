@@ -1,6 +1,4 @@
 import "./SearchBar.css";
-import Project from "./projects/project";
-// import MateModule from "./projects/mate_module";
 import ModuleView from "./ModuleView";
 import { useEffect, useState } from "react";
 
