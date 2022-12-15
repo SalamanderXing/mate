@@ -70,28 +70,9 @@ export default () => {
           Object.entries(tmpComponents).map(([e, v]) => [e, Object.values(v)]),
         ),
       );
-      // execute the above code but only once
-      // for (const [projectName, vals] of Object.entries(selectedProjects)) {
-      //   for (const [key, val] of Object.entries(vals["project"])) {
-      //     for (
-      //       const [k, v] of Object.entries(
-      //         val as Record<string, Record<string, string>>,
-      //       )
-      //     ) {
-      //       components[key as string][v["name"]] = v;
-      //     }
-      //   }
-      // }
     })();
   }, []);
-  //https://raw.githubusercontent.com/SalamanderXing/jax-anomaly-detection/main/.mate/projects.json
   console.log(components);
-  // fetch("https://api.github.com/search/repositories?q=builtwithmate+in:readme")
-  //   .then((r) => r.json())
-  //   .then((data) => {
-  //     //data.items.map(item => )
-  //   });
-  //
   const componentTypes = [
     "models",
     "trainers",
@@ -103,11 +84,6 @@ export default () => {
         .value;
     const valuesType = components[componentType];
     setSelectedComponents(valuesType);
-    //const query = document.getElementById("search")?.value;
-    // const results = projects.flatMap((p) => p.modules).filter((m) =>
-    //   m.type === componentType
-    // );
-    // setSelectedComponents(results);
   };
   return (
     <div style={{ textAlign: "center" }}>
@@ -133,6 +109,7 @@ export default () => {
           marginLeft: "auto",
           marginRight: "auto",
           marginBottom: "50px",
+          borderRadius: "50%",
           color: "#000",
         }}
       >
@@ -142,6 +119,7 @@ export default () => {
             maxWidth: "150px",
             background: "#5F8D4E",
             borderColor: "#5f8d4e",
+            borderRadius: "30px 0 0 30px",
           }}
           id="exampleFormControlSelect1"
         >
@@ -162,6 +140,7 @@ export default () => {
         <button
           className="btn btn-success btn-lg"
           onClick={search}
+          style={{ borderRadius: "0 30px 30px 0" }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
