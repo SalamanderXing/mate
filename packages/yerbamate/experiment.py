@@ -98,6 +98,7 @@ class Experiment:
                 tree.add(Text(f"❌{module_name}", style=f"bold {colors.error}"))
 
         return tree
+
     def to_dict(self):
         return {
             "name": self.experiment_name,
@@ -122,13 +123,18 @@ class Experiment:
             assert (
                 import_node.module is not None
             ), "The relative import should have a module"
-            module_name = import_node.module.split(".")[0]
-            module_path = import_node.module.split(".")[1]
-            if module_name not in self.imports_dict:
-                self.imports_dict[module_name] = {}
-            if module_path not in self.imports_dict[module_name]:
-                self.imports_dict[module_name][module_path] = []
-            self.imports_dict[module_name][module_path].append(import_node)
+            if len(import_node.module.split(".")) == 1:
+                self.errors.append(
+                    "The experiment should not import from a root module"
+                )
+            else:
+                module_name = import_node.module.split(".")[0]
+                module_path = import_node.module.split(".")[1]
+                if module_name not in self.imports_dict:
+                    self.imports_dict[module_name] = {}
+                if module_path not in self.imports_dict[module_name]:
+                    self.imports_dict[module_name][module_path] = []
+                self.imports_dict[module_name][module_path].append(import_node)
 
         # opens the experiment file and reads it with ast
         # checks that the experiment has only one if statement
