@@ -1,0 +1,18 @@
+select,
+input,
+button {
+  background: #5f8d4e;
+}
+* {
+  border-color: #5f8d4e;
+}
+html,
+body {
+  background: #285430;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
+}
