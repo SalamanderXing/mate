@@ -98,6 +98,12 @@ class Experiment:
                 tree.add(Text(f"❌{module_name}", style=f"bold {colors.error}"))
 
         return tree
+    def to_dict(self):
+        return {
+            "name": self.experiment_name,
+            "errors": self.errors,
+            "imports": list(self.imports_dict.keys()),
+        }
 
     def __init__(self, experiment_path: str):
         """Check if the experiment is valid"""

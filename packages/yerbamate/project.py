@@ -81,7 +81,7 @@ class Module:
 
     def __getitem__(self, item):
         assert isinstance(item, str)
-        assert not "." in item, ipdb.set_trace()  # "Cannot access submodules"
+        assert not "." in item, "Cannot access submodules"
         assert item in self, f"{item} not found in {self.relative_path()}"
         return self._exports[item]
 
@@ -93,6 +93,13 @@ class Module:
         for v in val.values():
             node.add(v.names[0].name)
         return tree
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "exports": [v.names[0].name for v in self.exports.values()],
+            "errors": self.errors,
+        }
 
 
 class ModulesDict(Module, dict):
@@ -136,7 +143,7 @@ class ModulesDict(Module, dict):
         return self.__str__()
 
     def to_dict(self):
-        return {k: v for k, v in self.items()}
+        return {k: v.to_dict() for k, v in self.items()}
 
     def __contains__(self, item: str):
         return item in self.keys()
@@ -144,7 +151,7 @@ class ModulesDict(Module, dict):
     def __getitem__(self, item):
         assert isinstance(item, str)
         cur, *path = item.split(".")
-        assert cur in self, ipdb.set_trace()  # f"Invalid submodule '{self.name}.{cur}'"
+        assert cur in self, f"Invalid submodule '{self.name}.{cur}'"
         selected = tuple((k, v) for k, v in self.items() if k == cur)[0][1]
         return selected if (len(path) == 0) else selected[".".join(path)]
 
@@ -203,7 +210,7 @@ class ExperimentsModule(Module, dict):
         return self.__str__()
 
     def to_dict(self):
-        return {k: e for k, e in self.items()}
+        return {k: e.to_dict() for k, e in self.items()}
 
     def __getitem__(self, path: str):
         assert isinstance(path, str)
@@ -215,6 +222,7 @@ class ExperimentsModule(Module, dict):
 
 class MateProject(Module):
     def __init__(self, root_dir: str):
+        self.__root_dir = root_dir
         self.models = ModulesDict(os.path.join(root_dir, "models"))
         self.data_loaders = ModulesDict(os.path.join(root_dir, "data_loaders"))
         self.trainers = ModulesDict(os.path.join(root_dir, "trainers"), optional=True)
@@ -229,6 +237,10 @@ class MateProject(Module):
         self.__white_list = ["mate.json", ".mate"]
         self.check_no_additional_dirs()
 
+    @property
+    def root_dir(self):
+        return self.__root_dir
+
     def check_no_additional_dirs(self):
         for name in os.listdir(self._root_dir):
             if (
@@ -242,7 +254,12 @@ class MateProject(Module):
 
     def to_dict(self):
         return {
-            k: v.to_dict() for k, v in self.__dict__.items() if not k.startswith("_")
+            "name": self.name,
+            "project": {
+                k: v.to_dict()
+                for k, v in self.__dict__.items()
+                if not k.startswith("_")
+            },
         }
 
     def clone(self, path: str, name: str):

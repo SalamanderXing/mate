@@ -2,7 +2,7 @@ import os
 import sys
 import json
 import glob
-from yerbamate.mate_config import MateConfig
+from .mate_config import MateConfig
 from .runtime import MateRuntime
 from .git_manager import GitManager
 
@@ -16,6 +16,7 @@ import ipdb
 from . import io
 from .project import MateProject
 from .mate_modules import colors, modules
+import glob
 
 """
 MATE API
@@ -29,11 +30,15 @@ class MateAPI:
         self.project = MateProject(root)
         self.config: MateConfig = config
         self.mate_dir: str = ".mate"
+        self.tmp_dir: str = ""
+        self.__setup()
         if not os.path.exists(self.mate_dir):
             os.makedirs(".mate")
 
         if self.config.verbose:
             print(self.config)
+
+        # ipdb.set_trace()
 
     @staticmethod
     def init(project_name: str):
@@ -42,13 +47,58 @@ class MateAPI:
             os.system("rm -rf .mate")
             os.makedirs(".mate")
         os.system(
-            f"git clone https://github.com/ilex-paraguariensis/deeplearning-project-template .mate"
+            f"git clone https://github.com/ilex-paraguariensis/deeplearning-project-template .mate"  # FIXME
         )
         os.system(f"mv {os.path.join('.mate', 'my-project')} {project_name}")
         os.system(f"rm -rf .mate")
 
+    def __setup(self):
+        get_top_level_cmd = "git rev-parse --show-toplevel"
+        # gets the ouptut of the command
+        top_level = os.popen(get_top_level_cmd).read().strip()
+        self.mate_dir = os.path.join(top_level, ".mate")
+        self.tmp_dir = os.path.join(self.mate_dir, "tmp")
+        if not os.path.exists(self.mate_dir):
+            os.makedirs(self.mate_dir)
+            print(f"Created {self.mate_dir}")
+        # topic_path = os.path.join(self.mate_dir, "topic_exists")
+        # if not os.path.exists(topic_path):
+        #     os.system("gh repo edit --add-topic mate_dl")
+        #     os.system(f"touch {topic_path}")
+        #     print("Added topic mate_dl to github repo")
+        readme_path = os.path.join(top_level, "README.md")
+        if not os.path.exists(readme_path):
+            os.system(f"touch {readme_path}")
+            print("Created README.md")
+        # reads the readme and checks if it contains the word builtwithmate. If not, it adds it
+        with open(readme_path, "r") as f:
+            readme = f.read()
+            if "builtwithmate" not in readme:
+                readme += "###builtwithmate"
+                with open(readme_path, "w") as f:
+                    f.write(readme)
+                    print("Added builtwithmate to README.md")
+
+        summary_json_location = os.path.join(self.mate_dir, "projects.json")
+        if os.path.exists(summary_json_location):
+            with open(summary_json_location, "r") as f:
+                old_summary_json = json.load(f)
+            project_dict = self.project.to_dict()
+            project_dict["root"] = self.project.root_dir.replace(top_level, "")
+            if (self.project.name not in old_summary_json) or (
+                project_dict != old_summary_json[self.project.name]
+            ):
+                old_summary_json[self.project.name] = project_dict
+                with open(summary_json_location, "w") as f:
+                    json.dump(old_summary_json, f, indent=4)
+                print('Updated "projects.json"')
+        else:
+            with open(summary_json_location, "w") as f:
+                json.dump({self.project.name: self.project.to_dict()}, f, indent=4)
+
+            print(f"Created {summary_json_location}")
+
     def __get_results_dict(self):
-        import glob
 
         results_folders = [
             folder
@@ -67,10 +117,10 @@ class MateAPI:
         return all_results
 
     def to_tree(self) -> Tree:
-        vals = self.project.to_dict()
+        vals = self.project.to_dict()["project"]
         # turns this nested dict into a rich tree
         tree = Tree(
-            Text("🧉 ") + Text(self.project._name, "underline"), style="bold #32CD30"
+            Text("🧉 ") + Text(self.project.name, "underline"), style="bold #32CD30"
         )
 
         results = self.__get_results_dict()
@@ -79,16 +129,22 @@ class MateAPI:
             # and adds the matching color
             node = tree.add(k, style=f"bold {modules[k].color}")
             for k2, e in v.items():
-                text = Text(k2)
+                text = Text("")
+                if len(e["errors"]) > 0:
+                    text += Text(f"❌", f"bold {colors.error}")
+                else:
+                    text += Text(f"☑ ", "bold #00FF00")
                 if k == "experiments":
                     if k2 in results:
-                        text += Text(f"☑", "bold #00FF00")
-
-                if len(e.errors) > 0:
-                    text += Text(f"❌", f"bold {colors.error}")
+                        # text += Text("📊 ")
+                        text += Text("💪")
+                text += Text(k2)
                 node.add(text)
 
         return tree
+
+    def get_json_summary(self):
+        return self.project.to_dict()
 
     def show(self, path: str):
         node = self.project[path]
