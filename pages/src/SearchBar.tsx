@@ -102,7 +102,7 @@ export default () => {
         }}
       />
       <div
-        className="input-group input-group-lg"
+        className="input-group input-group-lg noselect"
         style={{
           borderColor: "#5f8d4e",
           maxWidth: "700px",
@@ -114,17 +114,19 @@ export default () => {
         }}
       >
         <select
-          className="form-select form-select-lg"
+          className="form-select form-select-lg noselect"
           style={{
             maxWidth: "150px",
             background: "#5F8D4E",
-            borderColor: "#5f8d4e",
+            borderColor: "#285430",
+            borderWidth: "0 1.5px 0 0px",
             borderRadius: "30px 0 0 30px",
           }}
           id="exampleFormControlSelect1"
         >
-          {componentTypes.map((m, i) => <option key={i.toString()}>{m}
-          </option>)}
+          {componentTypes.map((m, i) => (
+            <option className="noselect" key={i.toString()}>{m}</option>
+          ))}
         </select>
         <input
           type="text"
@@ -138,7 +140,7 @@ export default () => {
           name="search"
         />
         <button
-          className="btn btn-success btn-lg"
+          className="btn btn-success btn-lg noselect"
           onClick={search}
           style={{ borderRadius: "0 30px 30px 0" }}
         >
