@@ -74,7 +74,7 @@ class MateAPI:
         with open(readme_path, "r") as f:
             readme = f.read()
             if "builtwithmate" not in readme:
-                readme += "###builtwithmate"
+                readme += "### builtwithmate"
                 with open(readme_path, "w") as f:
                     f.write(readme)
                     print("Added builtwithmate to README.md")
