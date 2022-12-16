@@ -42,15 +42,6 @@ mate test my_experiment
 
 **Run a model**
 
-```bash
-mate run feature_extraction my_experiment
-```
-
-**Clone a model**
-
-```bash
-mate clone resnet my_resnet
-```
 
 More features coming soon!
 
