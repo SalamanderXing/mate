@@ -14,6 +14,7 @@ Maté standardizes project structure to make it easy to understand and work with
 </p>
 
 ## Installation 🔌
+At the moment Maté is only supported on MacOS and Linux, but soon also windows.
 
 ```bash
 git clone https://github.com/SalamanderXing/mate
@@ -23,7 +24,7 @@ pip install -e .
 
 ## Examples
 
-Please check out the [examples repo](https://github.com/ilex-paraguariensis/examples/) for examples of pytorch lightning, keras and jax.
+
 
 ## Quick Start ⚡
 
