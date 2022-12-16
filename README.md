@@ -28,7 +28,7 @@ pip install -e .
 
 - [MNIST Classifier](https://github.com/SalamanderXing/pytorch-lightning-mnist)
 
-### JAX
+### JAX (with Flax)
 These projects are based on [this amazing repo](https://github.com/phlippe/uvadlc_notebooks/tree/master/docs/tutorial_notebooks/JAX).
 
 - [CIFAR10 Autoecoder](https://github.com/SalamanderXing/jax-ae)
