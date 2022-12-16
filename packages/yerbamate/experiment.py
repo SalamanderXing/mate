@@ -21,6 +21,12 @@ class Experiment:
 
         check_math(node)
 
+    def __repr__(self):
+        return f"Experiment {self.experiment_name}"
+
+    def __str__(self):
+        return self.module_path
+
     def __get_imports(self, body: list):
         # checks that among the imports there is one called 'mate'
         imports = [
@@ -124,9 +130,7 @@ class Experiment:
                 import_node.module is not None
             ), "The relative import should have a module"
             if len(import_node.module.split(".")) == 1:
-                self.errors.append(
-                    "The experiment should not import from a root module"
-                )
+                self.errors.append("The experiment should not import from a root ")
             else:
                 module_name = import_node.module.split(".")[0]
                 module_path = import_node.module.split(".")[1]

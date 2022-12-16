@@ -181,7 +181,8 @@ class NestedModule(ModulesDict):
 class ExperimentsModule(Module, dict):
     def __init__(self, root_dir: str):
         super().__init__(root_dir)
-        for path in self.__list_experiments():
+        exps = self.__list_experiments()
+        for path in exps:
             # local_path = ".".join(name[:-3].split(os.sep)[-3:])
             self[os.path.basename(path)[:-3]] = Experiment(path)  # local_path
             # check_experiment(name)
@@ -202,6 +203,9 @@ class ExperimentsModule(Module, dict):
             for name in os.listdir(self._root_dir)
             if not name.startswith("_") and name.endswith(".py")
         ]
+
+    def __contains__(self, item: str):
+        return item in self.keys()
 
     def __str__(self):
         return f"ExperimentsModule(experiments={set(self.keys())})"
