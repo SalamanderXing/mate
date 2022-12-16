@@ -9,10 +9,9 @@ Maté also includes a MateHub, a store of all available modules that can be easi
 
 Maté standardizes project structure to make it easy to understand and work with, while still allowing for flexibility and customization. And with its intuitive design, Maté is easy to learn and use, saving you time and effort in the development process. Make your deep learning projects more efficient and effective with Maté.
 
-<div style="width:100vw; text-align:center">
+<p align="center">
   <img src="./imgs/mate_summary.png" alt="Your Image" style="width: 60%; margin-left:10px; border-radius:50%;">
-</div>
-
+</p>
 
 ## Installation 🔌
 
