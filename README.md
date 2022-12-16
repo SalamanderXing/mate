@@ -16,7 +16,9 @@ Maté standardizes project structure to make it easy to understand and work with
 ## Installation 🔌
 
 ```bash
-pip install yerbamate
+git clone https://github.com/SalamanderXing/mate
+cd mate
+pip install -e .
 ```
 
 ## Examples
