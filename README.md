@@ -24,6 +24,19 @@ pip install -e .
 
 ## Examples
 
+### PyTorch Lightning
+
+- [MNIST Classifier](https://github.com/SalamanderXing/pytorch-lightning-mnist)
+
+### JAX
+
+- [CIFAR10 Autoecoder](https://github.com/SalamanderXing/jax-ae)
+- [Graph Neural Networks](https://github.com/SalamanderXing/jax-gnn)
+- [Normalizing Flow](https://github.com/SalamanderXing/jax-normalizing-flow)
+- [Inception, ResNet, DenseNet](https://github.com/SalamanderXing/jax-inception-resnet-densenet)
+- [Autoregressive Image Modeling](https://github.com/SalamanderXing/jax-autoregressive-image-modeling)
+- [Transformers for text classification](https://github.com/SalamanderXing/jax-transformers)
+- [Transfoermers for anomaly detection](https://github.com/SalamanderXing/jax-anomaly-detection)
 
 
 ## Quick Start ⚡
