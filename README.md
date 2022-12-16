@@ -54,17 +54,6 @@ More features coming soon!
 - *[THINGSvision](https://github.com/ViCCo-Group/thingsvision)*
 
 
-
-
-
-## For Coders
-Dear coders, we try our best to not get in your way and in fact, you do not have to integrate or import any mate class to your projects. Mate simply parses the configuration. To make your project mate compatible, you need to move a few files and make a Bombilla configuration file. 
-
-
-**More tutorials and examples will be added soon!!**
-
-
-
 ## FAQ
 **Q: Does Maté work with colab?**
 
