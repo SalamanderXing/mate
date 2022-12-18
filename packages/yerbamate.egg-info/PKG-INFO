@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: yerbamate
+Version: 0.9
+Summary: 📦 Modularize your deep learning project to improve reproducibility
+Home-page: https://github.com/SalamanderXing/mate
+Author: Giulio Zani
+Author-email: giulio.zani@gmail.com
+License: Apache License 2.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
