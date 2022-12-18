@@ -1,6 +1,15 @@
 <h1 style="color:green"><span style="color:green">Maté 🧉</span></h1>
 
+Mate is a deep learning framework designed to improve reproducibility and facilitate development in the field of deep learning. It is a command line tool that offers a variety of features to help you manage your project, including:
 
+- Validating the structure of your project
+- Visualizing your project
+- Summarizing your results
+- Running/testing your experiments.
+
+In addition, any projects developed with Mate that are placed in a public repository will be automatically listed on [MateHub](https://salamanderxing.github.io/mate/), a website that serves as a browser for finding and reusing components created by others (or by yourself).
+
+<!-- 
 Maté is a comprehensive framework for deep learning projects that aims to streamline the development process and make it easier for developers to create high-quality projects. It includes features such as a training manager to help you set up, run, and monitor your models, as well as a package manager to manage dependencies and share code with others.
 
 
@@ -8,6 +17,7 @@ Maté also includes a [MateHub](https://salamanderxing.github.io/mate/), a store
 
 
 Maté standardizes project structure to make it easy to understand and work with, while still allowing for flexibility and customization. And with its intuitive design, Maté is easy to learn and use, saving you time and effort in the development process. Make your deep learning projects more efficient and effective with Maté.
+-->
 
 <p align="center">
   <img src="./imgs/mate_summary.png" alt="Your Image" style="width: 60%; margin-left:10px; border-radius:50%;">
@@ -22,6 +32,7 @@ cd mate
 pip install -e .
 ```
 
+
 ## Examples
 
 ### PyTorch Lightning
@@ -29,7 +40,7 @@ pip install -e .
 - [MNIST Classifier](https://github.com/SalamanderXing/pytorch-lightning-mnist)
 
 ### JAX (with Flax)
-These projects are based on [this amazing repo](https://github.com/phlippe/uvadlc_notebooks/tree/master/docs/tutorial_notebooks/JAX).
+These projects are based on this [amazing repo](https://github.com/phlippe/uvadlc_notebooks/tree/master/docs/tutorial_notebooks/JAX).
 
 - [CIFAR10 Autoecoder](https://github.com/SalamanderXing/jax-ae)
 - [Graph Neural Networks](https://github.com/SalamanderXing/jax-gnn)
@@ -55,7 +66,6 @@ mate test my_experiment
 ```
 
 **Run a model**
-
 
 More features coming soon!
 
