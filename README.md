@@ -1,13 +1,15 @@
 <h1 style="color:green"><span style="color:green">Maté 🧉</span></h1>
 
-Mate is a deep learning framework designed to improve reproducibility and facilitate development in the field of deep learning. It is a command line tool that offers a variety of features to help you manage your project, including:
+Mate is a tool designed to improve reproducibility and facilitate development in deep learning. It is a command line tool that offers a variety of features to help you manage your project, including:
 
 - Validating the structure of your project
-- Visualizing your project
+- Visualizing/summarizing your project
 - Summarizing your results
 - Running/testing your experiments.
 
-In addition, any projects developed with Mate that are placed in a public repository will be automatically listed on [MateHub](https://salamanderxing.github.io/mate/), a website that serves as a browser for finding and reusing components created by others (or by yourself).
+In addition, any project developed with Mate on a public repository gets automatically listed on [MateHub](https://salamanderxing.github.io/mate/). This website is a browser for finding and reusing components created by others (or yourself).
+
+Mate is compatible is any python deep learning framework (such as JAX, PyTorch, and TensorFlow) since it leverages Python features.
 
 <!-- 
 Maté is a comprehensive framework for deep learning projects that aims to streamline the development process and make it easier for developers to create high-quality projects. It includes features such as a training manager to help you set up, run, and monitor your models, as well as a package manager to manage dependencies and share code with others.
