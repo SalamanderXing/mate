@@ -56,6 +56,27 @@ These projects are based on this [amazing repo](https://github.com/phlippe/uvadl
 
 ## Quick Start ⚡
 
+First clone a mate project, for example: 
+```bash
+git clone https://github.com/SalamanderXing/pytorch-lightning-mnist
+```
+Then go to the project directory:
+```bash
+cd mnist_classifier
+```
+Then run:
+```
+mate summary
+```
+This will give you an overview of your projec and your componens. It also tells you where your components have issues. In this case, (hopefully) you will see something like this:
+<p align="center">
+  <img src="./imgs/lilghtning_summary.png" alt="Your Image" style="width: 60%; margin-left:10px; border-radius:50%;">
+</p>
+
+
+
+****
+
 **Train a model**
 
 ```bash
