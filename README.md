@@ -42,6 +42,7 @@ pip install -e .
 - [MNIST Classifier](https://github.com/SalamanderXing/pytorch-lightning-mnist)
 
 ### JAX (with Flax)
+JAX is the (relatively) new framework by Google. That uses just-in-time-compilation to improve performance of your neural network.
 These projects are based on this [amazing repo](https://github.com/phlippe/uvadlc_notebooks/tree/master/docs/tutorial_notebooks/JAX).
 
 - [CIFAR10 Autoecoder](https://github.com/SalamanderXing/jax-ae)
@@ -50,7 +51,7 @@ These projects are based on this [amazing repo](https://github.com/phlippe/uvadl
 - [Inception, ResNet, DenseNet](https://github.com/SalamanderXing/jax-inception-resnet-densenet)
 - [Autoregressive Image Modeling](https://github.com/SalamanderXing/jax-autoregressive-image-modeling)
 - [Transformers for text classification](https://github.com/SalamanderXing/jax-transformers)
-- [Transfoermers for anomaly detection](https://github.com/SalamanderXing/jax-anomaly-detection)
+- [Transformers for anomaly detection](https://github.com/SalamanderXing/jax-anomaly-detection)
 
 
 ## Quick Start ⚡
