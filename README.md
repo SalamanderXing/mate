@@ -42,7 +42,7 @@ pip install -e .
 - [MNIST Classifier](https://github.com/SalamanderXing/pytorch-lightning-mnist)
 
 ### JAX (with Flax)
-JAX is the (relatively) new framework by Google. That uses just-in-time-compilation to improve performance of your neural network.
+[JAX](https://github.com/google/jax) is the (relatively) new framework by Google. That uses just-in-time-compilation to improve performance of your neural network.
 These projects are based on this [amazing repo](https://github.com/phlippe/uvadlc_notebooks/tree/master/docs/tutorial_notebooks/JAX).
 
 - [CIFAR10 Autoecoder](https://github.com/SalamanderXing/jax-ae)
