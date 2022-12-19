@@ -69,8 +69,8 @@ Then run:
 mate summary
 ```
 This will give you an overview of your projec and your componens. It also tells you where your components have issues. In this case, (hopefully) you will see something like this:
-<p align="center">
-  <img src="./imgs/lilghtning_summary.png" alt="Your Image" style="width: 200; margin-left:10px; border-radius:50%;">
+<p align="center" style="margin:0; padding:0;">
+  <img src="./imgs/lilghtning_summary.png" alt="Your Image" style="width: 200; margin-left:10px; margin-top:0, border-radius:50%;">
 </p>
 
 
