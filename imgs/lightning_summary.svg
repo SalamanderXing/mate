@@ -1,0 +1,66 @@
+<svg version="1.1" id="svg2" width="202.33596801757812" height="126.05130004882812" viewBox="0 0.00005473066630656831 202.33596801757812 126.05130004882812" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <defs id="defs6">
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath16">
+      <path d="M 0,0 H 2479.1665 V 3507.7236 H 0 Z" clip-rule="evenodd" id="path14"></path>
+    </clipPath>
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath32">
+      <path d="M 0,0 H 2479.1665 V 3507.7236 H 0 Z" id="path30"></path>
+    </clipPath>
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath38">
+      <path d="M 2479.1665,0 H 0 V 3507.7236 H 2479.1665 Z M 262.99255,57.8368 h -18.42784 v 7.190521 h 18.42784 z" clip-rule="evenodd" id="path36"></path>
+    </clipPath>
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath50">
+      <path d="M 0,0 H 2479.1665 V 3507.7236 H 0 Z" clip-rule="evenodd" id="path48"></path>
+    </clipPath>
+  </defs>
+  <g id="g8" transform="matrix(0.31999998,0,0,0.31999998,0,5.4730666e-5)">
+    <g id="g10">
+      <g id="g12" clip-path="url(#clipPath16)">
+        <g id="g18" transform="scale(3.1263134)">
+          <path d="M 0,0 V 0 0 Z" style="fill:#32cd30;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path20"></path>
+          <text xml:space="preserve" transform="translate(8,18)" style="font-variant:normal;font-weight:normal;font-size:1e-32px;font-family:Arial;-inkscape-font-specification:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:none" id="text24"><tspan x="0" y="0" id="tspan22">柳</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g id="g26">
+      <g id="g28" clip-path="url(#clipPath32)">
+        <g id="g34" clip-path="url(#clipPath38)">
+          <g id="g40" transform="scale(3.1263134)">
+            <path d="m 31.8125,19 h 132.625 v 1 H 31.8125 Z" style="fill:#32cd30;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path42"></path>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="g44">
+      <g id="g46" clip-path="url(#clipPath50)">
+        <g id="g52" transform="scale(3.1263134)">
+          <text xml:space="preserve" transform="translate(31.8125,18)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#32cd30;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text56"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695 85.813965 93.615234 101.4165 109.21777 117.01904 124.82031" y="0" id="tspan54">anomaly_detection</tspan></text>
+          <text xml:space="preserve" transform="translate(8,31)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text60"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan58">├── </tspan></text>
+          <text xml:space="preserve" transform="translate(39.21875,31)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#598c14;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text64"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348" y="0" id="tspan62">models</tspan></text>
+          <text xml:space="preserve" transform="translate(8,44)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text68"><tspan x="0 7.8012695 31.205078 39.006348 46.807617 54.608887" y="0" id="tspan66">│ └── </tspan></text>
+          <path d="m 72.748291,43.752441 v -8.883545 h 8.886719 v 8.883545 z m 1.320313,-1.320312 h 6.246093 v -6.246094 h -6.246093 z m 2.783447,-0.0127 -2.732666,-2.577149 0.993408,-0.942627 1.402832,1.317139 2.208984,-3.853027 h 1.612305 z" style="fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path70"></path>
+          <text xml:space="preserve" transform="translate(70.421875,44)" style="font-variant:normal;font-size:13px;font-family:Iosevka;-inkscape-font-specification:IosevkaNerdFontCompleteM-;writing-mode:lr-tb;fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:none" id="text74"><tspan x="0" y="0" id="tspan72">☑</tspan></text>
+          <text xml:space="preserve" transform="translate(85.234375,44)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#598c14;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text78"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695" y="0" id="tspan76">transformer</tspan></text>
+          <text xml:space="preserve" transform="translate(8,57)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text82"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan80">├── </tspan></text>
+          <text xml:space="preserve" transform="translate(39.21875,57)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#203940;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text86"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695 85.813965" y="0" id="tspan84">data_loaders</tspan></text>
+          <text xml:space="preserve" transform="translate(8,70)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text90"><tspan x="0 7.8012695 31.205078 39.006348 46.807617 54.608887" y="0" id="tspan88">│ └── </tspan></text>
+          <path d="m 72.748291,69.752441 v -8.883545 h 8.886719 v 8.883545 z m 1.320313,-1.320312 h 6.246093 v -6.246094 h -6.246093 z m 2.783447,-0.0127 -2.732666,-2.577149 0.993408,-0.942627 1.402832,1.317139 2.208984,-3.853027 h 1.612305 z" style="fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path92"></path>
+          <text xml:space="preserve" transform="translate(70.421875,70)" style="font-variant:normal;font-size:13px;font-family:Iosevka;-inkscape-font-specification:IosevkaNerdFontCompleteM-;writing-mode:lr-tb;fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:none" id="text96"><tspan x="0" y="0" id="tspan94">☑</tspan></text>
+          <text xml:space="preserve" transform="translate(85.234375,70)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#203940;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text100"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695" y="0" id="tspan98">set_anomaly</tspan></text>
+          <text xml:space="preserve" transform="translate(8,83)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text104"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan102">├── </tspan></text>
+          <text xml:space="preserve" transform="translate(39.21875,83)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#aa5500;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text108"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887" y="0" id="tspan106">trainers</tspan></text>
+          <text xml:space="preserve" transform="translate(8,96)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text112"><tspan x="0 7.8012695 31.205078 39.006348 46.807617 54.608887" y="0" id="tspan110">│ └── </tspan></text>
+          <path d="m 72.748291,95.752441 v -8.883545 h 8.886719 v 8.883545 z m 1.320313,-1.320312 h 6.246093 v -6.246094 h -6.246093 z m 2.783447,-0.0127 -2.732666,-2.577149 0.993408,-0.942627 1.402832,1.317139 2.208984,-3.853027 h 1.612305 z" style="fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path114"></path>
+          <text xml:space="preserve" transform="translate(70.421875,96)" style="font-variant:normal;font-size:13px;font-family:Iosevka;-inkscape-font-specification:IosevkaNerdFontCompleteM-;writing-mode:lr-tb;fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:none" id="text118"><tspan x="0" y="0" id="tspan116">☑</tspan></text>
+          <text xml:space="preserve" transform="translate(85.234375,96)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#aa5500;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text122"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695 85.813965 93.615234 101.4165 109.21777" y="0" id="tspan120">anomaly_trainer</tspan></text>
+          <text xml:space="preserve" transform="translate(8,109)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text126"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan124">└── </tspan></text>
+          <text xml:space="preserve" transform="translate(39.21875,109)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#ff6908;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text130"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695" y="0" id="tspan128">experiments</tspan></text>
+          <text xml:space="preserve" transform="translate(39.21875,122)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text134"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan132">└── </tspan></text>
+          <path d="m 72.763916,121.75244 v -8.88354 h 8.886719 v 8.88354 z m 1.320313,-1.32031 h 6.246093 v -6.2461 h -6.246093 z m 2.783447,-0.0127 -2.732666,-2.57714 0.993408,-0.94263 1.402832,1.31714 2.208984,-3.85303 h 1.612305 z" style="fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path136"></path>
+          <text xml:space="preserve" transform="translate(70.4375,122)" style="font-variant:normal;font-size:13px;font-family:Iosevka;-inkscape-font-specification:IosevkaNerdFontCompleteM-;writing-mode:lr-tb;fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:none" id="text140"><tspan x="0" y="0" id="tspan138">☑</tspan></text>
+          <text xml:space="preserve" transform="translate(85.25,122)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#ff6908;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text144"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695" y="0" id="tspan142">set_anomaly</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
