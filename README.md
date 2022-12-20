@@ -72,7 +72,7 @@ mate summary
 ```
 This will give you an overview of your projec and your componens. It also tells you where your components have issues. In this case, (hopefully) you will see something like this:
 <p align="center" style="margin:0; padding:0;">
-  <img src="./imgs/lightning_summary.svg" alt="Your Image" style="width: 50%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
+  <img src="./imgs/lightning_summary.svg" alt="Your Image" style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
 </p>
 then we can train our experiment:
 
