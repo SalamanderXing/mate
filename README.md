@@ -104,11 +104,10 @@ Mate has inferred the dataset and will group our experiments according to that a
 
 ## Comparison to familiar tools
 
-- *Weights & Biases* wandb is a logger and allows model weights sharing as well
-- *Tensorboard* This is a logger and can be integrated into mate
-- *[Monai](https://github.com/Project-MONAI/MONAI)*
-- *[Ivy](https://github.com/unifyai/ivy)*
-- *[THINGSvision](https://github.com/ViCCo-Group/thingsvision)*
+- *Weights & Biases*, *Tensorboard*  is a logger and allows model weights sharing as well. Mate does not attempt to replace logger's functionalities. Use the logger your like best :) That would happend probably inside your trainer module. 
+- *[Monai](https://github.com/Project-MONAI/MONAI)*: Focuses on medical imaging and provides pretrained models as well as preprocessing pipelines
+- *[Ivy](https://github.com/unifyai/ivy)*: Provides a unified tensor type that work with all backends (frameworks). Works with mate!
+- *[THINGSvision](https://github.com/ViCCo-Group/thingsvision)*: Provides a set pretrained models for analysis of their activation. In particular to compare them with brain activations.
 
 
 ## FAQ
