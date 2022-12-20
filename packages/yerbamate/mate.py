@@ -78,7 +78,7 @@ class Mate:
         # self.is_restart = True
         # self.__fit(model_name, params)
 
-    def tune(self, model: str, params: tuple[str, ...]):
+    def tune(self, model: str, params):
         """
         Fine tunes specified hyperparameters. (Not implemented yet)
         """

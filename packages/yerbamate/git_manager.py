@@ -1,6 +1,7 @@
 import os
 import ipdb
 import json
+from typing import Optional
 
 
 class GitManager:
@@ -46,7 +47,7 @@ class GitManager:
     def __name_to_id(self, name: str):
         return name.replace(" ", "_").replace("-", "_").lower()
 
-    def clone(self, tmp_destination: str, destination: str | None = None):
+    def clone(self, tmp_destination: str, destination: Optional[str] = None):
         """Clone the repository"""
         if os.path.exists(tmp_destination):
             os.system(f"rm -rf {tmp_destination}")

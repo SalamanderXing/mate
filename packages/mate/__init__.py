@@ -28,7 +28,7 @@ is_test = command == "test"
 is_restart = command == "restart"
 
 
-def result(values: dict[str, Any]):
+def result(values: dict):
     values = {
         k: (v if isinstance(v, (int, float)) else v.item()) for k, v in values.items()
     }

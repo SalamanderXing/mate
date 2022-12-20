@@ -5,6 +5,7 @@ import json
 import ipdb
 from typing import Union
 
+
 class Config:
     def __init__(self, config: Union[dict, str, None] = None):
         if isinstance(config, str):

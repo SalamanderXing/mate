@@ -44,7 +44,7 @@ class Module:
     def exports(self):
         return self._exports
 
-    def __collect_exports(self) -> dict[str, ast.ImportFrom]:
+    def __collect_exports(self) -> dict:
         with open(os.path.join(self._root_dir, "__init__.py"), "r") as f:
             tree = ast.parse(f.read())
         exports = {}

@@ -15,16 +15,14 @@ def set_save_path(root_save_folder: str, root_folder: str, params: str):
     return save_path
 
 
-def save_train_experiments(save_path, hparams: dict[str, Any], conf: MateConfig):
+def save_train_experiments(save_path, hparams: dict, conf: MateConfig):
     params = hparams.copy()
     params["mate"] = conf.copy()
     with open(os.path.join(save_path, "train.json"), "w") as f:
         json.dump(params, f, indent=4)
 
 
-def update_experiments(
-    root_folder: str, model_name: str, params: str, hparams: dict[str, Any]
-):
+def update_experiments(root_folder: str, model_name: str, params: str, hparams: dict):
     path = __get_experiment_path(root_folder, model_name, params)
     with open(
         os.path.join(
@@ -39,7 +37,7 @@ def update_experiments(
         json.dump(hparams, f, indent=4)
 
 
-def override_params(config: MateConfig, params: dict[str, Any]):
+def override_params(config: MateConfig, params: dict):
 
     # ipdb.set_trace()
     if (
@@ -98,7 +96,7 @@ def get_experiment_base_module(root_folder: str, model_name: str, experiment: st
 print_once = once(print)
 
 
-def apply_env(root_folder: str, hparams: dict[str, Any]):
+def apply_env(root_folder: str, hparams: dict):
     env_location = os.path.join(
         root_folder,
         "env.json",
@@ -130,7 +128,7 @@ def apply_env(root_folder: str, hparams: dict[str, Any]):
         # print(json.dumps(env, indent=4))
 
 
-def override_run_params(hparams: dict[str, Any], run_params: dict):
+def override_run_params(hparams: dict, run_params: dict):
 
     # parsed from mate {command} --param1=value1 --param2=value2
     # run params is a key value pair of parameters to override
@@ -158,7 +156,7 @@ def override_run_params(hparams: dict[str, Any], run_params: dict):
     return hparams
 
 
-def find_root() -> tuple[str, MateConfig]:
+def find_root() -> tuple:
     """
     Method in charge of finding the root folder of the project and reading the content of mate.json
     """

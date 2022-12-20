@@ -111,9 +111,9 @@ class MateAPI:
             experiment_name = folder.split(os.sep)[-1]
             if len(results) > 0:
                 with open(results[0], "r") as f:
-                    all_results[experiment_name] = json.load(f) | {
-                        "experiment": experiment_name
-                    }
+                    all_results[experiment_name] = dict(
+                        **json.load(f), **{"experiment": experiment_name}
+                    )
         return all_results
 
     def to_tree(self) -> Tree:
@@ -181,7 +181,7 @@ class MateAPI:
             else:
                 print(f"{to_export} already exported, skipping.")
 
-    def results(self) -> Table | None:
+    def results(self):
 
         results_folders = [
             folder
