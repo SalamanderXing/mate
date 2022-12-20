@@ -190,33 +190,41 @@ class MateAPI:
         ]
         all_results = []
         for folder in results_folders:
-            results = glob.glob(os.path.join(folder, "result.json"))
-            if len(results) > 0:
-                with open(results[0], "r") as f:
-                    all_results.append(
-                        json.load(f) | {"experiment": folder.split(os.sep)[-1]}
+            experiment = folder.split(os.sep)[-1]
+            if experiment in self.project["experiments"]:
+                results = glob.glob(os.path.join(folder, "result.json"))
+                if len(results) > 0:
+                    with open(results[0], "r") as f:
+                        written_results = {
+                            k: round(v, 3) if isinstance(v, (int, float)) else v
+                            for k, v in json.load(f).items()
+                        }
+                    all_results.append(written_results | {"experiment": experiment})
+                # collect all the keys contained in all_results dictionaries
+                keys = set()
+                for result in all_results:
+                    keys.update(result.keys())
+                keys = list(keys)
+                if len(keys) > 0:
+                    keys.remove("experiment")
+                    keys = ["experiment"] + keys
+                    # create a table with the keys as columns
+                    table = []
+                    for result in all_results:
+                        row = []
+                        for key in keys:
+                            row.append(result.get(key, ""))
+                        table.append(row)
+                    t = Table(
+                        title=self.project.experiments[experiment].data_loader,
+                        show_header=True,
+                        header_style="bold #00FF00",
                     )
-        # collect all the keys contained in all_results dictionaries
-        keys = set()
-        for result in all_results:
-            keys.update(result.keys())
-        keys = list(keys)
-        if len(keys) > 0:
-            keys.remove("experiment")
-            keys = ["experiment"] + keys
-            # create a table with the keys as columns
-            table = []
-            for result in all_results:
-                row = []
-                for key in keys:
-                    row.append(result.get(key, ""))
-                table.append(row)
-            t = Table(title="Results", show_header=True, header_style="bold #00FF00")
-            for key in keys:
-                t.add_column(key)
-            for row in table:
-                t.add_row(*[str(x) for x in row])
-            return t
+                    for key in keys:
+                        t.add_column(key)
+                    for row in table:
+                        t.add_row(*[str(x) for x in row])
+                    return t
 
     def rename(self, target: str, destination: str):
         self.project.rename(target, destination)

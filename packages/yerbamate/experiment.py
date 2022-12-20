@@ -139,6 +139,9 @@ class Experiment:
                 if module_path not in self.imports_dict[module_name]:
                     self.imports_dict[module_name][module_path] = []
                 self.imports_dict[module_name][module_path].append(import_node)
-
+        loader_keys = list(self.imports_dict.get("data_loaders", {}).keys())
+        self.data_loader: str | None = None
+        if len(loader_keys) > 0:
+            self.data_loader = loader_keys[0]
         # opens the experiment file and reads it with ast
         # checks that the experiment has only one if statement
