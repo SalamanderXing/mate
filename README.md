@@ -75,9 +75,11 @@ This will give you an overview of your projec and your componens. It also tells 
   <img src="./imgs/lightning_summary.svg" alt="Your Image" style="width: 50%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
 </p>
 then we can train our experiment:
+
 ```bash
 mate train classification
 ```
+
 You should see all the training logs.
 
 Finally, to visualize our results:
