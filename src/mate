@@ -1,4 +1,4 @@
-#!env python
+#!/usr/bin/env python
 
 from yerbamate import mate_cli
 
