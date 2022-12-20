@@ -10,7 +10,6 @@ setup(
     author_email="giulio.zani@gmail.com",
     url="https://github.com/SalamanderXing/mate",
     python_requires=">=3.8",
-    version="0.9",
     packages=find_packages("packages", exclude=["tests"]),
     include_package_data=True,
     package_dir={"": "packages/"},
