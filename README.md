@@ -101,6 +101,13 @@ mate results
 </p>
 Mate has inferred the dataset and will group our experiments according to that and put them in the same table.
 
+## MateHub
+
+[MateHub](https://salamanderxing.github.io/mate/). Before creating a new module (trainer, data_loader, model) you might want to head over to this site and look if there is anything that either fits your need or allows you to not start from scratch. 
+
+### How it works
+All mate projects on public github repo (published by anyone) will be automatically listed on MateHub. It works by using the GitHub rest API.
+
 
 ## Comparison to familiar tools
 
