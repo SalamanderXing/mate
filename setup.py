@@ -9,7 +9,7 @@ setup(
     author="Giulio Zani",
     author_email="giulio.zani@gmail.com",
     url="https://github.com/SalamanderXing/mate",
-    python_requires=">=3.10",
+    python_requires=">=3.8",
     version="0.9",
     packages=find_packages("packages", exclude=["tests"]),
     include_package_data=True,
