@@ -1,64 +1,109 @@
-<svg version="1.1" id="svg2" width="202.33596801757812" height="126.05130004882812" viewBox="0 0.00005473066630656831 202.33596801757812 126.05130004882812" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+<svg version="1.1" id="svg2" width="145.70184326171875" height="111.85551452636719" viewBox="8.003362655639648 8.193316459655762 145.70184326171875 111.85551452636719" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
   <defs id="defs6">
     <clipPath clipPathUnits="userSpaceOnUse" id="clipPath16">
-      <path d="M 0,0 H 2479.1665 V 3507.7236 H 0 Z" clip-rule="evenodd" id="path14"></path>
+      <path d="M 25.010508,25.010508 H 65.652583 V 65.652583 H 25.010508 Z" clip-rule="evenodd" id="path14"></path>
     </clipPath>
-    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath32">
-      <path d="M 0,0 H 2479.1665 V 3507.7236 H 0 Z" id="path30"></path>
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath48">
+      <path d="M 0,0 H 2479.1665 V 3507.7236 H 0 Z" clip-rule="evenodd" id="path46"></path>
     </clipPath>
-    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath38">
-      <path d="M 2479.1665,0 H 0 V 3507.7236 H 2479.1665 Z M 262.99255,57.8368 h -18.42784 v 7.190521 h 18.42784 z" clip-rule="evenodd" id="path36"></path>
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath76">
+      <path d="m 218.84193,112.54729 h 40.64208 v 40.64207 h -40.64208 z" clip-rule="evenodd" id="path74"></path>
     </clipPath>
-    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath50">
-      <path d="M 0,0 H 2479.1665 V 3507.7236 H 0 Z" clip-rule="evenodd" id="path48"></path>
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath90">
+      <path d="M 0,0 H 2479.1665 V 3507.7236 H 0 Z" clip-rule="evenodd" id="path88"></path>
+    </clipPath>
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath124">
+      <path d="m 218.84193,237.59982 h 40.64208 v 40.64206 h -40.64208 z" clip-rule="evenodd" id="path122"></path>
+    </clipPath>
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath138">
+      <path d="M 0,0 H 2479.1665 V 3507.7236 H 0 Z" clip-rule="evenodd" id="path136"></path>
+    </clipPath>
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath164">
+      <path d="m 218.84193,325.1366 h 40.64208 v 40.64209 h -40.64208 z" clip-rule="evenodd" id="path162"></path>
+    </clipPath>
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath178">
+      <path d="M 0,0 H 2479.1665 V 3507.7236 H 0 Z" clip-rule="evenodd" id="path176"></path>
     </clipPath>
   </defs>
   <g id="g8" transform="matrix(0.31999998,0,0,0.31999998,0,5.4730666e-5)">
     <g id="g10">
       <g id="g12" clip-path="url(#clipPath16)">
-        <g id="g18" transform="scale(3.1263134)">
-          <path d="M 0,0 V 0 0 Z" style="fill:#32cd30;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path20"></path>
-          <text xml:space="preserve" transform="translate(8,18)" style="font-variant:normal;font-weight:normal;font-size:1e-32px;font-family:Arial;-inkscape-font-specification:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:none" id="text24"><tspan x="0" y="0" id="tspan22">柳</tspan></text>
+        <g id="g18" transform="matrix(1.1289465,0,0,1.1289465,25.010508,25.010508)">
+          <path d="M 26.875,14.6 C 25.1,12.778 21.549999,12.778 18,12.778 c -3.549999,0 -7.1,0 -8.875,1.822 -2.6630001,2.733 -5.3249998,9.72 -3.5500002,15.185999 1.7750001,5.466 9.5570002,6.028 12.4250002,6.028 2.868,0 10.65,-0.562 12.424999,-6.028 C 32.200001,24.320999 29.538,17.333 26.875,14.599999 Z" style="fill:#8a4b38;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path20"></path>
+          <path d="M 25.58,14.412 C 24.063999,12.856 21.032,12.856 18,12.856 c -3.032,0 -6.064,0 -7.58,1.556 C 8.1459999,16.746 5.8720002,22.714001 7.388,27.381001 8.9040003,32.049 15.55,32.528999 18,32.528999 c 2.450001,0 9.096001,-0.479999 10.611,-5.147998 1.516001,-4.668 -0.757,-10.635001 -3.031,-12.969 z" style="fill:#a5503c;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path22"></path>
+          <path d="m 27.452999,13.025 c -0.382999,-1.616001 -2.263,-3.1700005 -9.437,-3.1700005 h -0.032 c -7.175,0 -9.0550001,1.5539995 -9.437,3.1700005 -0.7329998,3.093 2.263001,4.277999 9.437,4.277999 h 0.032 c 7.174,-9.99e-4 10.17,-1.184999 9.437,-4.277999 z" style="fill:#ccd6dd;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path24"></path>
+          <path d="m 25.622,12.355 c 0.292999,0.72 -1.832001,1.658 -7.64,1.658 -5.807998,0 -7.937999,-0.941 -7.639999,-1.658 0.323,-0.779001 3.868999,-1.550001 7.639999,-1.550001 3.771,0 7.324,0.771 7.64,1.550001 z" style="fill:#66757f;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path26"></path>
+          <path d="m 10.993,13.144 c 1.015,0.473 3.226,0.869001 6.99,0.869001 3.767,0 5.976,-0.395001 6.99,-0.869001 -0.734,-0.635 -2.760001,-1.269999 -6.99,-1.269999 -4.23,10e-4 -6.256001,0.635 -6.99,1.27 z" style="fill:#77b255;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path28"></path>
+          <path d="m 25,14.231 c -0.156,-0.424 -0.429001,-0.393 -0.813999,-0.276 -1.779,0.537 -4.360001,0.641 -6.211001,0.652 -1.851,-0.011 -4.676,-0.161999 -6.211,-0.652 -0.384,-0.122 -0.701,-0.172 -0.862,0.276 -0.156,0.436 0.306,0.852 0.697001,0.947001 2.366,0.576 4.313,0.746 6.375999,0.758999 2.062001,-0.013 3.765,-0.159 6.131001,-0.734999 0.392,-0.096 1.075001,-0.476 0.893999,-0.971 z" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path30"></path>
+          <path d="M 22.893999,13.686 28.209,5.7559996 33.505001,2.0129995 c 0,0 0.140999,-0.297 -0.779999,-1.01 C 31.804001,0.29000002 31.388,0.58700001 31.388,0.58700001 L 26.84,4.204 20.348,13.9 c 0.993999,-0.051 1.839,-0.124 2.545999,-0.214 z" style="fill:#ccd6dd;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path32"></path>
+          <path d="M 22.893999,13.686 28.209,5.7559996 l 5.296001,-3.7430001 -0.067,-0.089 -5.792,3.208 -5.8,8.6740005 c 0.430999,-0.034 0.635,-0.06 1.048,-0.12 z" style="fill:#99aab5;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path34"></path>
+          <path d="m 29.285002,4.9450002 c -2e-6,0.4606051 -0.162852,0.8537564 -0.488549,1.1794533 -0.325696,0.3256975 -0.718849,0.4885459 -1.179452,0.4885464 -0.460608,-5e-7 -0.85376,-0.1628489 -1.179457,-0.4885464 -0.325697,-0.3256969 -0.488545,-0.7188482 -0.488543,-1.1794533 -2e-6,-0.4606056 0.162846,-0.8537569 0.488543,-1.1794544 0.325697,-0.3256971 0.718849,-0.4885456 1.179457,-0.4885456 0.460603,0 0.853756,0.1628485 1.179452,0.4885456 0.325697,0.3256975 0.488547,0.7188488 0.488549,1.1794544 z" style="fill:#99aab5;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path36"></path>
+          <path d="m 26.212999,4.6389999 c 0,-0.697 0.565001,-1.262 1.261999,-1.262 0.696999,0 1.262,0.565 1.262,1.262 0,0.6970001 -0.565001,1.2620001 -1.262,1.2620001 -0.696998,0 -1.261999,-0.565 -1.261999,-1.2620001 z" style="fill:#ccd6dd;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path38"></path>
+          <path d="m 11.459,10.865 c 1.604,-0.639 4.544,-0.802 5.569,-0.757 1.024999,0.045 0.570999,0.757 -0.015,0.757 -1.692999,0 -3.786999,0.401 -5.228,0.772 -0.851,0.219 -1.143,-0.446999 -0.326,-0.772 z" style="fill:#e1e8ed;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path40"></path>
         </g>
       </g>
     </g>
-    <g id="g26">
-      <g id="g28" clip-path="url(#clipPath32)">
-        <g id="g34" clip-path="url(#clipPath38)">
-          <g id="g40" transform="scale(3.1263134)">
-            <path d="m 31.8125,19 h 132.625 v 1 H 31.8125 Z" style="fill:#32cd30;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path42"></path>
-          </g>
+    <g id="g42">
+      <g id="g44" clip-path="url(#clipPath48)">
+        <g id="g50" transform="scale(3.1263134)">
+          <path d="m 28.8125,21 h 124.82812 v 1 H 28.8125 Z" style="fill:#32cd30;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path52"></path>
+          <text xml:space="preserve" transform="translate(28.8125,20)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#32cd30;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text56"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695 85.813965 93.615234 101.4165 109.21777 117.01904" y="0" id="tspan54">mnist_classifier</tspan></text>
+          <text xml:space="preserve" transform="translate(8,33)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text60"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan58">├── </tspan></text>
+          <text xml:space="preserve" transform="translate(39.21875,33)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#598c14;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text64"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348" y="0" id="tspan62">models</tspan></text>
+          <text xml:space="preserve" transform="translate(8,47)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text68"><tspan x="0 7.8012695 31.205078 39.006348 46.807617 54.608887" y="0" id="tspan66">│ └── </tspan></text>
         </g>
       </g>
     </g>
-    <g id="g44">
-      <g id="g46" clip-path="url(#clipPath50)">
-        <g id="g52" transform="scale(3.1263134)">
-          <text xml:space="preserve" transform="translate(31.8125,18)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#32cd30;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text56"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695 85.813965 93.615234 101.4165 109.21777 117.01904 124.82031" y="0" id="tspan54">anomaly_detection</tspan></text>
-          <text xml:space="preserve" transform="translate(8,31)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text60"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan58">├── </tspan></text>
-          <text xml:space="preserve" transform="translate(39.21875,31)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#598c14;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text64"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348" y="0" id="tspan62">models</tspan></text>
-          <text xml:space="preserve" transform="translate(8,44)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text68"><tspan x="0 7.8012695 31.205078 39.006348 46.807617 54.608887" y="0" id="tspan66">│ └── </tspan></text>
-          <path d="m 72.748291,43.752441 v -8.883545 h 8.886719 v 8.883545 z m 1.320313,-1.320312 h 6.246093 v -6.246094 h -6.246093 z m 2.783447,-0.0127 -2.732666,-2.577149 0.993408,-0.942627 1.402832,1.317139 2.208984,-3.853027 h 1.612305 z" style="fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path70"></path>
-          <text xml:space="preserve" transform="translate(70.421875,44)" style="font-variant:normal;font-size:13px;font-family:Iosevka;-inkscape-font-specification:IosevkaNerdFontCompleteM-;writing-mode:lr-tb;fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:none" id="text74"><tspan x="0" y="0" id="tspan72">☑</tspan></text>
-          <text xml:space="preserve" transform="translate(85.234375,44)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#598c14;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text78"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695" y="0" id="tspan76">transformer</tspan></text>
-          <text xml:space="preserve" transform="translate(8,57)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text82"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan80">├── </tspan></text>
-          <text xml:space="preserve" transform="translate(39.21875,57)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#203940;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text86"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695 85.813965" y="0" id="tspan84">data_loaders</tspan></text>
-          <text xml:space="preserve" transform="translate(8,70)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text90"><tspan x="0 7.8012695 31.205078 39.006348 46.807617 54.608887" y="0" id="tspan88">│ └── </tspan></text>
-          <path d="m 72.748291,69.752441 v -8.883545 h 8.886719 v 8.883545 z m 1.320313,-1.320312 h 6.246093 v -6.246094 h -6.246093 z m 2.783447,-0.0127 -2.732666,-2.577149 0.993408,-0.942627 1.402832,1.317139 2.208984,-3.853027 h 1.612305 z" style="fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path92"></path>
-          <text xml:space="preserve" transform="translate(70.421875,70)" style="font-variant:normal;font-size:13px;font-family:Iosevka;-inkscape-font-specification:IosevkaNerdFontCompleteM-;writing-mode:lr-tb;fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:none" id="text96"><tspan x="0" y="0" id="tspan94">☑</tspan></text>
-          <text xml:space="preserve" transform="translate(85.234375,70)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#203940;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text100"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695" y="0" id="tspan98">set_anomaly</tspan></text>
-          <text xml:space="preserve" transform="translate(8,83)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text104"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan102">├── </tspan></text>
-          <text xml:space="preserve" transform="translate(39.21875,83)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#aa5500;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text108"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887" y="0" id="tspan106">trainers</tspan></text>
-          <text xml:space="preserve" transform="translate(8,96)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text112"><tspan x="0 7.8012695 31.205078 39.006348 46.807617 54.608887" y="0" id="tspan110">│ └── </tspan></text>
-          <path d="m 72.748291,95.752441 v -8.883545 h 8.886719 v 8.883545 z m 1.320313,-1.320312 h 6.246093 v -6.246094 h -6.246093 z m 2.783447,-0.0127 -2.732666,-2.577149 0.993408,-0.942627 1.402832,1.317139 2.208984,-3.853027 h 1.612305 z" style="fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path114"></path>
-          <text xml:space="preserve" transform="translate(70.421875,96)" style="font-variant:normal;font-size:13px;font-family:Iosevka;-inkscape-font-specification:IosevkaNerdFontCompleteM-;writing-mode:lr-tb;fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:none" id="text118"><tspan x="0" y="0" id="tspan116">☑</tspan></text>
-          <text xml:space="preserve" transform="translate(85.234375,96)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#aa5500;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text122"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695 85.813965 93.615234 101.4165 109.21777" y="0" id="tspan120">anomaly_trainer</tspan></text>
-          <text xml:space="preserve" transform="translate(8,109)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text126"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan124">└── </tspan></text>
-          <text xml:space="preserve" transform="translate(39.21875,109)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#ff6908;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text130"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695" y="0" id="tspan128">experiments</tspan></text>
-          <text xml:space="preserve" transform="translate(39.21875,122)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text134"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan132">└── </tspan></text>
-          <path d="m 72.763916,121.75244 v -8.88354 h 8.886719 v 8.88354 z m 1.320313,-1.32031 h 6.246093 v -6.2461 h -6.246093 z m 2.783447,-0.0127 -2.732666,-2.57714 0.993408,-0.94263 1.402832,1.31714 2.208984,-3.85303 h 1.612305 z" style="fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path136"></path>
-          <text xml:space="preserve" transform="translate(70.4375,122)" style="font-variant:normal;font-size:13px;font-family:Iosevka;-inkscape-font-specification:IosevkaNerdFontCompleteM-;writing-mode:lr-tb;fill:#000000;fill-opacity:0;fill-rule:nonzero;stroke:none" id="text140"><tspan x="0" y="0" id="tspan138">☑</tspan></text>
-          <text xml:space="preserve" transform="translate(85.25,122)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#ff6908;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text144"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695" y="0" id="tspan142">set_anomaly</tspan></text>
+    <g id="g70">
+      <g id="g72" clip-path="url(#clipPath76)">
+        <g id="g78" transform="matrix(1.1289465,0,0,1.1289465,218.84193,112.54729)">
+          <path d="m 36,32 c 0,2.209 -1.791,4 -4,4 H 4 C 1.7909999,36 0,34.209 0,32 V 4 C 0,1.7909999 1.7909999,0 4,0 h 28 c 2.209,0 4,1.7909999 4,4 z" style="fill:#226699;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path80"></path>
+          <path d="m 29.280001,6.362 c -1.156,-0.7509999 -2.704001,-0.4219999 -3.458,0.736 L 14.936,23.877001 l -5.0290004,-4.65 c -1.014,-0.938 -2.5959997,-0.875 -3.533,0.138001 -0.9370003,1.014 -0.875,2.596 0.1389999,3.533001 l 7.2090005,6.666 c 0.48,0.445 1.09,0.665001 1.696,0.665001 0.673,0 1.534,-0.282 2.099,-1.139 0.332001,-0.506001 12.5,-19.2700005 12.5,-19.2700005 0.751,-1.1590004 0.421,-2.7069998 -0.736999,-3.4580002 z" style="fill:#bbddf5;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path82"></path>
+        </g>
+      </g>
+    </g>
+    <g id="g84">
+      <g id="g86" clip-path="url(#clipPath90)">
+        <g id="g92" transform="scale(3.1263134)">
+          <text xml:space="preserve" transform="translate(91.234375,47)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#598c14;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text96"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348" y="0" id="tspan94">linear</tspan></text>
+          <text xml:space="preserve" transform="translate(8,60)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text100"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan98">├── </tspan></text>
+          <text xml:space="preserve" transform="translate(39.21875,60)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#203940;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text104"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695 85.813965" y="0" id="tspan102">data_loaders</tspan></text>
+          <text xml:space="preserve" transform="translate(8,73)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text108"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan106">├── </tspan></text>
+          <text xml:space="preserve" transform="translate(39.21875,73)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#aa5500;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text112"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887" y="0" id="tspan110">trainers</tspan></text>
+          <text xml:space="preserve" transform="translate(8,88)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text116"><tspan x="0 7.8012695 31.205078 39.006348 46.807617 54.608887" y="0" id="tspan114">│ └── </tspan></text>
+        </g>
+      </g>
+    </g>
+    <g id="g118">
+      <g id="g120" clip-path="url(#clipPath124)">
+        <g id="g126" transform="matrix(1.1289465,0,0,1.1289465,218.84193,237.59982)">
+          <path d="m 36,32 c 0,2.209 -1.791,4 -4,4 H 4 C 1.7909999,36 0,34.209 0,32 V 4 C 0,1.7909999 1.7909999,0 4,0 h 28 c 2.209,0 4,1.7909999 4,4 z" style="fill:#226699;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path128"></path>
+          <path d="m 29.280001,6.362 c -1.156,-0.7509999 -2.704001,-0.4219999 -3.458,0.736 L 14.936,23.877001 l -5.0290004,-4.65 c -1.014,-0.938 -2.5959997,-0.875 -3.533,0.138001 -0.9370003,1.014 -0.875,2.596 0.1389999,3.533001 l 7.2090005,6.666 c 0.48,0.445 1.09,0.665001 1.696,0.665001 0.673,0 1.534,-0.282 2.099,-1.139 0.332001,-0.506001 12.5,-19.2700005 12.5,-19.2700005 0.751,-1.1590004 0.421,-2.7069998 -0.736999,-3.4580002 z" style="fill:#bbddf5;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path130"></path>
+        </g>
+      </g>
+    </g>
+    <g id="g132">
+      <g id="g134" clip-path="url(#clipPath138)">
+        <g id="g140" transform="scale(3.1263134)">
+          <text xml:space="preserve" transform="translate(91.234375,88)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#aa5500;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text144"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617" y="0" id="tspan142">trainer</tspan></text>
+          <text xml:space="preserve" transform="translate(8,101)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text148"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan146">└── </tspan></text>
+          <text xml:space="preserve" transform="translate(39.21875,101)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#ff6908;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text152"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617 54.608887 62.410156 70.211426 78.012695" y="0" id="tspan150">experiments</tspan></text>
+          <text xml:space="preserve" transform="translate(39.21875,116)" style="font-variant:normal;font-weight:normal;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono;writing-mode:lr-tb;fill:#565656;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text156"><tspan x="0 7.8012695 15.602539 23.403809" y="0" id="tspan154">└── </tspan></text>
+        </g>
+      </g>
+    </g>
+    <g id="g158">
+      <g id="g160" clip-path="url(#clipPath164)">
+        <g id="g166" transform="matrix(1.1289465,0,0,1.1289465,218.84193,325.1366)">
+          <path d="m 36,32 c 0,2.209 -1.791,4 -4,4 H 4 C 1.7909999,36 0,34.209 0,32 V 4 C 0,1.7909999 1.7909999,0 4,0 h 28 c 2.209,0 4,1.7909999 4,4 z" style="fill:#226699;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path168"></path>
+          <path d="m 29.280001,6.362 c -1.156,-0.7509999 -2.704001,-0.4219999 -3.458,0.736 L 14.936,23.877001 l -5.0290004,-4.65 c -1.014,-0.938 -2.5959997,-0.875 -3.533,0.138001 -0.9370003,1.014 -0.875,2.596 0.1389999,3.533001 l 7.2090005,6.666 c 0.48,0.445 1.09,0.665001 1.696,0.665001 0.673,0 1.534,-0.282 2.099,-1.139 0.332001,-0.506001 12.5,-19.2700005 12.5,-19.2700005 0.751,-1.1590004 0.421,-2.7069998 -0.736999,-3.4580002 z" style="fill:#bbddf5;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path170"></path>
+        </g>
+      </g>
+    </g>
+    <g id="g172">
+      <g id="g174" clip-path="url(#clipPath178)">
+        <g id="g180" transform="scale(3.1263134)">
+          <text xml:space="preserve" transform="translate(91.25,116)" style="font-variant:normal;font-weight:bold;font-size:13px;font-family:'Liberation Mono';-inkscape-font-specification:LiberationMono-Bold;writing-mode:lr-tb;fill:#ff6908;fill-opacity:1;fill-rule:nonzero;stroke:none" id="text184"><tspan x="0 7.8012695 15.602539 23.403809 31.205078 39.006348 46.807617" y="0" id="tspan182">classif</tspan></text>
         </g>
       </g>
     </g>
