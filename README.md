@@ -77,16 +77,30 @@ This will give you an overview of your projec and your componens. It also tells 
 then we can train our experiment:
 
 ```bash
-mate train classification
+mate train simple
 ```
 
+
 You should see all the training logs.
+If you now do again:
+```bash
+mate summary
+```
+You should notice a 💪 next to the experiment. That means that the training was successful:
+<p align="center" style="margin:0; padding:0;">
+  <img src="./imgs/lightning_summary_after_training.svg" alt="Your Image" style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
+</p>
 
 Finally, to visualize our results:
 
 ```bash
 mate results
 ```
+<p align="center" style="margin:0; padding:0;">
+  <img src="./imgs/lightning_results.svg" alt="Your Image" style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
+</p>
+
+
 
 
 

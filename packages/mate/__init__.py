@@ -1,5 +1,6 @@
 import json as __json
 import os as __os
+from typing import Any
 
 command: str = ""
 is_train: bool = False
@@ -27,7 +28,10 @@ is_test = command == "test"
 is_restart = command == "restart"
 
 
-def result(values: dict[str, float | int]):
+def result(values: dict[str, Any]):
+    values = {
+        k: (v if isinstance(v, (int, float)) else v.item()) for k, v in values.items()
+    }
     result_path = __os.path.join(save_dir, "result.json")
     result = {}
     if __os.path.exists(result_path):
