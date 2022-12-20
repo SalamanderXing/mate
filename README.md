@@ -102,28 +102,6 @@ mate results
 Mate has inferred the dataset and will group our experiments according to that and put them in the same table.
 
 
-
-
-
-
-****
-
-**Train a model**
-
-```bash
-mate train my_experiment
-```
-
-**Evaluate a model**
-
-```bash
-mate test my_experiment
-```
-
-**Run a model**
-
-More features coming soon!
-
 ## Comparison to familiar tools
 
 - *Weights & Biases* wandb is a logger and allows model weights sharing as well
