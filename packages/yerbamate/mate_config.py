@@ -3,10 +3,10 @@ from enum import Enum
 from typing import Any
 import json
 import ipdb
-
+from typing import Union
 
 class Config:
-    def __init__(self, config: dict | str | None = None):
+    def __init__(self, config: Union[dict, str, None] = None):
         if isinstance(config, str):
             try:
                 with open(config, "r") as f:
