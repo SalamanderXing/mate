@@ -97,9 +97,9 @@ Finally, to visualize our results:
 mate results
 ```
 <p align="center" style="margin:0; padding:0;">
-  <img src="./imgs/lightning_results.svg" alt="Your Image" style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
+  <img src="./imgs/lightning_results.svg" alt="Your Image" style="width: 50%; height:200; margin-left:10px; margin-top:0, border-radius:50%;">
 </p>
-
+Mate has inferred the dataset and will group our experiments according to that and put them in the same table.
 
 
 
