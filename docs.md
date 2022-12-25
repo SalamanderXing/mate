@@ -16,7 +16,7 @@ The following actions work within a mate project folder (where the `mate.json` f
 
 
 
-This is some fancy description
+Creates a new mate project in the current folder
 
 ---
 
@@ -67,7 +67,7 @@ Exports a function/class from a module
 
 
 
-This is some fancy description
+Creates a new mate project in the current folder
 
 ---
 

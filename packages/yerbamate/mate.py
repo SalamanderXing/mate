@@ -28,7 +28,7 @@ class Mate:
         """
         :param project_name: Name of the project
 
-        This is some fancy description
+        Creates a new mate project in the current folder
         """
         MateAPI.init(project_name)
 
