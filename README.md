@@ -51,7 +51,6 @@ These projects are based on this [amazing repo](https://github.com/phlippe/uvadl
 
 ## Quick Start ⚡
 This example will walk you through training and showing results of your model on a Pytorch-Lithtning example. 
-> For this project in particular, you need PyTorch and Pytorch-Lithtning installed.
 
 First let's clone the project, for example: 
 ```bash
@@ -65,7 +64,7 @@ Then run:
 ```
 mate summary
 ```
-This will give you an overview of your projec and your componens. It also tells you where your components have issues. In this case, (hopefully) you will see something like this:
+This will give you an overview of your projec and your componens. Besides that, it will also create a local python virtual environment and install all the dependencies of this project in it. It also tells you where your components have issues. In this case, (hopefully) you will see something like this:
 <p align="center" style="margin:0; padding:0;">
   <img src="./imgs/lightning_summary.svg" alt="Your Image" style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
 </p>
