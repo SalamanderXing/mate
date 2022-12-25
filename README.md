@@ -13,10 +13,6 @@ In addition, any project developed with Mate on a public repository gets automat
 Mate is compatible is any python deep learning framework, such as PyTorch, JAX, and TensorFlow/Keras, since it leverages Python features.
 
 
-<p align="center">
-  <img src="./imgs/mate_summary.svg" alt="Your Image" style="width: 60%; margin-left:10px; border-radius:50%;">
-</p>
-
 ## Installation 🔌
 At the moment Maté is only supported on MacOS and Linux, but soon also windows.
 

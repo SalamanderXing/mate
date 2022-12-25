@@ -101,8 +101,8 @@ def print_help():
 ---
 """
     markdown = "\n".join([l for l in doc.split("\n")])
-    with open("docs.md", "w") as f:
-        f.write(markdown)
+    # with open("docs.md", "w") as f:
+    #     f.write(markdown)
     print(Markdown(markdown))
 
     # tmp = list(kj)

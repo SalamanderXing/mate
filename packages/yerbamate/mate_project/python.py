@@ -84,7 +84,6 @@ class Python:
         module_required_packages = self.__requirements_to_packages(
             os.path.join(module_path, "requirements.txt")
         )
-        ipdb.set_trace()
         for package in module_required_packages:
             if package not in self.installed_packages:
                 self.pip_install(package.name)
