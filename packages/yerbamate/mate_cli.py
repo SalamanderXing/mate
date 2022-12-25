@@ -46,11 +46,12 @@ def prettify_method(method_name, annotation, in_depth: bool = False):
     )
     return f" {method_name}\n\t{pretty(annotation)}\n" + description
 
+remove_indent = lambda text: "\n".join(
+    [line[len(line) - len(line.lstrip()) :] for line in text.split("\n")]
+)
 
-def print_help():
-    remove_indent = lambda text: "\n".join(
-        [line[len(line) - len(line.lstrip()) :] for line in text.split("\n")]
-    )
+def generate_help_md() -> str:
+    
     doc = remove_indent(str(Mate.__doc__)) + "\n --- \n"
     members = inspect.getmembers(Mate, predicate=inspect.isfunction)
     for name, val in members:
@@ -78,10 +79,6 @@ def print_help():
                     if param.name != "self"
                 ]
             )
-            # creates a function that removes the indentation caused by the python docstring
-            # but preserves the additional indentation of the markdown
-            # works at any indentation level
-
             method_description = "\n".join(
                 [
                     remove_indent(line)
@@ -101,13 +98,11 @@ def print_help():
 ---
 """
     markdown = "\n".join([l for l in doc.split("\n")])
-    # with open("docs.md", "w") as f:
-    #     f.write(markdown)
-    print(Markdown(markdown))
+    return markdown
 
-    # tmp = list(kj)
-    # for method_name, annotation in methods.items():
-    #     print(prettify_method(method_name, annotation))
+
+def print_help():
+    print(Markdown(generate_help_md()))
 
 
 def convert_str_to_data(input):

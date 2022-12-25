@@ -17,10 +17,6 @@ class Config:
                 raise e
         elif config is None:
             config = {}
-        # if "metadata" in config:
-        #     config["metadata"] = Metadata(
-        #         **config["metadata"], root_module=config.get("project", "")
-        #     )
         assert isinstance(config, dict)
         for key, value in self.__dict__.items():
             if value is not None and value != {} and value != False:
@@ -66,10 +62,29 @@ class Config:
 
 
 class MateConfig(Config):
+    """
+    ```
+    mate.json
+    ```
+    This is the main configuration file for a Mate project. It defines where the root of a mate project is. The format is JSON.
+
+    ### Key-value pairs:
+
+    - `results_folder`: The folder where all results are stored. This is relative to the root **above** the project.
+
+    *Example*:
+
+    If your `mate.json` lies in `/home/user/project_repo/mate_project/mate.json` and it looks like this:
+    ```json
+    {
+        "results_folder": "results"
+    }
+    ```
+    Then the results folder will be `/home/user/project_repo/results`
+    """
+
     def __init__(self, config):
-        self.mate_version = ""
         self.results_folder = ""
-        self.verbose = False
         super().__init__(config)
 
     def __str__(self):
