@@ -3,8 +3,10 @@ from .mate import Mate
 import inspect
 import ipdb
 import sys
+from rich.markdown import Markdown
 from pydoc import locate
 from typing import Any
+from rich import print
 
 
 def parse_signature(class_name, method_name: str):
@@ -45,9 +47,69 @@ def prettify_method(method_name, annotation, in_depth: bool = False):
     return f" {method_name}\n\t{pretty(annotation)}\n" + description
 
 
-def print_help(methods):
-    for method_name, annotation in methods.items():
-        print(prettify_method(method_name, annotation))
+def print_help():
+    remove_indent = lambda text: "\n".join(
+        [line[len(line) - len(line.lstrip()) :] for line in text.split("\n")]
+    )
+    doc = remove_indent(str(Mate.__doc__)) + "\n --- \n"
+    members = [("init", Mate.init)] + inspect.getmembers(
+        Mate, predicate=inspect.isfunction
+    )
+    for name, val in members:
+        # ipdb.set_trace()
+        if not name.startswith("_"):
+            params = inspect.signature(val).parameters.values()
+            inline_params = " ".join(
+                [
+                    f"<{('optional ' if (param.default != inspect._empty) else '') + param.name}>"
+                    for param in params
+                    if param.name != "self"
+                ]
+            )
+            param_descriptions = {
+                line[1].split(" ")[1]: ":".join(line[2:])
+                for line in [l.strip().split(":") for l in str(val.__doc__).split("\n")]
+                if len(line) > 1 and line[1].startswith("param")
+            }
+
+            list_params = "\n".join(
+                [
+                    f"  - {param.name} : `{param.annotation.__name__}` : {param_descriptions.get(param.name, '')}"
+                    + (f"={param.default}" if param.default != inspect._empty else "")
+                    for param in params
+                    if param.name != "self"
+                ]
+            )
+            # creates a function that removes the indentation caused by the python docstring
+            # but preserves the additional indentation of the markdown
+            # works at any indentation level
+
+            method_description = "\n".join(
+                [
+                    remove_indent(line)
+                    for line in val.__doc__.split("\n")
+                    if not line.strip().startswith(":param")
+                ]
+            )
+            doc += f"""
+```
+  {name} {inline_params}
+```
+
+**Params**
+{list_params}
+
+{method_description}
+---
+"""
+    markdown = "\n".join([l for l in doc.split("\n")])
+    with open('docs.md', 'w') as f:
+        f.write(markdown)
+    print(Markdown(markdown))
+
+    # tmp = list(kj)
+    # for method_name, annotation in methods.items():
+    #     print(prettify_method(method_name, annotation))
 
 
 def convert_str_to_data(input):
@@ -82,9 +144,9 @@ def main():
         "-h",
     )
     if len(args) == 0 or not args[0] in actions or args[0] in ("--help", "-h"):
-        print_help(methods)
+        print_help()
     else:
-        assert args[0] in actions, print_help(methods)
+        assert args[0] in actions, print_help()
         action = args[0].replace("-", "_")
         if len(args) > 1 and args[1] in ("--help", "-h"):
             print(prettify_method(action, methods[args[0]], in_depth=True))

@@ -5,7 +5,18 @@ from rich import print
 
 
 class Mate:
+    """
+    # 🧉 Maté
+
+    ### Modularize your deep learning project to improve reproducibility
+
+    The following actions work within a mate project folder (where the `mate.json` file is located).
+    """
+
     def __init__(self):
+        """
+        Initializes mate
+        """
         self.current_folder = os.path.dirname(__file__)
         self.api = MateAPI()
         # self.models = self.__list_packages("models")
@@ -14,107 +25,100 @@ class Mate:
 
     @staticmethod
     def init(project_name: str):
+        """
+        :param project_name: Name of the project
+
+        This is some fancy description
+        """
         MateAPI.init(project_name)
 
     def remove(self, target: str):
+        """
+        :param target: Path to the module to remove
+
+        Removes a module
+        """
         self.api.remove(target)
 
     def show(self, path: str):
+        """
+        :param path: Path to the module to show
+        Shows information about a module or experiment.
+        """
         self.api.show(path)
 
+    def venv(self, command: str):
+        """
+        :param command: Command to run in the virtual environment
+        Executes inside the python venv
+        """
+        self.api.venv(command)
+
     def summary(self):
-        # self.api.summary()
-        # print(self.api)
+        """
+        Prints a summary of the mate project.
+        """
         print(self.api.to_tree())
 
     def results(self):
+        """
+        Prints results
+        """
         results_table = self.api.results()
         if results_table is not None:
             print(results_table)
         else:
             print("No results found.")
 
-    def list(
-        self, module_name: str, query: Optional[str] = None, output_json: bool = True
-    ):
-        print(self.api.project[module_name])
-
     def clone(self, source_model: str, target_model: str):
+        """
+        :param source_model: Path to the source model
+        :param target_model: Path to the target model
+        Clones a module
+        """
         self.api.clone(source_model, target_model)
 
     def create(self, path: str, name: str):
+        """
+        :param path: Path to the module to create
+        :param name: Name of the module to create
+        Creates a new module
+        """
         self.api.create(path, name)
 
-    def snapshot(self, model_name: str):
-        pass
-
-    def train(self, experiment_name: str = "default"):
+    def train(self, experiment_name: str):
+        """
+        :param experiment_name: Name of the experiment to run
+        Trains a model
+        """
         self.api.train(experiment_name=experiment_name)
 
     def rename(self, path: str, name: str):
+        """
+        :param path: Path to the module to rename
+        :param name: New name of the module
+        Renames a module.
+        """
         self.api.rename(path, name)
 
     def export(self, source: str):
+        """
+        :param source: Path to the object to export
+        Exports a function/class from a module
+        """
         self.api.export(source)
 
-    def metadata(
-        self,
-    ):
-        self.api.generate_metadata(True)
-
     def test(self, experiment_name: str):
+        """
+        :param experiment_name: Name of the experiment to run
+        Tests a model
+        """
         self.api.test(experiment_name)
-
-    def restart(self, model_name: str, params: str = "default"):
-        """
-        TODO: Implement restart in trainer
-        """
-        pass
-        # assert io.experiment_exists(
-        #    self.root_folder, model_name, params
-        # ), f'Model "{model_name}" does not exist.'
-        # io.assert_experiment_exists(self.root_folder, model_name, params)
-
-        # self.is_restart = True
-        # self.__fit(model_name, params)
-
-    def tune(self, model: str, params):
-        """
-        Fine tunes specified hyperparameters. (Not implemented yet)
-        """
-        pass
-
-    def generate(self, model_name: str, params: str):
-        pass
-
-    def sample(self, model_name: str, params: str):
-        pass
 
     def install(self, url: str):
         """
-        Adds a dependency to a model.
+        :param url: URL to the package to install
+
+        Installs a module from url
         """
         self.api.install(url)
-
-    def exec(self, model: str, params: str, exec_file: str):
-        params = "parameters" if params == "" or params == "None" else params
-        print(f"Executing model {model} with result of: {params}")
-        _, model, _ = self.__get_trainer(model, params)
-
-        self.__load_exec_function(exec_file)(model)
-
-    def board(self):
-
-        self.api.start_mateboard()
-
-    # def __list_packages(self, folder: str):
-    #     return io.list_packages(self.root_folder, folder)
-
-    # def __update_mate_version(self):
-    #     utils.migrate_mate_version(self.config, self.root_folder)
-
-    # def __findroot(self):
-    #     """
-    #     Method in charge of finding the root folder of the project and reading the content of mate.json
-    #     """
-    #     self.root_save_folder = self.config.results_folder

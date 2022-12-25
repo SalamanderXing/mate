@@ -71,6 +71,7 @@ class GitManager:
         command = f"mv {os.path.join(mate_root, self.path)} {destination}"
         os.system(command)
         os.system(f"rm -rf {tmp_destination}/*")
+        return destination
 
     def __str__(self):
         inner = "\n".join(

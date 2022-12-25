@@ -11,15 +11,6 @@ In addition, any project developed with Mate on a public repository gets automat
 
 Mate is compatible is any python deep learning framework (such as JAX, PyTorch, and TensorFlow) since it leverages Python features.
 
-<!-- 
-Maté is a comprehensive framework for deep learning projects that aims to streamline the development process and make it easier for developers to create high-quality projects. It includes features such as a training manager to help you set up, run, and monitor your models, as well as a package manager to manage dependencies and share code with others.
-
-
-Maté also includes a [MateHub](https://salamanderxing.github.io/mate/), a store of all available modules that can be easily accessed and incorporated into a project. With support for multiple deep learning frameworks including PyTorch, TensorFlow, and Jax, Maté is flexible and can be used with the tools you already know and love.
-
-
-Maté standardizes project structure to make it easy to understand and work with, while still allowing for flexibility and customization. And with its intuitive design, Maté is easy to learn and use, saving you time and effort in the development process. Make your deep learning projects more efficient and effective with Maté.
--->
 
 <p align="center">
   <img src="./imgs/mate_summary.svg" alt="Your Image" style="width: 60%; margin-left:10px; border-radius:50%;">
@@ -34,6 +25,7 @@ cd mate
 pip install -e .
 ```
 
+## [Documentation](./docs.md)
 
 ## Examples
 

@@ -11,34 +11,24 @@ from rich import print
 from rich.tree import Tree
 from rich.text import Text
 from rich.table import Table
-from .console import console
 import ipdb
 from . import io
-from .project import MateProject
-from .mate_modules import colors, modules
+from .mate_project import MateProject, colors, Python
 import glob
-
-"""
-MATE API
-
-"""
 
 
 class MateAPI:
     def __init__(self):
         root, config = io.find_root()
-        self.project = MateProject(root)
         self.config: MateConfig = config
-        self.mate_dir: str = ".mate"
+        self.mate_dir: str = ""  # will be mutated by __setup
         self.tmp_dir: str = ""
-        self.__setup()
+        self.__setup(root)
         if not os.path.exists(self.mate_dir):
             os.makedirs(".mate")
 
         if self.config.verbose:
             print(self.config)
-
-        # ipdb.set_trace()
 
     @staticmethod
     def init(project_name: str):
@@ -52,20 +42,29 @@ class MateAPI:
         os.system(f"mv {os.path.join('.mate', 'my-project')} {project_name}")
         os.system(f"rm -rf .mate")
 
-    def __setup(self):
+    def __setup(self, root: str):
         get_top_level_cmd = "git rev-parse --show-toplevel"
         # gets the ouptut of the command
         top_level = os.popen(get_top_level_cmd).read().strip()
-        self.mate_dir = os.path.join(top_level, ".mate")
+        if not os.path.exists(".gitingore"):
+            os.system("touch .gitignore")
+        with open(".gitignore") as f:
+            gitignore = f.read()
+        if "*/venv/" not in gitignore:
+            with open(".gitignore", "a") as f:
+                f.write("*/venv/")
+        if "*/.matemodule/" not in gitignore:
+            with open(".gitignore", "a") as f:
+                f.write("*/.matemodule/")
+        mate_dir = os.path.join(top_level, ".mate")
+        project_name = os.path.basename(root)
+        self.mate_dir = os.path.join(mate_dir, project_name)
+        self.python = Python(self.mate_dir)
+        self.project = MateProject(root, self.python)
         self.tmp_dir = os.path.join(self.mate_dir, "tmp")
         if not os.path.exists(self.mate_dir):
             os.makedirs(self.mate_dir)
             print(f"Created {self.mate_dir}")
-        # topic_path = os.path.join(self.mate_dir, "topic_exists")
-        # if not os.path.exists(topic_path):
-        #     os.system("gh repo edit --add-topic mate_dl")
-        #     os.system(f"touch {topic_path}")
-        #     print("Added topic mate_dl to github repo")
         readme_path = os.path.join(top_level, "README.md")
         if not os.path.exists(readme_path):
             os.system(f"touch {readme_path}")
@@ -79,12 +78,13 @@ class MateAPI:
                     f.write(readme)
                     print("Added builtwithmate to README.md")
 
-        summary_json_location = os.path.join(self.mate_dir, "projects.json")
+        summary_json_location = os.path.join(mate_dir, "projects.json")
+        project_dict = self.project.to_dict()
+        project_dict["root"] = self.project.root_dir.replace(top_level, "")
         if os.path.exists(summary_json_location):
             with open(summary_json_location, "r") as f:
                 old_summary_json = json.load(f)
-            project_dict = self.project.to_dict()
-            project_dict["root"] = self.project.root_dir.replace(top_level, "")
+            orig_summary = old_summary_json[self.project.name].copy()
             if (self.project.name not in old_summary_json) or (
                 project_dict != old_summary_json[self.project.name]
             ):
@@ -94,9 +94,14 @@ class MateAPI:
                 print('Updated "projects.json"')
         else:
             with open(summary_json_location, "w") as f:
-                json.dump({self.project.name: self.project.to_dict()}, f, indent=4)
+                json.dump({self.project.name: project_dict}, f, indent=4)
 
             print(f"Created {summary_json_location}")
+
+        leafs = self.project.leaf_modules()
+        for leaf in leafs:
+            if not os.path.exists(os.path.join(leaf.root_dir, "requirements.txt")):
+                self.python.generate_requirements_single(leaf.root_dir)
 
     def __get_results_dict(self):
 
@@ -116,6 +121,11 @@ class MateAPI:
                     )
         return all_results
 
+    def venv(self, command: str):
+        # activate the virtual environment
+        #self.python.venv(command)
+        self.python(command)
+
     def to_tree(self) -> Tree:
         vals = self.project.to_dict()["project"]
         # turns this nested dict into a rich tree
@@ -127,7 +137,7 @@ class MateAPI:
         for k, v in vals.items():
             # add a node for the key using the funciton .add() removes the underline style
             # and adds the matching color
-            node = tree.add(k, style=f"bold {modules[k].color}")
+            node = tree.add(k, style=f"bold {colors[k]}")
             for k2, e in v.items():
                 text = Text("")
                 if len(e["errors"]) > 0:
@@ -143,25 +153,29 @@ class MateAPI:
 
         return tree
 
+    def instreqs(self):
+        self.python.install_requirements()
+
     def get_json_summary(self):
         return self.project.to_dict()
+
+    def deps(self):
+        self.python.generate_requirements()
 
     def show(self, path: str):
         node = self.project[path]
         tree = node.to_tree()
-        console.print(tree)
+        print(tree)
         if len(node.errors) > 0:
-            console.print(f"[{colors.error} bold]ERRORS:[/{colors.error} bold]")
+            print(f"[{colors.error} bold]ERRORS:[/{colors.error} bold]")
             for e in node.errors:
-                console.print(
-                    f"    [{colors.error}]❌[/{colors.error}][yellow]{e}[/yellow]"
-                )
+                print(f"    [{colors.error}]❌[/{colors.error}][yellow]{e}[/yellow]")
 
     def export(self, source: str):
         assert isinstance(source, str), "Source must be a string"
         assert "." in source, "Source must be a path"
         module_root = os.path.join(
-            self.project._name, os.sep.join(source.split(".")[:2])
+            self.project.__name, os.sep.join(source.split(".")[:2])
         )
         assert os.path.exists(
             module_root
@@ -176,7 +190,7 @@ class MateAPI:
                 with open(target_file, "a") as f:
                     f.write(import_statement)
                 console.print(
-                    f"  ✅[green]Exported {to_export} from {source} to {target_file}[/green], ('{import_statement}')"
+                    f"  ✅ [green]Exported {to_export} from {source} to {target_file}[/green], ('{import_statement}')"
                 )
             else:
                 print(f"{to_export} already exported, skipping.")
@@ -230,9 +244,9 @@ class MateAPI:
         self.project.rename(target, destination)
 
     def install(self, url: str):
-        git = GitManager.from_url(self.project._name, url)
-        git.clone(os.path.join(self.mate_dir, "tmp"))
-        print(git)
+        git = GitManager.from_url(self.project.name, url)
+        installed_location = git.clone(os.path.join(self.mate_dir, "tmp"))
+        self.python.install_module_requirements(installed_location)
 
     def create(self, path: str, name: str):
         self.project.create(path, name)
@@ -285,32 +299,5 @@ class MateAPI:
         # TODO, this should be in the trainer if its a generative model
         pass
 
-    def set_checkpoint_path(self):
-        assert self.exp and self.save_dir, "You must select an experiment first"
-        checkpoint_path = os.path.join(self.save_dir, "checkpoints")
-        if not os.path.exists(checkpoint_path):
-            os.makedirs(checkpoint_path)
-        self.checkpoint_path = checkpoint_path
-
     def remove(self, target: str):
         self.project.remove(target)
-
-    def delete_checkpoints(self):
-        assert self.checkpoint_path is not None
-        checkpoints = [
-            os.path.join(self.checkpoint_path, p)
-            for p in os.listdir(self.checkpoint_path)
-        ]
-
-        action = "go"
-        if len(checkpoints) > 0:
-            while action not in ("y", "n", ""):
-                action = input(
-                    "Checkpiont file exists. Re-training will erase it. Continue? ([y]/n)\n"
-                )
-            if action in ("y", "", "Y"):
-                for checkpoint in checkpoints:
-                    os.remove(checkpoint)  # remove all checkpoint files
-            else:
-                print("Ok, exiting.")
-                return

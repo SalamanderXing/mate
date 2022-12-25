@@ -1,13 +1,12 @@
 import ast
 from rich.tree import Tree
 from rich.text import Text
-from rich import print
+from .colors import colors
 import os
 import ipdb
 
-from .mate_modules import colors, modules
 
-
+# TODO: assert there is one and only data_loader per experiment
 class Experiment:
     def __chech_no_math(self, node: ast.AST):
         # checks that in the entire tree there are no math operations
@@ -52,9 +51,9 @@ class Experiment:
                 relative_import.module is not None
             ), "The relative import should have a module"
             module_name = relative_import.module.split(".")[0]
-            if module_name not in modules:
+            if module_name not in self.allowed_modules:
                 self.errors.append(
-                    f"The experiment should only use relative imports from the following modules: {list(modules.keys())}"
+                    f"The experiment should only use relative imports from the following modules: {self.allowed_modules}"
                 )
             if not (len(relative_import.module.split(".")) == 2):
                 self.errors.append(
@@ -85,20 +84,17 @@ class Experiment:
         tree = Tree(
             Text(
                 self.experiment_name,
-                style=f"{modules.experiments.color} bold underline",
+                style=f"{colors.experiments} bold underline",
             )
         )
         for module_name, import_nodes in self.imports_dict.items():
-            if module_name in modules:
-                text = Text(
-                    f"{module_name}", style=f"bold {modules[module_name].color}"
-                )
+            if module_name in self.allowed_modules:
+                text = Text(f"{module_name}", style=f"bold {colors[module_name]}")
                 module_tree = tree.add(text)
                 for module_path, import_nodes in import_nodes.items():
                     module_tree.add(
-                        Text(f"{module_path}", style=f"{modules[module_name].color}")
+                        Text(f"{module_path}", style=f"{colors[module_name]}")
                     )
-
             else:
                 # adds the text with an error
                 tree.add(Text(f"❌{module_name}", style=f"bold {colors.error}"))
@@ -112,8 +108,9 @@ class Experiment:
             "imports": list(self.imports_dict.keys()),
         }
 
-    def __init__(self, experiment_path: str):
+    def __init__(self, allowed_modules: tuple[str], experiment_path: str):
         """Check if the experiment is valid"""
+        self.allowed_modules = tuple(allowed_modules)
         with open(experiment_path, "r") as f:
             experiment = ast.parse(f.read())
         self.__check_experiment(experiment)
