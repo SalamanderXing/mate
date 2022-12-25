@@ -30,7 +30,7 @@ pip install -e .
 
 ## Examples
 
-More examples are are coming :)
+More examples coming soon :)
 
 ### PyTorch Lightning
 
