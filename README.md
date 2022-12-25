@@ -30,6 +30,8 @@ pip install -e .
 
 ## Examples
 
+More examples are are coming :)
+
 ### PyTorch Lightning
 
 - [MNIST Classifier](https://github.com/SalamanderXing/pytorch-lightning-mnist)
