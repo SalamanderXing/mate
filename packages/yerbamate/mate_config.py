@@ -1,9 +1,7 @@
 # from .api.data.metadata.metadata import BaseMetadata, Metadata
 from enum import Enum
-from typing import Any
 import json
-import ipdb
-from typing import Union
+from typing import Union, Optional
 
 
 class Config:
@@ -85,6 +83,7 @@ class MateConfig(Config):
 
     def __init__(self, config):
         self.results_folder = ""
+        self.verbose: Optional[bool] = None
         super().__init__(config)
 
     def __str__(self):

@@ -5,6 +5,7 @@ import json
 from dirhash import dirhash
 import ipdb
 from .python import Python
+from .colors import colors
 
 
 class Module:
@@ -19,6 +20,7 @@ class Module:
         self.__root_dir = root_dir
         self.__name = os.path.basename(root_dir)
         # checks that the name is python-friendly
+        self.__doc = self.__get_docs()
         self.__errors = []
         assert (
             self.__name.isidentifier()
@@ -61,6 +63,12 @@ class Module:
                 print(f"Installed requirements for {self.relative_path()}")
                 with open(status_path, "w") as f:
                     json.dump({"hash": self._hash, "installed": True}, f, indent=2)
+
+    def __get_docs(self):
+        # gets the docstring of the root module using ast
+        with open(os.path.join(self.__root_dir, "__init__.py"), "r") as f:
+            tree = ast.parse(f.read())
+        return ast.get_docstring(tree)
 
     @property
     def errors(self):
@@ -119,14 +127,32 @@ class Module:
         assert item in self, f"{item} not found in {self.relative_path()}"
         return self._exports[item]
 
-    def to_tree(self):
-        parent = self.relative_path().split(".")[0]
-        tree = Tree(parent, style=f"bold underline {modules[parent].color}")
-        node = tree.add(self.name)
-        val = self.exports
-        for v in val.values():
-            node.add(v.names[0].name)
-        return tree
+    def show(self) -> str:
+        # parent = self.relative_path().split(".")[0]
+        # tree = Tree(parent, style=f"bold underline {colors[parent]}")
+        # node = tree.add(self.name)
+        # val = self.exports
+        # for v in val.values():
+        #     node.add(v.names[0].name)
+        # return tree
+
+        # formats the exports
+        exports = "\n".join(
+            [f" - {v.names[0].name}" for k, v in self.exports.items()]
+        )
+        return f"""
+        # {self.name}
+
+        **Exports**:
+
+        {exports}
+
+
+        {self.__doc}
+        """
+
+    def to_md(self):
+        return self.__doc
 
     def to_dict(self):
         return {

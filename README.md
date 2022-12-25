@@ -107,13 +107,8 @@ All mate projects on public github repo (published by anyone) will be automatica
 - *[THINGSvision](https://github.com/ViCCo-Group/thingsvision)*: Provides a set pretrained models for analysis of their activation. In particular to compare them with brain activations.
 
 
-## FAQ
-**Q: Does Maté work with colab?**
-
-**A**: Yes! Maté works with colab as any Maté project is exportable to a juypter notebook.
-
 ## Contact 🤝 
 
-For questions please contact:
+For any question, please contact:
 
-g.zani(at)uva.nl
+[Giulio Zani](mailto:g.zani@uva.nl)

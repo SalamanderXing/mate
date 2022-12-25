@@ -5,9 +5,11 @@ import glob
 from .mate_config import MateConfig
 from .runtime import MateRuntime
 from .git_manager import GitManager
+from .utils import remove_indent
 
 # from .data.package_repository import PackageRepository
 from rich import print
+from rich.markdown import Markdown
 from rich.tree import Tree
 from rich.text import Text
 from rich.table import Table
@@ -123,7 +125,7 @@ class MateAPI:
 
     def venv(self, command: str):
         # activate the virtual environment
-        #self.python.venv(command)
+        # self.python.venv(command)
         self.python(command)
 
     def to_tree(self) -> Tree:
@@ -164,8 +166,10 @@ class MateAPI:
 
     def show(self, path: str):
         node = self.project[path]
-        tree = node.to_tree()
-        print(tree)
+        # tree = node.to_tree()
+
+        os.system(f"echo '{remove_indent(node.show())}' | glow -")
+        # print(tree)
         if len(node.errors) > 0:
             print(f"[{colors.error} bold]ERRORS:[/{colors.error} bold]")
             for e in node.errors:

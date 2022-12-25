@@ -1,7 +1,8 @@
-from .utils.bunch import Bunch
+from .utils import Bunch, remove_indent
 from .mate import Mate
 import inspect
 import ipdb
+import os
 import sys
 from rich.markdown import Markdown
 from pydoc import locate
@@ -46,12 +47,9 @@ def prettify_method(method_name, annotation, in_depth: bool = False):
     )
     return f" {method_name}\n\t{pretty(annotation)}\n" + description
 
-remove_indent = lambda text: "\n".join(
-    [line[len(line) - len(line.lstrip()) :] for line in text.split("\n")]
-)
 
 def generate_help_md() -> str:
-    
+
     doc = remove_indent(str(Mate.__doc__)) + "\n --- \n"
     members = inspect.getmembers(Mate, predicate=inspect.isfunction)
     for name, val in members:
@@ -102,7 +100,9 @@ def generate_help_md() -> str:
 
 
 def print_help():
-    print(Markdown(generate_help_md()))
+    # print(Markdown(generate_help_md()))
+
+    os.system(f"echo '{remove_indent(generate_help_md())}' | glow -")
 
 
 def convert_str_to_data(input):
