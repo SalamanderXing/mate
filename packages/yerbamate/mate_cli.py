@@ -52,9 +52,7 @@ def print_help():
         [line[len(line) - len(line.lstrip()) :] for line in text.split("\n")]
     )
     doc = remove_indent(str(Mate.__doc__)) + "\n --- \n"
-    members = [("init", Mate.init)] + inspect.getmembers(
-        Mate, predicate=inspect.isfunction
-    )
+    members = inspect.getmembers(Mate, predicate=inspect.isfunction)
     for name, val in members:
         # ipdb.set_trace()
         if not name.startswith("_"):
@@ -93,7 +91,7 @@ def print_help():
             )
             doc += f"""
 ```
-  {name} {inline_params}
+  mate {name} {inline_params}
 ```
 
 **Params**
@@ -103,7 +101,7 @@ def print_help():
 ---
 """
     markdown = "\n".join([l for l in doc.split("\n")])
-    with open('docs.md', 'w') as f:
+    with open("docs.md", "w") as f:
         f.write(markdown)
     print(Markdown(markdown))
 
