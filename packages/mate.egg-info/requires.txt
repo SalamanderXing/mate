@@ -1,0 +1,4 @@
+dirhash==0.2.1
+ipdb==0.13.9
+rich==12.6.0
+validators==0.20.0

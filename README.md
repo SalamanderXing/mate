@@ -6,7 +6,7 @@ Mate is a tool designed to improve reproducibility and facilitate development in
 - Visualizing/summarizing your project
 - Summarizing your results
 - Running/testing your experiments.
-- Python virtual environment manager
+- Managment of Python virtual environment
 
 In addition, any project developed with Mate on a public repository gets automatically listed on [MateHub](https://salamanderxing.github.io/mate/). This website is a browser for finding and reusing components created by others (or yourself).
 
