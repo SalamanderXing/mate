@@ -64,14 +64,14 @@ class Config:
 
 class MateConfig(Config):
     """
-    ```
-    mate.json
-    ```
-    This is the main configuration file for a Mate project. It defines where the root of a mate project is. The format is JSON.
+    ### Configuring a mate project
+
+    `mate.json` is the main configuration file for a Mate project. It defines where the root of a mate project is. The format is JSON.
 
     ### Key-value pairs:
 
-    - `results_folder`: The folder where all results are stored. This is relative to the root **above** the project.
+    - results_folder : `str` : The folder where all results are stored. This is relative to the root **above** the project.
+    - venv : `bool` : Whether to use a virtual environment. If `True` a virtual environment is created in the project root. If `False` no virtual environment is created and the same python as the one used to execute mate will be used instead.
 
     **Example**:
 
@@ -79,6 +79,7 @@ class MateConfig(Config):
     ```json
     {
         "results_folder": "results"
+        "venv":true
     }
     ```
     Then the results folder will be `/home/user/project_repo/results`
