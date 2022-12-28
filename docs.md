@@ -196,9 +196,6 @@ Executes inside the python venv
 
 ---
 
----
-
-
 ```
 mate.json
 ```
@@ -217,5 +214,3 @@ If your `mate.json` lies in `/home/user/project_repo/mate_project/mate.json` and
 }
 ```
 Then the results folder will be `/home/user/project_repo/results`
-
-
