@@ -24,9 +24,15 @@ class Mate:
     def init(project_name: str, **params: str):
         """
         :param project_name: Name of the project
-        :param ..params: Parameters to pass to the project. These are the same key-value pairs that are in the `mate.json` file (check out that section).
+        :param params: Parameters to pass to the project. These are the same key-value pairs that are in the `mate.json` file (check out that section).
 
-        Creates a new mate project in the current folder
+        Creates a new mate project in the current folder.
+
+        **Example**
+
+        ```
+        mate init my_fancy_project venv=false
+        ```
         """
         MateAPI.init(project_name, params)
 

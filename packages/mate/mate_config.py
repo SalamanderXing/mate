@@ -73,7 +73,7 @@ class MateConfig(Config):
 
     - `results_folder`: The folder where all results are stored. This is relative to the root **above** the project.
 
-    *Example*:
+    **Example**:
 
     If your `mate.json` lies in `/home/user/project_repo/mate_project/mate.json` and it looks like this:
     ```json

@@ -52,11 +52,17 @@ mate init <project_name> <params>
 
 **Params**
 - project_name : `str` :  Name of the project
-- params : `str` : 
+- params : `str` :  Parameters to pass to the project. These are the same key-value pairs that are in the `mate.json` file (check out that section).
 
 
 
-Creates a new mate project in the current folder
+Creates a new mate project in the current folder.
+
+**Example**
+
+```
+mate init my_fancy_project venv=false
+```
 
 ---
 
@@ -202,7 +208,7 @@ This is the main configuration file for a Mate project. It defines where the roo
 
 - `results_folder`: The folder where all results are stored. This is relative to the root **above** the project.
 
-*Example*:
+**Example**:
 
 If your `mate.json` lies in `/home/user/project_repo/mate_project/mate.json` and it looks like this:
 ```json
