@@ -4,7 +4,7 @@ from .mate_config import MateConfig
 
 
 def generate_docs():
-    doc = generate_help_md()
+    doc = remove_indent(generate_help_md())
     doc += remove_indent(
         f"""
     ---
