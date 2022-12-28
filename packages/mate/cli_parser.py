@@ -1,3 +1,18 @@
+"""
+## Cli Parser
+
+Mate's cli parser is a simple parser that parses the command line arguments and calls the appropriate method on the Mate class.
+
+Notice that for boolean arguments, you can use either false or False, true or True. And for None you can use either null or None.
+
+**Example**
+
+```
+mate init my_project venv=false
+```
+
+"""
+
 from .utils import print_markdown, print
 from .mate_cli import Mate
 import inspect
@@ -75,6 +90,8 @@ def method_to_md(method_name, member: Optional[Callable] = None):
 def generate_help_md() -> str:
 
     doc = str(Mate.__doc__) + "\n --- \n"
+    current_docstring = str(sys.modules[__name__].__doc__)
+    doc += current_docstring + "\n --- \n"
     members = [
         (k, v)
         for (k, v) in inspect.getmembers(Mate, predicate=inspect.isfunction)
@@ -124,23 +141,34 @@ def collect_args(args: list[str], annotations: tuple[Callable]) -> tuple[list, d
     positional_args_started = False
 
     def good_guess_type(arg: str):
+        types = [int, float, str]
+        if arg.lower() in ("none", "null"):
+            return None
+        elif arg.lower() == "true":
+            return True
+        elif arg.lower() == "false":
+            return False
+        for t in types:
+            try:
+                return t(arg)
+            except ValueError:
+                pass
+
+    def boolean_type(arg: str):
         if arg.lower() == "true":
             return True
         elif arg.lower() == "false":
             return False
-        elif arg.lower() == "none":
-            return None
-        elif arg.isdigit():
-            return int(arg)
         else:
-            try:
-                return float(arg)
-            except ValueError:
-                return arg
+            raise ValueError("Not a boolean")
 
     if len(annotations) < len(args):
         annotations = annotations + (good_guess_type,) * (len(args) - len(annotations))
     for i, (arg, annotation) in enumerate(zip(args, annotations)):
+        if annotation == bool:
+            annotation = boolean_type
+        elif annotation == inspect._empty:
+            annotation = good_guess_type
         if "=" in arg:
             key, value = arg.split("=")
             kwargs[key] = annotation(value)

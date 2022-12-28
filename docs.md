@@ -8,6 +8,21 @@ The following commands work within a mate project folder, that is, where the `ma
 
 --- 
 
+## Cli Parser
+
+Mate's cli parser is a simple parser that parses the command line arguments and calls the appropriate method on the Mate class.
+
+Notice that for boolean arguments, you can use either false or False, true or True. And for None you can use either null or None.
+
+**Example**
+
+```
+mate init my_project venv=false
+```
+
+
+--- 
+
 ```
 mate clone <source_model> <target_model>
 ```
@@ -200,10 +215,10 @@ Executes inside the python venv
 
 `mate.json` is the main configuration file for a Mate project. It defines where the root of a mate project is. The format is JSON.
 
-### Key-value pairs:
+**Key-value pairs**
 
 - results_folder : `str` : The folder where all results are stored. This is relative to the root **above** the project.
-- venv : `bool` : Whether to use a virtual environment. If `True` a virtual environment is created in the project root. If `False` no virtual environment is created and the same python as the one used to execute mate will be used instead.
+- venv : `bool`=true : Whether to use a virtual environment. If `True` a virtual environment is created in the project root. If `False` no virtual environment is created and the same python as the one used to execute mate will be used instead.
 
 **Example**:
 
