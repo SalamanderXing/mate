@@ -16,17 +16,20 @@ class Config:
         elif config is None:
             config = {}
         assert isinstance(config, dict)
-        for key, value in self.__dict__.items():
-            if value is not None and value != {} and value != False:
-                assert key in config, f"Missing key:'{key}' in config"
-            if isinstance(value, Enum):
-                enum_type = type(value)
-                assert (
-                    config[key] in enum_type.__members__.keys()
-                ), f"Invalid value for key {key}, must be one of {enum_type.__members__.keys()}"
-                config[key] = type(value)(config[key])
-            if key in config:
-                assert isinstance(config[key], type(value)), f"Wrong type for key {key}"
+        for key, annotation in self.__class__.__annotations__.items():
+            # if value is not None and value != {} and value != False:
+            if hasattr(annotation, "__args__"):
+                if not type(None) in annotation.__args__:
+                    assert key in config, f"Missing key:'{key}' in config"
+                if key in config:
+                    assert isinstance(
+                        config[key], annotation.__args__
+                    ), f"Wrong type for key '{key}' should be in {(v.__name__ for v in annotation.__args__)} but is {type(config[key]).__name__}"
+                    setattr(self, key, config[key])
+            elif key in config:
+                assert isinstance(
+                    config[key], annotation
+                ), f"Wrong type for key '{key}', should be {annotation.__name__}"
                 setattr(self, key, config[key])
 
         for key in config.keys():
@@ -81,9 +84,11 @@ class MateConfig(Config):
     Then the results folder will be `/home/user/project_repo/results`
     """
 
+    venv: Optional[bool] = None
+    verbose: Optional[bool] = None
+    results_folder: str = ""
+
     def __init__(self, config):
-        self.results_folder = ""
-        self.verbose: Optional[bool] = None
         super().__init__(config)
 
     def __str__(self):

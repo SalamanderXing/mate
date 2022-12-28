@@ -2,6 +2,8 @@ import os
 import ipdb
 import json
 from typing import Optional
+import shutil
+from .utils import rmwithin
 
 
 class GitManager:
@@ -68,9 +70,9 @@ class GitManager:
                     new_id + split_path[-1],
                 )
                 print(f"Destination already exists, created: {destination}")
-        command = f"mv {os.path.join(mate_root, self.path)} {destination}"
+        command = shutil.move(os.path.join(mate_root, self.path), destination)
         os.system(command)
-        os.system(f"rm -rf {tmp_destination}/*")
+        rmwithin(tmp_destination)
         return destination
 
     def __str__(self):

@@ -41,14 +41,11 @@ class ModulesDict(Module, dict):
                 print(f"Created {root_dir}")
         super().__init__(root_dir, python)
 
-    def __str__(self):
-        return f"ModulesDict(name={self.__name}, submodules={set(self.keys())})"
-
-    def __repr__(self):
-        return self.__str__()
-
     def to_dict(self):
         return {k: v.to_dict() for k, v in self.items()}
+
+    def children(self):
+        return self.values()
 
     def __contains__(self, item: str):
         return item in self.keys()

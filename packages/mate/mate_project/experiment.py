@@ -21,7 +21,7 @@ class Experiment:
         check_math(node)
 
     def __repr__(self):
-        return f"Experiment {self.experiment_name}"
+        return f"Experiment {self.name}"
 
     def __str__(self):
         return self.module_path
@@ -57,7 +57,7 @@ class Experiment:
                 )
             if not (len(relative_import.module.split(".")) == 2):
                 self.errors.append(
-                    f'ERROR in experiment "{self.experiment_name}", line number:{relative_import.lineno}.\n The experiment should not import from a subdirectory of models.\n You should import like so: "from ..models.modelname import ModelClass"'
+                    f'ERROR in experiment "{self.name}", line number:{relative_import.lineno}.\n The experiment should not import from a subdirectory of models.\n You should import like so: "from ..models.modelname import ModelClass"'
                 )
 
         self.relative_imports = relative_imports
@@ -83,7 +83,7 @@ class Experiment:
     def to_tree(self):
         tree = Tree(
             Text(
-                self.experiment_name,
+                self.name,
                 style=f"{colors.experiments} bold underline",
             )
         )
@@ -103,10 +103,22 @@ class Experiment:
 
     def to_dict(self):
         return {
-            "name": self.experiment_name,
+            "name": self.name,
             "errors": self.errors,
             "imports": list(self.imports_dict.keys()),
         }
+
+    def show(self):
+        header = f"""
+        # {self.name}
+
+        ---
+
+        """
+
+        with open(self.experiment_path, "r") as f:
+            raw = f.read()
+        return str(ast.get_docstring(ast.parse(raw)))
 
     def __init__(self, allowed_modules: tuple[str], experiment_path: str):
         """Check if the experiment is valid"""
@@ -118,7 +130,7 @@ class Experiment:
         self.relative_imports: list[ast.ImportFrom] = []
         self.imports: list[ast.Import] = []
         self.imports_dict: dict[str, dict[str, list[ast.ImportFrom]]] = {}
-        self.experiment_name = os.path.basename(experiment_path).split(".")[0]
+        self.name = os.path.basename(experiment_path).split(".")[0]
         self.module_path = ".".join(experiment_path[:-3].split(os.sep)[-3:])
         self.errors = []
         self.__get_imports(experiment.body)

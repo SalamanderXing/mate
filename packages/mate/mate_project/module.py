@@ -35,7 +35,9 @@ class Module:
             assert optional, f"root_dir {root_dir} does not exist"
 
         self._hash = dirhash(
-            root_dir, "sha1", ignore=["__pycache__", "requirements.txt", ".matemodule"]
+            root_dir,
+            "sha1",
+            ignore=["__pycache__", "README.md", "requirements.txt", ".matemodule"],
         )
         self.__mate_dir = os.path.join(root_dir, ".matemodule")
         self._exports = self.__collect_exports()
@@ -68,10 +70,26 @@ class Module:
                     json.dump({"hash": self._hash, "installed": True}, f, indent=2)
 
     def __get_docs(self):
-        # gets the docstring of the root module using ast
-        with open(os.path.join(self.__root_dir, "__init__.py"), "r") as f:
-            tree = ast.parse(f.read())
-        return ast.get_docstring(tree)
+        md_path = os.path.join(self.__root_dir, "README.md")
+        if os.path.exists(md_path):
+            with open(md_path, "r") as f:
+                return f.read()
+        else:
+            # gets the docstring of the root module using ast
+            with open(os.path.join(self.__root_dir, "__init__.py"), "r") as f:
+                tree = ast.parse(f.read())
+            return ast.get_docstring(tree)
+
+    def children(self):
+        return [v for k, v in self.__dict__.items() if not k.startswith("_")]
+
+    def leaf_modules(self):
+        children = self.children()
+        leafs = []
+        for child in children:
+            if isinstance(child, Module):
+                leafs.extend(child.children())
+        return tuple(leafs)
 
     @property
     def errors(self):
@@ -88,6 +106,17 @@ class Module:
     @property
     def root_dir(self):
         return self.__root_dir
+
+    @property
+    def dependencies(self):
+        res = ""
+        dep_path = os.path.join(self.__root_dir, "requirements.txt")
+        if os.path.exists(dep_path):
+            with open(dep_path, "r") as f:
+                res = f.read()
+        return [
+            a.split("==") if "==" in a else a for a in res.split("\n") if len(a) > 0
+        ]
 
     def __collect_exports(self) -> dict:
         with open(os.path.join(self.__root_dir, "__init__.py"), "r") as f:
@@ -130,26 +159,18 @@ class Module:
         assert item in self, f"{item} not found in {self.relative_path()}"
         return self._exports[item]
 
+    def inspect(self):
+        print(f"Module {self.name}")
+        print(f"Path: {self.relative_path()}")
+        print(f"Exports: {', '.join(self.exports.keys())}")
+        if self.__doc:
+            print(self.__doc)
+
     def show(self) -> str:
-        # parent = self.relative_path().split(".")[0]
-        # tree = Tree(parent, style=f"bold underline {colors[parent]}")
-        # node = tree.add(self.name)
-        # val = self.exports
-        # for v in val.values():
-        #     node.add(v.names[0].name)
-        # return tree
-
-        # formats the exports
-        exports = "\n".join([f" - {v.names[0].name}" for k, v in self.exports.items()])
+        children_docs = "\n".join([child.show() for child in self.children()])
         return f"""
-        # {self.name}
-
-        **Exports**:
-
-        {exports}
-
-
-        {self.__doc}
+    {self.__doc}
+    {children_docs}
         """
 
     def to_md(self):
@@ -160,4 +181,5 @@ class Module:
             "name": self.name,
             "exports": [v.names[0].name for v in self.exports.values()],
             "errors": self.errors,
+            "dependencies": self.dependencies,
         }

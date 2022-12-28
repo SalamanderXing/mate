@@ -4,6 +4,7 @@ from .module import Module
 from .modules_dict import ModulesDict
 from .experiments_module import ExperimentsModule
 from .python import Python
+import shutil
 
 
 class MateProject(Module):
@@ -12,12 +13,14 @@ class MateProject(Module):
         self._python = python
         self.models = ModulesDict(os.path.join(root_dir, "models"), python)
         self.data_loaders = ModulesDict(os.path.join(root_dir, "data_loaders"), python)
-        self.trainers = ModulesDict(os.path.join(root_dir, "trainers"), python, optional=True)
+        self.trainers = ModulesDict(
+            os.path.join(root_dir, "trainers"), python, optional=True
+        )
         self.experiments = ExperimentsModule(
             tuple(self.__dict__.keys()), os.path.join(root_dir, "experiments"), python
         )
         super().__init__(root_dir, python)
-        self.__white_list = ["mate.json", ".mate"]
+        self.__whitelist = ["mate.json", "README.md"]
         self.check_no_additional_dirs()
 
     def check_no_additional_dirs(self):
@@ -25,7 +28,7 @@ class MateProject(Module):
             if (
                 not name.startswith("__")
                 and (name not in self.__dict__)
-                and (name not in self.__white_list)
+                and (name not in self.__whitelist)
             ):
                 raise ValueError(
                     f"Found additional file or directory '{name}' in {self.__root_dir}. Please remove it."
@@ -69,7 +72,7 @@ class MateProject(Module):
         assert os.path.exists(
             full_target_path
         ), f"Invalid path {target} (full path: {full_target_path})"
-        os.system(f"rm -r {full_target_path}")
+        shutil.rmtree(full_target_path)
 
     def rename(self, source: str, destination: str):
         assert isinstance(source, str)
@@ -91,7 +94,7 @@ class MateProject(Module):
         assert not os.path.exists(
             full_destination_path
         ), f"Path {full_destination_path} already exists. Try with a different name?"
-        os.system(f"mv {full_source_path} {full_destination_path}")
+        shutil.move(full_source_path, full_destination_path)
 
     def create(self, path: str, name: str):
         assert isinstance(path, str)
@@ -111,17 +114,6 @@ class MateProject(Module):
         else:
             os.system(f"touch {full_target_path}.py")
 
-    def leaf_modules(self) -> tuple[Module, ...]:
-        children = self.children()
-        leafs = []
-        for child in children:
-            if isinstance(child, ModulesDict):
-                leafs.extend(child.values())
-        return tuple(leafs)
-
-    def children(self):
-        return [v for k, v in self.__dict__.items() if not k.startswith("_")]
-
     def __str__(self):
         dict_str = set(tuple(k for k in self.__dict__.keys() if not k.startswith("_")))
         return f"MateProject(name={self.__name}, submodules={dict_str})"
@@ -131,6 +123,8 @@ class MateProject(Module):
 
     def __getitem__(self, item: str):
         assert isinstance(item, str)
+        if item == ".":
+            return self
         cur, *rest = item.split(".")
         assert cur in self.__dict__, f"Invalid key {cur}"
         if len(rest) == 0:

@@ -1,4 +1,5 @@
-from .cli_parser import generate_help_md, remove_indent
+from .cli_parser import generate_help_md
+from .utils import remove_indent
 from .mate_config import MateConfig
 
 

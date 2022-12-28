@@ -2,21 +2,21 @@ import os
 import sys
 import json
 import glob
+from .utils import print_markdown, print, rmwithin
 from .mate_config import MateConfig
 from .mate_runtime import MateRuntime
 from .git_manager import GitManager
-from .utils import remove_indent
 
 # from .data.package_repository import PackageRepository
-from rich import print
-from rich.markdown import Markdown
 from rich.tree import Tree
 from rich.text import Text
 from rich.table import Table
 import ipdb
 from . import io
+import os
 from .mate_project import MateProject, colors, Python
-import glob
+from glob import glob
+import shutil
 
 
 class MateAPI:
@@ -36,16 +36,25 @@ class MateAPI:
         self.python.pip(command)
 
     @staticmethod
-    def init(project_name: str):
+    def init(project_name: str, params: dict[str, str]):
         assert not os.path.exists(project_name), "Project directory exists"
-        if os.path.exists(".mate"):
-            os.system("rm -rf .mate")
-            os.makedirs(".mate")
+        tmp_dir = os.path.join(".mate", "tmp")
+        if os.path.exists(tmp_dir):
+            rmwithin(tmp_dir)
+        else:
+            os.makedirs(tmp_dir)
         os.system(
-            f"git clone https://github.com/salamanderxing/deeplearning-mate-project-template .mate"
+            f"git clone https://github.com/salamanderxing/deeplearning-mate-project-template {tmp_dir}"
         )
-        os.system(f"mv {os.path.join('.mate', 'my_project')} {project_name}")
-        os.system(f"rm -rf .mate")
+        shutil.move(os.path.join(tmp_dir, "my_project"), project_name)
+        # os.system(f"rm -rf {os.path.join('.mate', '*')}")
+        rmwithin(tmp_dir)
+        mate_config = os.path.join(project_name, "mate.json")
+        with open(mate_config, "r") as f:
+            config = json.load(f)
+        config = config | params
+        with open(mate_config, "w") as f:
+            json.dump(config, f, indent=4)
 
     def __add_to_gitignore(self, gitignore_path, values: list[str]):
         if not os.path.exists(gitignore_path):
@@ -71,7 +80,10 @@ class MateAPI:
         mate_dir = os.path.join(top_level, ".mate")
         project_name = os.path.basename(root)
         self.mate_dir = os.path.join(mate_dir, project_name)
-        self.python = Python(self.mate_dir)
+        self.python = Python(
+            self.mate_dir,
+            venv=self.config.venv if not (self.config.venv is None) else True,
+        )
         self.project = MateProject(root, self.python)
         self.tmp_dir = os.path.join(self.mate_dir, "tmp")
         if not os.path.exists(self.mate_dir):
@@ -79,7 +91,8 @@ class MateAPI:
             print(f"Created {self.mate_dir}")
         readme_path = os.path.join(top_level, "README.md")
         if not os.path.exists(readme_path):
-            os.system(f"touch {readme_path}")
+            with open(readme_path, "w") as f:
+                f.write("")
             print("Created README.md")
         # reads the readme and checks if it contains the word builtwithmate. If not, it adds it
         with open(readme_path, "r") as f:
@@ -96,7 +109,6 @@ class MateAPI:
         if os.path.exists(summary_json_location):
             with open(summary_json_location, "r") as f:
                 old_summary_json = json.load(f)
-            orig_summary = old_summary_json[self.project.name].copy()
             if (self.project.name not in old_summary_json) or (
                 project_dict != old_summary_json[self.project.name]
             ):
@@ -119,12 +131,12 @@ class MateAPI:
 
         results_folders = [
             folder
-            for folder in glob.glob(os.path.join(self.config.results_folder, "*"))
+            for folder in glob(os.path.join(self.config.results_folder, "*"))
             if os.path.isdir(folder)
         ]
         all_results = {}
         for folder in results_folders:
-            results = glob.glob(os.path.join(folder, "result.json"))
+            results = glob(os.path.join(folder, "result.json"))
             experiment_name = folder.split(os.sep)[-1]
             if len(results) > 0:
                 with open(results[0], "r") as f:
@@ -138,11 +150,20 @@ class MateAPI:
         # self.python.venv(command)
         self.python(command)
 
+    def to_markdown(self):
+        pass
+
+    def pip(self, *commands: str):
+        self.python.pip(" ".join(command))
+
     def to_tree(self) -> Tree:
         vals = self.project.to_dict()["project"]
         # turns this nested dict into a rich tree
         tree = Tree(
-            Text("🧉 ") + Text(self.project.name, "underline"), style="bold #32CD30"
+            Text("🧉 ")
+            + Text(self.project.name, "underline #32CD30")
+            + Text(f" 🐍{self.python.version}", "grey"),
+            style="bold",
         )
 
         results = self.__get_results_dict()
@@ -172,8 +193,10 @@ class MateAPI:
         node = self.project[path]
         # tree = node.to_tree()
 
-        os.system(f"echo '{remove_indent(node.show())}' | glow -")
+        # os.system(f"echo '{remove_indent(node.show())}' | glow -")
+
         # print(tree)
+        print_markdown(node.show())
         if len(node.errors) > 0:
             print(f"[{colors.error} bold]ERRORS:[/{colors.error} bold]")
             for e in node.errors:
@@ -212,8 +235,9 @@ class MateAPI:
         ]
         all_results = []
         for folder in results_folders:
-            experiment = folder.split(os.sep)[-1]
-            if experiment in self.project["experiments"]:
+            experiment_name = folder.split(os.sep)[-1]
+            if experiment_name in self.project["experiments"]:
+                experiment = self.project["experiments"][experiment_name]
                 results = glob.glob(os.path.join(folder, "result.json"))
                 if len(results) > 0:
                     with open(results[0], "r") as f:
@@ -221,7 +245,13 @@ class MateAPI:
                             k: round(v, 3) if isinstance(v, (int, float)) else v
                             for k, v in json.load(f).items()
                         }
-                    all_results.append(written_results | {"experiment": experiment})
+                    all_results.append(
+                        written_results
+                        | {
+                            "experiment": experiment.name,
+                            "data_loader": experiment.data_loader,
+                        }
+                    )
                 # collect all the keys contained in all_results dictionaries
                 keys = set()
                 for result in all_results:
@@ -238,7 +268,7 @@ class MateAPI:
                             row.append(result.get(key, ""))
                         table.append(row)
                     t = Table(
-                        title=self.project.experiments[experiment].data_loader,
+                        title=self.project.experiments[experiment_name].data_loader,
                         show_header=True,
                         header_style="bold #00FF00",
                     )
@@ -278,6 +308,7 @@ class MateAPI:
         # self.python("-m {self.project.experiments[experiment_name].module_path}")
         exp_path = self.project.experiments[experiment_name].module_path
         self.python(f"-m {exp_path}")
+        print(f"  ✅ [green]Experiment {experiment_name} finished[/green]")
 
     def clone(self, source: str, destination: str):
         self.project.clone(source, destination)

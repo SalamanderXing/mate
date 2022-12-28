@@ -1,16 +1,13 @@
-from .utils import Bunch, remove_indent
+from .utils import print_markdown, print
 from .mate_cli import Mate
 import inspect
+from typing import Optional, Callable, Sized
 import ipdb
 import os
 import sys
-from rich.markdown import Markdown
-from pydoc import locate
-from typing import Any
-from rich import print
 
 
-def parse_signature(class_name, method_name: str):
+def __parse_signature(class_name, method_name: str):
     return tuple(
         val
         for (name, val) in inspect.signature(
@@ -20,116 +17,146 @@ def parse_signature(class_name, method_name: str):
     )
 
 
-def get_methods_with_arguments(class_name):
+def __get_methods_with_arguments(class_name):
     return {
-        k: parse_signature(class_name, k)
+        k: __parse_signature(class_name, k)
         for k in class_name.__dict__.keys()
         if not k.startswith("_")
     }
 
 
-def prettify_method(method_name, annotation, in_depth: bool = False):
-    def cleanup(ann):
-        return str(ann).replace("<class ", "").replace(">", "").replace("'", "")
-
-    def pretty(m):
-        return ",\n\t".join(
-            [
-                f"{m.name}: {cleanup(m.annotation)}"
-                + (f"={m.default}" if m.default != inspect._empty else "")
-                for m in annotation
-            ]
-        )
-
-    source_code = inspect.getsource(getattr(Mate, method_name))
-    description = (
-        source_code.split('"""')[1] if '"""' in source_code and in_depth else ""
+def method_to_md(method_name, member: Optional[Callable] = None):
+    if member is None:
+        member = getattr(Mate, method_name)
+    assert member is not None
+    params = inspect.signature(member).parameters.values()
+    inline_params = " ".join(
+        [
+            f"<{('optional ' if (param.default != inspect._empty) else '') + param.name}>"
+            for param in params
+            if param.name != "self"
+        ]
     )
-    return f" {method_name}\n\t{pretty(annotation)}\n" + description
+    param_descriptions = {
+        line[1].split(" ")[1]: ":".join(line[2:])
+        for line in [l.strip().split(":") for l in str(member.__doc__).split("\n")]
+        if len(line) > 1 and line[1].startswith("param")
+    }
+
+    list_params = "\n".join(
+        [
+            f"  - {param.name} : `{param.annotation.__name__}` : {param_descriptions.get(param.name, '')}"
+            + (f"={param.default}" if param.default != inspect._empty else "")
+            for param in params
+            if param.name != "self"
+        ]
+    )
+    method_description = "\n".join(
+        [
+            line
+            for line in str(member.__doc__).split("\n")
+            if not line.strip().startswith(":param")
+        ]
+    )
+    doc = f"""
+    ```
+      mate {method_name} {inline_params}
+    ```
+
+    **Params**
+    {list_params}
+
+    {method_description}
+    ---
+    """
+    return doc
 
 
 def generate_help_md() -> str:
 
-    doc = remove_indent(str(Mate.__doc__)) + "\n --- \n"
-    members = inspect.getmembers(Mate, predicate=inspect.isfunction)
+    doc = str(Mate.__doc__) + "\n --- \n"
+    members = [
+        (k, v)
+        for (k, v) in inspect.getmembers(Mate, predicate=inspect.isfunction)
+        if not k.startswith("_")
+    ]
     for name, val in members:
-        # ipdb.set_trace()
-        if not name.startswith("_"):
-            params = inspect.signature(val).parameters.values()
-            inline_params = " ".join(
-                [
-                    f"<{('optional ' if (param.default != inspect._empty) else '') + param.name}>"
-                    for param in params
-                    if param.name != "self"
-                ]
-            )
-            param_descriptions = {
-                line[1].split(" ")[1]: ":".join(line[2:])
-                for line in [l.strip().split(":") for l in str(val.__doc__).split("\n")]
-                if len(line) > 1 and line[1].startswith("param")
-            }
-
-            list_params = "\n".join(
-                [
-                    f"  - {param.name} : `{param.annotation.__name__}` : {param_descriptions.get(param.name, '')}"
-                    + (f"={param.default}" if param.default != inspect._empty else "")
-                    for param in params
-                    if param.name != "self"
-                ]
-            )
-            method_description = "\n".join(
-                [
-                    remove_indent(line)
-                    for line in val.__doc__.split("\n")
-                    if not line.strip().startswith(":param")
-                ]
-            )
-            doc += f"""
-```
-  mate {name} {inline_params}
-```
-
-**Params**
-{list_params}
-
-{method_description}
----
-"""
-    markdown = "\n".join([l for l in doc.split("\n")])
-    return markdown
+        doc += method_to_md(name, val)
+    return doc
 
 
 def print_help():
-    # print(Markdown(generate_help_md()))
-
-    os.system(f"echo '{remove_indent(generate_help_md())}' | glow -")
+    print_markdown(generate_help_md())
 
 
-def convert_str_to_data(input):
+def __convert_str_to_data(input):
     try:
         return int(input)
     except ValueError:
         try:
             return float(input)
         except ValueError:
-            if input in ["True", "true"]:
+            if input.lower() == "true":
                 return True
-            elif input in ["False", "false"]:
+            elif input.lower() == "false":
                 return False
 
     return input
 
 
-def parse_run_params(args: list):
+def __parse_run_params(args: list):
     params = {}
     for arg in args:
         key, value = arg.split("=")
-        params[key[2:]] = convert_str_to_data(value)
+        params[key[2:]] = __convert_str_to_data(value)
     return params
 
 
+def collect_args(args: list[str], annotations: tuple[Callable]) -> tuple[list, dict]:
+    # collects the arguments into a list and a dictionary
+    # the list contains the positional arguments
+    # the dictionary contains the keyword arguments
+    # the arguments are split by the "=" sign
+    # if there is no "=" sign, the argument is considered a positional argument
+    # it also checks that there are no positional arguments after keyword arguments
+    kwargs = {}
+    positional_args = []
+    positional_args_started = False
+
+    def good_guess_type(arg: str):
+        if arg.lower() == "true":
+            return True
+        elif arg.lower() == "false":
+            return False
+        elif arg.lower() == "none":
+            return None
+        elif arg.isdigit():
+            return int(arg)
+        else:
+            try:
+                return float(arg)
+            except ValueError:
+                return arg
+
+    if len(annotations) < len(args):
+        annotations = annotations + (good_guess_type,) * (len(args) - len(annotations))
+    for i, (arg, annotation) in enumerate(zip(args, annotations)):
+        if "=" in arg:
+            key, value = arg.split("=")
+            kwargs[key] = annotation(value)
+            positional_args_started = True
+        else:
+            positional_args.append(annotation(arg))
+            if positional_args_started:
+                raise ValueError(
+                    f"positional argument {arg} after keyword argument {args[i-1]}"
+                )
+
+    return positional_args, kwargs
+
+
 def main():
-    methods = get_methods_with_arguments(Mate)
+    methods = __get_methods_with_arguments(Mate)
     args = sys.argv[1:]
     raw_method_args = args[1:]
     actions = tuple(method.replace("_", "-") for method in methods) + (
@@ -139,32 +166,28 @@ def main():
     if len(args) == 0 or not args[0] in actions or args[0] in ("--help", "-h"):
         print_help()
     else:
-        assert args[0] in actions, print_help()
-        action = args[0].replace("-", "_")
+        if args[0] not in actions:
+            print_help()
+        action = args[0]
         if len(args) > 1 and args[1] in ("--help", "-h"):
-            print(prettify_method(action, methods[args[0]], in_depth=True))
+            # print(__prettify_method(action, methods[args[0]], in_depth=True))
+            md = method_to_md(action)
+            print_markdown(md)
+            # print_markdown(md)
+            # prints the markdown, but with a max width of 80 characters
+            # the max width is important for the terminal
+            # print(md, width=80)
         else:
-            method_args_types = tuple(param.annotation for param in methods[action])
-            method_args_defaults = tuple(
-                tuple(param.default for param in methods[action])
+            annotations = tuple(
+                param.annotation
+                for param in methods[action]
+                if (param.kind != inspect.Parameter.VAR_KEYWORD)
+                and (param.kind != inspect.Parameter.VAR_POSITIONAL)
             )
-            method_args = tuple(
-                (
-                    method_type(raw_method_arg)
-                    if (raw_method_arg is not None)
-                    else method_default
-                )
-                for (method_type, method_default, raw_method_arg) in zip(
-                    method_args_types, method_args_defaults, raw_method_args
-                )
-            )
+
+            pos_args, kwargs = collect_args(raw_method_args, annotations)
             if action == "init":
-                Mate.init(*method_args)
+                Mate.init(*pos_args, **kwargs)
             else:
                 mate = Mate()
-                method_args_len = len(method_args)
-                hparams_len = len(raw_method_args) - method_args_len
-                if hparams_len > 0:
-                    run_params = parse_run_params(args[method_args_len + 1 :])
-                    mate.run_params = run_params
-                getattr(mate, action)(*method_args)
+                getattr(mate, action)(*pos_args, **kwargs)

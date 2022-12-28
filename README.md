@@ -67,7 +67,7 @@ This will give you an overview of your projec and your componens. Besides that, 
 then we can train our experiment:
 
 ```bash
-mate train simple
+mate run simple train
 ```
 
 

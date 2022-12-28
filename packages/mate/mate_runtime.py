@@ -4,7 +4,6 @@ import os
 
 class MateRuntime:
     def save(self, location: str):
-        print(f"Saving {self.to_dict()} to {location}")
         with open(location, "w") as f:
             json.dump(self.to_dict(), f)
 

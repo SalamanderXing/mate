@@ -59,8 +59,6 @@ class Mate:
         result = result | values
         with open(result_path, "w") as f:
             json.dump(result, f)
-        print(f"Result: {json.dumps(result, indent=4)}")
-        print(f"Result saved to {result_path}")
 
     def __init__(
         self,
