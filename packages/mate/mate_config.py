@@ -33,7 +33,7 @@ class Config:
                 setattr(self, key, config[key])
 
         for key in config.keys():
-            assert key in self.__dict__.keys(), f"Unknown key {key} in config."
+            assert key in self.__dict__.keys(), f"Unknown key '{key}' in config."
 
     def __str__(self):
         return json.dumps(

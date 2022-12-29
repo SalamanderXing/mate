@@ -56,7 +56,7 @@ class Module:
             if status["hash"] != self._hash or not os.path.exists(
                 os.path.join(self.__root_dir, "requirements.txt")
             ):
-                self._python.generate_requirements_single(self.root_dir)
+                self._python.pipreqs(self.root_dir)
                 print(f"Generated requirements for {self.relative_path()}")
                 with open(status_path, "w") as f:
                     json.dump({"hash": self._hash}, f, indent=2)

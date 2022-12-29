@@ -52,7 +52,9 @@ class Python:
                 "version": sys.version,
             }
 
-        self.pipreqs_path = os.path.join(self.venv_path, "bin", "pipreqs")
+        self.pipreqs_path = (
+            os.path.join(".", self.venv_path, "bin", "pipreqs") if venv else "pipreqs"
+        )
         self.requirements_path = os.path.join(self.mate_dir, "requirements.txt")
         command = f"{self.python_path} -m pip freeze"
         output = subprocess.check_output(command, shell=True).decode("utf-8")
@@ -82,6 +84,7 @@ class Python:
     def __requirements_to_packages(self, requirements_path: str):
         with open(requirements_path, "r") as f:
             reqs = [l.split("==") for l in f.readlines()]
+
         return tuple(Package(r[0], r[1]) for r in reqs if len(r) > 1)
 
     def pip_install(self, *packages: str):
@@ -98,15 +101,7 @@ class Python:
         os.system(f"{self.python_path} {command}")
 
     def pipreqs(self, path: str):
-        os.system(f"{os.path.join('.', self.pipreqs_path)} --force {path}")
-
-    def generate_requirements(self):
-        module_paths = [module.root_dir for module in self.project.leaf_modules()]
-        for module_path in module_paths:
-            self.pipreqs(module_path)
-
-    def generate_requirements_single(self, module_path: str):
-        self.pipreqs(module_path)
+        os.system(f"{self.pipreqs_path} --force {path}")
 
     def install_packages(self, module_location: str):
         requirements_file = os.path.join(module_location, "requirements.txt")
