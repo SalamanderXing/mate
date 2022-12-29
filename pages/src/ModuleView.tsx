@@ -5,6 +5,7 @@ export default ({ module }: { module: Record<string, any> }) => {
     month: "short",
     day: "numeric",
   });
+  const dependencies = module["dependencies"];
   const copyToClipboard = () => {
     const el = document.createElement("textarea");
     el.value = module.root_dir;
@@ -14,10 +15,7 @@ export default ({ module }: { module: Record<string, any> }) => {
     document.body.removeChild(el);
   };
   return (
-    // <div>
-    //   <h1>{module.name}</h1>
-    // </div>
-    <tr>
+    <tr key={Math.random()}>
       <td>
         <div className="widget-26-job-emp-img">
           <img
@@ -26,29 +24,26 @@ export default ({ module }: { module: Record<string, any> }) => {
           />
         </div>
       </td>
-      <td style={{ textAlign: "left" }}>
-        {module.project.full_name}
-      </td>
-      <td>
-        {module.name}
-      </td>
+      <td style={{ textAlign: "left" }}>{module.project.full_name}</td>
+      <td>{module.name}</td>
       <td>
         <div className="widget-26-job-info">
           <p className="type m-0">
-            Created: {formatter.format(
-              new Date(Date.parse(module.project.created_at)),
-            )}
+            Created:{" "}
+            {formatter.format(new Date(Date.parse(module.project.created_at)))}
           </p>
           <p className="text-muted m-0">
-            Updated: {formatter.format(
-              new Date(Date.parse(module.project.updated_at)),
-            )}
+            Updated:{" "}
+            {formatter.format(new Date(Date.parse(module.project.updated_at)))}
           </p>
         </div>
       </td>
       <td>
-        <a href={module.root_dir} target="_blank">Open</a>
+        <a href={module.root_dir} target="_blank">
+          Open
+        </a>
       </td>
+      <td>{dependencies !== undefined ? dependencies.length : "No deps"}</td>
       <td>
         <button onClick={copyToClipboard} className="btn btn-primary">
           <svg
@@ -86,11 +81,10 @@ export default ({ module }: { module: Record<string, any> }) => {
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
-              stroke-linejoin="round"
+              strokeLinejoin="round"
               className="feather feather-star"
             >
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-              </polygon>
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </a>
         </div>
