@@ -32,9 +32,6 @@ class MateAPI:
         if self.config.verbose:
             print(self.config)
 
-    def pip(self, command: str):
-        self.python.pip(command)
-
     @staticmethod
     def init(project_name: str, params: dict[str, str]):
         assert not os.path.exists(project_name), "Project directory exists"
@@ -63,6 +60,7 @@ class MateAPI:
             gitignore = f.read()
 
         for value in values:
+            value += "\n"
             if value not in gitignore:
                 with open(".gitignore", "a") as f:
                     f.write(value)
@@ -71,10 +69,10 @@ class MateAPI:
         get_top_level_cmd = "git rev-parse --show-toplevel"
         # gets the ouptut of the command
         top_level = os.popen(get_top_level_cmd).read().strip()
-        gitignore_path = os.path.join(top_level, ".gitingore")
+        gitignore_path = os.path.join(top_level, ".gitignore")
         values = [
             "*/venv/",
-            os.path.join(".mate", "tmp_mate_install"),
+            os.path.join(".mate", "tmp"),
         ]
         self.__add_to_gitignore(gitignore_path, values)
         mate_dir = os.path.join(top_level, ".mate")
