@@ -71,7 +71,7 @@ class MateAPI:
         top_level = os.popen(get_top_level_cmd).read().strip()
         gitignore_path = os.path.join(top_level, ".gitignore")
         values = [
-            "*/venv/",
+            os.path.join(".mate", "*", "venv"),
             os.path.join(".mate", "tmp"),
         ]
         self.__add_to_gitignore(gitignore_path, values)
@@ -119,11 +119,6 @@ class MateAPI:
                 json.dump({self.project.name: project_dict}, f, indent=4)
 
             print(f"Created {summary_json_location}")
-
-        leafs = self.project.leaf_modules()
-        for leaf in leafs:
-            if not os.path.exists(os.path.join(leaf.root_dir, "requirements.txt")):
-                self.python.generate_requirements_single(leaf.root_dir)
 
     def __get_results_dict(self):
 
