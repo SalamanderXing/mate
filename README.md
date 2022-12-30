@@ -112,3 +112,5 @@ All mate projects on public github repo (published by anyone) will be automatica
 For any question, please contact:
 
 [Giulio Zani](mailto:g.zani@uva.nl)
+
+Or join the [discord channel](https://discord.gg/HyNgjBAQZR)
