@@ -13,6 +13,11 @@ In addition, any project developed with Mate on a public repository gets automat
 Mate is compatible is any python deep learning framework, such as PyTorch, JAX, and TensorFlow/Keras, since it leverages Python features.
 
 
+Feel free to check out:
+
+- [**Mate Project Documentation**](./documentation/intro.md)
+- [**Mate CLI Documentation**](./documentation/docs.md)
+
 ## Installation 🔌
 At the moment Maté is only supported on MacOS and Linux, but soon also windows.
 
@@ -22,7 +27,6 @@ cd mate
 pip install -e .
 ```
 
-## [Documentation](./docs.md)
 
 ## Examples
 

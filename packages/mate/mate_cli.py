@@ -1,6 +1,7 @@
 import os
 from .mate_api import MateAPI
 from rich import print
+from rich.console import Console
 
 
 class Mate:
@@ -75,11 +76,16 @@ class Mate:
         """
         self.api.venv(command)
 
-    def summary(self):
+    def summary(self, svg: bool = False):
         """
         Prints a summary of the mate project.
         """
-        print(self.api.to_tree())
+        if not svg:
+            print(self.api.to_tree())
+        else:
+            console = Console(width=50, record=True)
+            console.print(self.api.to_tree())
+            console.save_svg("summary.svg", title="mate summary")
 
     def results(self):
         """
