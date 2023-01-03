@@ -1,0 +1,69 @@
+<div class="container">
+<div class="container">
+<div class="container">
+<svg class="rich-terminal" viewBox="0 0 872 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-2668594271-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-2668594271-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-2668594271-r1 { fill: #d9d9d9 }
+.terminal-2668594271-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-2668594271-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-2668594271-clip-terminal">
+      <rect x="0" y="0" width="853.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-2668594271-line-0">
+    <rect x="0" y="1.5" width="854" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="870" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-2668594271-clip-terminal)">
+    
+    <g class="terminal-2668594271-matrix">
+    <text class="terminal-2668594271-r1" x="0" y="20" textLength="122" clip-path="url(#terminal-2668594271-line-0)">mate&#160;init&#160;</text><text class="terminal-2668594271-r2" x="122" y="20" textLength="12.2" clip-path="url(#terminal-2668594271-line-0)">&lt;</text><text class="terminal-2668594271-r3" x="134.2" y="20" textLength="146.4" clip-path="url(#terminal-2668594271-line-0)">project_name</text><text class="terminal-2668594271-r2" x="280.6" y="20" textLength="12.2" clip-path="url(#terminal-2668594271-line-0)">&gt;</text><text class="terminal-2668594271-r2" x="305" y="20" textLength="12.2" clip-path="url(#terminal-2668594271-line-0)">&lt;</text><text class="terminal-2668594271-r3" x="317.2" y="20" textLength="73.2" clip-path="url(#terminal-2668594271-line-0)">params</text><text class="terminal-2668594271-r2" x="390.4" y="20" textLength="12.2" clip-path="url(#terminal-2668594271-line-0)">&gt;</text><text class="terminal-2668594271-r1" x="854" y="20" textLength="12.2" clip-path="url(#terminal-2668594271-line-0)">
+</text><text class="terminal-2668594271-r1" x="854" y="44.4" textLength="12.2" clip-path="url(#terminal-2668594271-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+</div>
+</div>
