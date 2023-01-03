@@ -4,10 +4,12 @@ from .mate_config import MateConfig
 
 
 def generate_docs():
-    doc = remove_indent(generate_help_md())
-    doc += remove_indent(remove_indent(MateConfig.__doc__))
-    with open("../docs.md", "w") as f:
-        f.write(doc)
+    mate_cli = remove_indent(generate_help_md())
+    with open("../documentation/mate_cli.md", "w") as f:
+        f.write(mate_cli)
+
+
+    mate_cli += remove_indent(remove_indent(MateConfig.__doc__))
 
 
 if __name__ == "__main__":

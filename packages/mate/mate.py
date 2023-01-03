@@ -13,7 +13,7 @@ class Mate:
 
     You can use this to:
     - Get the current CLI command
-    - Save the run to a json file
+    - Save the run to a JSON file
     - Get the current save directory
     - Get the current checkpoint path
 
@@ -121,8 +121,24 @@ class Mate:
 
     def results(self) -> dict[str, dict[str, float]]:
         """
+        Get the results of all experiments. in the form of a dictionary.
+        The dictionary is structured as follows:
         ```python
-        Load the results of all experiments in the current directory.   
+        {
+            "experiment_name": {
+                "metric_name": metric_value
+                ...
+            }
+            ...
+        }
+        ```
+
+        ```python
+        from mate import mate
+
+        results = mate.results()
+        # do your analyses and plotting
+
         ```
         """
         pass
