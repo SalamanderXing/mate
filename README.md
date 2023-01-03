@@ -18,6 +18,12 @@ Feel free to check out:
 - [**Mate Project Documentation**](./documentation/intro.md)
 - [**Mate CLI Documentation**](./documentation/docs.md)
 
+
+> :warning: **This project is still in active development**: It's not yet stable but the first stable version is scheduled by the **10th of January**.
+
+Developed in collaboration of Universiteit von Amstedam.
+
+
 ## Installation 🔌
 At the moment Maté is only supported on MacOS and Linux, but soon also windows.
 

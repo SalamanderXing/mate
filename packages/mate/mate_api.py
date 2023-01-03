@@ -4,14 +4,13 @@ import json
 import glob
 from .utils import print_markdown, print, rmwithin
 from .mate_config import MateConfig
-from .mate_runtime import MateRuntime
+from .mate import Mate 
 from .git_manager import GitManager
 
 # from .data.package_repository import PackageRepository
 from rich.tree import Tree
 from rich.text import Text
 from rich.table import Table
-import ipdb
 from . import io
 import os
 from .mate_project import MateProject, colors, Python
@@ -290,7 +289,7 @@ class MateAPI:
         checkpoint_path = os.path.join(save_dir, "checkpoints")
         if not os.path.exists(checkpoint_path):
             os.makedirs(checkpoint_path)
-        runtime = MateRuntime(
+        runtime = Mate(
             command=command,
             save_dir=save_dir,
             checkpoint_path=checkpoint_path,

@@ -4,6 +4,31 @@ import inspect
 
 
 class Mate:
+    """
+    Class containing all the information about the current run. You usually want to import it into your experiment like this:
+
+    ```python
+    from mate import mate  # instance of Mate, containing all the information about the current run
+    ```
+
+    You can use this to:
+    - Get the current CLI command
+    - Save the run to a json file
+    - Get the current save directory
+    - Get the current checkpoint path
+
+    **Example**
+
+    ```python
+    from mate import mate
+
+    if mate.command == "train":
+        # do training
+    elif mate.command == "test":
+        # do testing
+    ```
+    """
+
     @staticmethod
     def load():
         get_top_level_cmd = "git rev-parse --show-toplevel"
@@ -47,6 +72,40 @@ class Mate:
         return self.command == "test"
 
     def result(self, values: dict):
+        """
+        Save the results of the current run.
+
+        **Example**
+        ```python
+        from mate import mate
+
+        mate.result({"loss": 0.5})
+        ```
+
+        This is not meant to replace a proper logging framework,
+        but rather to provide a simple way to save the results of an experiment.
+        This is especially useful when you want to compare multiple experiments (see `mate.results()`).
+
+        **Pytorch Lightning Example**
+
+        If you want, with pytorch lightning, you can directly pass the `logged_metrics` dictionary to this function.
+
+        ```python
+        from mate import mate
+        from pytorch_lightning import LightningModule
+        from pytorch_lightning import Trainer
+
+        pl_module = # initialize your pytorch lightning module
+        trainer = Trainer()
+
+        if mate.is_train:
+            trainer.fit(pl_module)
+            mate.result(pl_module.logged_metrics)
+
+        ```
+
+
+        """
         values = {
             k: (v if isinstance(v, (int, float)) else v.item())
             for k, v in values.items()
@@ -59,6 +118,9 @@ class Mate:
         result = result | values
         with open(result_path, "w") as f:
             json.dump(result, f)
+
+    def results(self) -> dict[str, dict[str, float]]:
+        pass
 
     def __init__(
         self,
