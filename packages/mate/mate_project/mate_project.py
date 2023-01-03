@@ -14,22 +14,49 @@ class MateProject(Module):
 
     The root of a mate project is where you can find the `mate.json`. Mate will generate this file for you when you do `mate init`.
 
-    --- 
-    
+    ---
+
     ## File structure of a mate project
 
     The file structure of a mate project is just a collection of nested python modules (a folder is a python module if it contains a `__init__.py` file, which may be empty). When you do a `mate init` you'll automatically generate a simple mate folder structure.
 
     Typically, a file structure will look something like this:
 
-    <p align="center" style="margin:0; padding:0;">
-      <img src="./imgs/output.svg" alt="Your Image" style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
-    </p>
+    ```
+    .
+    ├── __init__.py
+    ├── data_loaders
+    │   ├── __init__.py
+    │   └── cifar10_ae
+    │       ├── __init__.py
+    │       ├── cifar.py
+    │       └── requirements.txt
+    ├── experiments
+    │   ├── __init__.py
+    │   └── ae_on_cifar.py
+    ├── mate.json
+    ├── models
+    │   ├── __init__.py
+    │   └── ae
+    │       ├── __init__.py
+    │       ├── ae.py
+    │       ├── decoder.py
+    │       ├── encoder.py
+    │       └── requirements.txt
+    └── trainers
+        ├── __init__.py
+        └── ae_trainer
+            ├── __init__.py
+            ├── requirements.txt
+            └── trainer.py
+
+    8 directories, 18 files
+    ```
 
     And this is how the `mate summary` command displays it:
 
     <p align="center" style="margin:0; padding:0;">
-      <img src="./imgs/summary.svg" alt="Your Image" style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
+      <img src="./imgs/summary.svg" alt="Your Image">
     </p>
 
     To a mate project, the following rules apply:
@@ -59,7 +86,9 @@ class MateProject(Module):
     ```python
     from ..models.ae.ae import AE
     ```
+
     And this is instead valid:
+
     ```python
     from ..models.ae import AE
     ```
@@ -102,6 +131,7 @@ class MateProject(Module):
     ```
 
     """
+
     def __init__(self, root_dir: str, python: Python):
         self.__root_dir = root_dir
         self._python = python

@@ -1,35 +1,42 @@
-<h3 id="configuring-a-mate-project">Configuring a mate project</h3>
-<p>
-  <code>mate.json</code> is the main configuration file for a Mate project. It
-  defines where the root of a mate project is. The format is JSON.
-</p>
-<p><strong>Key-value pairs</strong></p>
-<ul>
-  <li>
-    results_folder : <code>str</code> : The folder where all results are stored.
-    This is relative to the root <strong>above</strong> the project.
-  </li>
-  <li>
-    venv : <code>bool</code>=true : Whether to use a virtual environment. If
-    <code>True</code> a virtual environment is created in the project root. If
-    <code>False</code> no virtual environment is created and the same python as
-    the one used to execute mate will be used instead.
-  </li>
-</ul>
-<p><strong>Example</strong>:</p>
-<p>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+    h1 {
+        font-size: 2.5rem;
+    }
+    div.container {
+        margin-top: 2rem;
+    }
+    </style>
+    <div class="container" style="max-width: 50%">
+  <h3 id="configuring-a-mate-project">Configuring a mate project</h3>
+  <p>
+    <code>mate.json</code> is the main configuration file for a Mate project. It
+    defines where the root of a mate project is. The format is JSON.
+  </p>
+  <p><strong>Key-value pairs</strong></p>
+  <ul>
+    <li>
+      results_folder : <code>str</code> : The folder where all results are
+      stored. This is relative to the root <strong>above</strong> the project.
+    </li>
+    <li>
+      venv : <code>bool</code>=true : Whether to use a virtual environment. If
+      <code>True</code> a virtual environment is created in the project root. If
+      <code>False</code> no virtual environment is created and the same python
+      as the one used to execute mate will be used instead.
+    </li>
+  </ul>
+  <p><strong>Example</strong>:</p>
   If your <code>mate.json</code> lies in
   <code>/home/user/project_repo/mate_project/mate.json</code> and it looks like
   this:
-</p>
-<div class="sourceCode" id="cb1">
-  <pre
-    class="sourceCode json"
-  ><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&quot;results_folder&quot;</span><span class="fu">:</span> <span class="st">&quot;results&quot;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;venv&quot;</span><span class="er">:</span><span class="kw">true</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre>
+  <p align="center" style>
+    <img
+      src="./imgs/json_64c5d0a33c1e69c9db33729d10436088.svg"
+      alt="Your Image"
+    />
+  </p>
+  <p>
+    Then the results folder will be <code>/home/user/project_repo/results</code>
+  </p>
 </div>
-<p>
-  Then the results folder will be <code>/home/user/project_repo/results</code>
-</p>
