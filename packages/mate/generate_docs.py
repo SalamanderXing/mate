@@ -81,7 +81,7 @@ def replace_code_block_with_svg(doc: str):
             assert code is not None
             svg = code_block_to_svg(code, language)
             img_name = f"{language}_{md5(code.encode()).hexdigest()}"
-            with open(f"../docs/imgs/{img_name}.svg", "w") as f:
+            with open(f"../docs_md/imgs/{img_name}.svg", "w") as f:
                 f.write(svg)
             new_lines.append(get_img_tag(img_name).strip())
             code = None
