@@ -120,6 +120,11 @@ class Mate:
             json.dump(result, f)
 
     def results(self) -> dict[str, dict[str, float]]:
+        """
+        ```python
+        Load the results of all experiments in the current directory.   
+        ```
+        """
         pass
 
     def __init__(

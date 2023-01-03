@@ -8,6 +8,8 @@ Mate is a tool designed to improve reproducibility and facilitate development in
 - Running/testing your experiments.
 - Managment of Python virtual environment
 
+It also creates a universal template for deep learning projects.
+
 In addition, any project developed with Mate on a public repository gets automatically listed on [MateHub](https://salamanderxing.github.io/mate/). This website is a browser for finding and reusing components created by others (or yourself).
 
 Mate is compatible is any python deep learning framework, such as PyTorch, JAX, and TensorFlow/Keras, since it leverages Python features.
