@@ -16,16 +16,140 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
 
 **Example**
 
-```
-mate init my_project venv=false
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-3249822108-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-3249822108-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-3249822108-r1 { fill: #d9d9d9 }
+.terminal-3249822108-r2 { fill: #fd971f }
+.terminal-3249822108-r3 { fill: #f4005f }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-3249822108-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-3249822108-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-3249822108-clip-terminal)">
+    
+    <g class="terminal-3249822108-matrix">
+    <text class="terminal-3249822108-r1" x="0" y="20" textLength="256.2" clip-path="url(#terminal-3249822108-line-0)">mate&#160;init&#160;my_project&#160;</text><text class="terminal-3249822108-r2" x="256.2" y="20" textLength="48.8" clip-path="url(#terminal-3249822108-line-0)">venv</text><text class="terminal-3249822108-r1" x="305" y="20" textLength="12.2" clip-path="url(#terminal-3249822108-line-0)">=</text><text class="terminal-3249822108-r3" x="317.2" y="20" textLength="61" clip-path="url(#terminal-3249822108-line-0)">false</text><text class="terminal-3249822108-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-3249822108-line-0)">
+</text><text class="terminal-3249822108-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-3249822108-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 
 --- 
 
-```
-mate clone <source_model> <target_model>
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-2710996793-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-2710996793-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-2710996793-r1 { fill: #d9d9d9 }
+.terminal-2710996793-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-2710996793-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-2710996793-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-2710996793-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-2710996793-clip-terminal)">
+    
+    <g class="terminal-2710996793-matrix">
+    <text class="terminal-2710996793-r1" x="0" y="20" textLength="134.2" clip-path="url(#terminal-2710996793-line-0)">mate&#160;clone&#160;</text><text class="terminal-2710996793-r2" x="134.2" y="20" textLength="12.2" clip-path="url(#terminal-2710996793-line-0)">&lt;</text><text class="terminal-2710996793-r3" x="146.4" y="20" textLength="146.4" clip-path="url(#terminal-2710996793-line-0)">source_model</text><text class="terminal-2710996793-r2" x="292.8" y="20" textLength="12.2" clip-path="url(#terminal-2710996793-line-0)">&gt;</text><text class="terminal-2710996793-r2" x="317.2" y="20" textLength="12.2" clip-path="url(#terminal-2710996793-line-0)">&lt;</text><text class="terminal-2710996793-r3" x="329.4" y="20" textLength="146.4" clip-path="url(#terminal-2710996793-line-0)">target_model</text><text class="terminal-2710996793-r2" x="475.8" y="20" textLength="12.2" clip-path="url(#terminal-2710996793-line-0)">&gt;</text><text class="terminal-2710996793-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-2710996793-line-0)">
+</text><text class="terminal-2710996793-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-2710996793-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 - source_model : `str` :  Path to the source model
@@ -36,9 +160,71 @@ Clones a module
 
 ---
 
-```
-mate create <path> <name>
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-3209986290-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-3209986290-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-3209986290-r1 { fill: #d9d9d9 }
+.terminal-3209986290-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-3209986290-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-3209986290-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-3209986290-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-3209986290-clip-terminal)">
+    
+    <g class="terminal-3209986290-matrix">
+    <text class="terminal-3209986290-r1" x="0" y="20" textLength="146.4" clip-path="url(#terminal-3209986290-line-0)">mate&#160;create&#160;</text><text class="terminal-3209986290-r2" x="146.4" y="20" textLength="12.2" clip-path="url(#terminal-3209986290-line-0)">&lt;</text><text class="terminal-3209986290-r3" x="158.6" y="20" textLength="48.8" clip-path="url(#terminal-3209986290-line-0)">path</text><text class="terminal-3209986290-r2" x="207.4" y="20" textLength="12.2" clip-path="url(#terminal-3209986290-line-0)">&gt;</text><text class="terminal-3209986290-r2" x="231.8" y="20" textLength="12.2" clip-path="url(#terminal-3209986290-line-0)">&lt;</text><text class="terminal-3209986290-r3" x="244" y="20" textLength="48.8" clip-path="url(#terminal-3209986290-line-0)">name</text><text class="terminal-3209986290-r2" x="292.8" y="20" textLength="12.2" clip-path="url(#terminal-3209986290-line-0)">&gt;</text><text class="terminal-3209986290-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-3209986290-line-0)">
+</text><text class="terminal-3209986290-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-3209986290-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 - path : `str` :  Path to the module to create
@@ -49,9 +235,71 @@ Creates a new module
 
 ---
 
-```
-mate export <source>
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-3046393835-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-3046393835-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-3046393835-r1 { fill: #d9d9d9 }
+.terminal-3046393835-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-3046393835-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-3046393835-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-3046393835-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-3046393835-clip-terminal)">
+    
+    <g class="terminal-3046393835-matrix">
+    <text class="terminal-3046393835-r1" x="0" y="20" textLength="146.4" clip-path="url(#terminal-3046393835-line-0)">mate&#160;export&#160;</text><text class="terminal-3046393835-r2" x="146.4" y="20" textLength="12.2" clip-path="url(#terminal-3046393835-line-0)">&lt;</text><text class="terminal-3046393835-r3" x="158.6" y="20" textLength="73.2" clip-path="url(#terminal-3046393835-line-0)">source</text><text class="terminal-3046393835-r2" x="231.8" y="20" textLength="12.2" clip-path="url(#terminal-3046393835-line-0)">&gt;</text><text class="terminal-3046393835-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-3046393835-line-0)">
+</text><text class="terminal-3046393835-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-3046393835-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 - source : `str` :  Path to the object to export
@@ -61,9 +309,71 @@ Exports a function/class from a module
 
 ---
 
-```
-mate init <project_name> <params>
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-2668594271-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-2668594271-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-2668594271-r1 { fill: #d9d9d9 }
+.terminal-2668594271-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-2668594271-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-2668594271-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-2668594271-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-2668594271-clip-terminal)">
+    
+    <g class="terminal-2668594271-matrix">
+    <text class="terminal-2668594271-r1" x="0" y="20" textLength="122" clip-path="url(#terminal-2668594271-line-0)">mate&#160;init&#160;</text><text class="terminal-2668594271-r2" x="122" y="20" textLength="12.2" clip-path="url(#terminal-2668594271-line-0)">&lt;</text><text class="terminal-2668594271-r3" x="134.2" y="20" textLength="146.4" clip-path="url(#terminal-2668594271-line-0)">project_name</text><text class="terminal-2668594271-r2" x="280.6" y="20" textLength="12.2" clip-path="url(#terminal-2668594271-line-0)">&gt;</text><text class="terminal-2668594271-r2" x="305" y="20" textLength="12.2" clip-path="url(#terminal-2668594271-line-0)">&lt;</text><text class="terminal-2668594271-r3" x="317.2" y="20" textLength="73.2" clip-path="url(#terminal-2668594271-line-0)">params</text><text class="terminal-2668594271-r2" x="390.4" y="20" textLength="12.2" clip-path="url(#terminal-2668594271-line-0)">&gt;</text><text class="terminal-2668594271-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-2668594271-line-0)">
+</text><text class="terminal-2668594271-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-2668594271-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 - project_name : `str` :  Name of the project
@@ -75,15 +385,139 @@ Creates a new mate project in the current folder.
 
 **Example**
 
-```
-mate init my_fancy_project venv=false
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-1376672780-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-1376672780-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-1376672780-r1 { fill: #d9d9d9 }
+.terminal-1376672780-r2 { fill: #fd971f }
+.terminal-1376672780-r3 { fill: #f4005f }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-1376672780-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-1376672780-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-1376672780-clip-terminal)">
+    
+    <g class="terminal-1376672780-matrix">
+    <text class="terminal-1376672780-r1" x="0" y="20" textLength="329.4" clip-path="url(#terminal-1376672780-line-0)">mate&#160;init&#160;my_fancy_project&#160;</text><text class="terminal-1376672780-r2" x="329.4" y="20" textLength="48.8" clip-path="url(#terminal-1376672780-line-0)">venv</text><text class="terminal-1376672780-r1" x="378.2" y="20" textLength="12.2" clip-path="url(#terminal-1376672780-line-0)">=</text><text class="terminal-1376672780-r3" x="390.4" y="20" textLength="61" clip-path="url(#terminal-1376672780-line-0)">false</text><text class="terminal-1376672780-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-1376672780-line-0)">
+</text><text class="terminal-1376672780-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-1376672780-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 ---
 
-```
-mate install <url>
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-69945090-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-69945090-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-69945090-r1 { fill: #d9d9d9 }
+.terminal-69945090-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-69945090-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-69945090-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-69945090-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-69945090-clip-terminal)">
+    
+    <g class="terminal-69945090-matrix">
+    <text class="terminal-69945090-r1" x="0" y="20" textLength="158.6" clip-path="url(#terminal-69945090-line-0)">mate&#160;install&#160;</text><text class="terminal-69945090-r2" x="158.6" y="20" textLength="12.2" clip-path="url(#terminal-69945090-line-0)">&lt;</text><text class="terminal-69945090-r3" x="170.8" y="20" textLength="36.6" clip-path="url(#terminal-69945090-line-0)">url</text><text class="terminal-69945090-r2" x="207.4" y="20" textLength="12.2" clip-path="url(#terminal-69945090-line-0)">&gt;</text><text class="terminal-69945090-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-69945090-line-0)">
+</text><text class="terminal-69945090-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-69945090-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 - url : `str` :  URL to the package to install
@@ -94,9 +528,69 @@ Installs a module from url. The URL must be a git repository and point to the fu
 
 ---
 
-```
-mate md 
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-1552551587-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-1552551587-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-1552551587-r1 { fill: #d9d9d9 }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-1552551587-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-1552551587-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-1552551587-clip-terminal)">
+    
+    <g class="terminal-1552551587-matrix">
+    <text class="terminal-1552551587-r1" x="0" y="20" textLength="97.6" clip-path="url(#terminal-1552551587-line-0)">mate&#160;md&#160;</text><text class="terminal-1552551587-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-1552551587-line-0)">
+</text><text class="terminal-1552551587-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-1552551587-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 
@@ -106,9 +600,71 @@ Prints the markdown documentation of the project
 
 ---
 
-```
-mate pip <commands>
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-869091155-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-869091155-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-869091155-r1 { fill: #d9d9d9 }
+.terminal-869091155-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-869091155-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-869091155-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-869091155-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-869091155-clip-terminal)">
+    
+    <g class="terminal-869091155-matrix">
+    <text class="terminal-869091155-r1" x="0" y="20" textLength="109.8" clip-path="url(#terminal-869091155-line-0)">mate&#160;pip&#160;</text><text class="terminal-869091155-r2" x="109.8" y="20" textLength="12.2" clip-path="url(#terminal-869091155-line-0)">&lt;</text><text class="terminal-869091155-r3" x="122" y="20" textLength="97.6" clip-path="url(#terminal-869091155-line-0)">commands</text><text class="terminal-869091155-r2" x="219.6" y="20" textLength="12.2" clip-path="url(#terminal-869091155-line-0)">&gt;</text><text class="terminal-869091155-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-869091155-line-0)">
+</text><text class="terminal-869091155-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-869091155-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 - commands : `str` : 
@@ -116,15 +672,137 @@ mate pip <commands>
 
 Executes inside the python venv
 
-```
-mate pip install numpy
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-2087916651-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-2087916651-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-2087916651-r1 { fill: #d9d9d9 }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-2087916651-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-2087916651-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-2087916651-clip-terminal)">
+    
+    <g class="terminal-2087916651-matrix">
+    <text class="terminal-2087916651-r1" x="0" y="20" textLength="268.4" clip-path="url(#terminal-2087916651-line-0)">mate&#160;pip&#160;install&#160;numpy</text><text class="terminal-2087916651-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-2087916651-line-0)">
+</text><text class="terminal-2087916651-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-2087916651-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 ---
 
-```
-mate remove <target>
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-2692106189-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-2692106189-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-2692106189-r1 { fill: #d9d9d9 }
+.terminal-2692106189-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-2692106189-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-2692106189-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-2692106189-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-2692106189-clip-terminal)">
+    
+    <g class="terminal-2692106189-matrix">
+    <text class="terminal-2692106189-r1" x="0" y="20" textLength="146.4" clip-path="url(#terminal-2692106189-line-0)">mate&#160;remove&#160;</text><text class="terminal-2692106189-r2" x="146.4" y="20" textLength="12.2" clip-path="url(#terminal-2692106189-line-0)">&lt;</text><text class="terminal-2692106189-r3" x="158.6" y="20" textLength="73.2" clip-path="url(#terminal-2692106189-line-0)">target</text><text class="terminal-2692106189-r2" x="231.8" y="20" textLength="12.2" clip-path="url(#terminal-2692106189-line-0)">&gt;</text><text class="terminal-2692106189-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-2692106189-line-0)">
+</text><text class="terminal-2692106189-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-2692106189-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 - target : `str` :  Path to the module to remove
@@ -135,9 +813,71 @@ Removes a module
 
 ---
 
-```
-mate rename <path> <name>
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-3309797622-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-3309797622-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-3309797622-r1 { fill: #d9d9d9 }
+.terminal-3309797622-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-3309797622-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-3309797622-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-3309797622-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-3309797622-clip-terminal)">
+    
+    <g class="terminal-3309797622-matrix">
+    <text class="terminal-3309797622-r1" x="0" y="20" textLength="146.4" clip-path="url(#terminal-3309797622-line-0)">mate&#160;rename&#160;</text><text class="terminal-3309797622-r2" x="146.4" y="20" textLength="12.2" clip-path="url(#terminal-3309797622-line-0)">&lt;</text><text class="terminal-3309797622-r3" x="158.6" y="20" textLength="48.8" clip-path="url(#terminal-3309797622-line-0)">path</text><text class="terminal-3309797622-r2" x="207.4" y="20" textLength="12.2" clip-path="url(#terminal-3309797622-line-0)">&gt;</text><text class="terminal-3309797622-r2" x="231.8" y="20" textLength="12.2" clip-path="url(#terminal-3309797622-line-0)">&lt;</text><text class="terminal-3309797622-r3" x="244" y="20" textLength="48.8" clip-path="url(#terminal-3309797622-line-0)">name</text><text class="terminal-3309797622-r2" x="292.8" y="20" textLength="12.2" clip-path="url(#terminal-3309797622-line-0)">&gt;</text><text class="terminal-3309797622-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-3309797622-line-0)">
+</text><text class="terminal-3309797622-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-3309797622-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 - path : `str` :  Path to the module to rename
@@ -149,9 +889,69 @@ Renames a module.
 
 ---
 
-```
-mate results 
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-3244888292-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-3244888292-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-3244888292-r1 { fill: #d9d9d9 }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-3244888292-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-3244888292-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-3244888292-clip-terminal)">
+    
+    <g class="terminal-3244888292-matrix">
+    <text class="terminal-3244888292-r1" x="0" y="20" textLength="158.6" clip-path="url(#terminal-3244888292-line-0)">mate&#160;results&#160;</text><text class="terminal-3244888292-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-3244888292-line-0)">
+</text><text class="terminal-3244888292-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-3244888292-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 
@@ -161,9 +961,71 @@ Prints results
 
 ---
 
-```
-mate run <experiment_name> <command>
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-2167965093-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-2167965093-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-2167965093-r1 { fill: #d9d9d9 }
+.terminal-2167965093-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-2167965093-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-2167965093-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-2167965093-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-2167965093-clip-terminal)">
+    
+    <g class="terminal-2167965093-matrix">
+    <text class="terminal-2167965093-r1" x="0" y="20" textLength="109.8" clip-path="url(#terminal-2167965093-line-0)">mate&#160;run&#160;</text><text class="terminal-2167965093-r2" x="109.8" y="20" textLength="12.2" clip-path="url(#terminal-2167965093-line-0)">&lt;</text><text class="terminal-2167965093-r3" x="122" y="20" textLength="183" clip-path="url(#terminal-2167965093-line-0)">experiment_name</text><text class="terminal-2167965093-r2" x="305" y="20" textLength="12.2" clip-path="url(#terminal-2167965093-line-0)">&gt;</text><text class="terminal-2167965093-r2" x="329.4" y="20" textLength="12.2" clip-path="url(#terminal-2167965093-line-0)">&lt;</text><text class="terminal-2167965093-r3" x="341.6" y="20" textLength="85.4" clip-path="url(#terminal-2167965093-line-0)">command</text><text class="terminal-2167965093-r2" x="427" y="20" textLength="12.2" clip-path="url(#terminal-2167965093-line-0)">&gt;</text><text class="terminal-2167965093-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-2167965093-line-0)">
+</text><text class="terminal-2167965093-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-2167965093-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 - experiment_name : `str` :  Name of the experiment to run
@@ -175,9 +1037,71 @@ Runs an experiment with the given command
 
 ---
 
-```
-mate show <path>
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-1310410278-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-1310410278-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-1310410278-r1 { fill: #d9d9d9 }
+.terminal-1310410278-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-1310410278-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-1310410278-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-1310410278-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-1310410278-clip-terminal)">
+    
+    <g class="terminal-1310410278-matrix">
+    <text class="terminal-1310410278-r1" x="0" y="20" textLength="122" clip-path="url(#terminal-1310410278-line-0)">mate&#160;show&#160;</text><text class="terminal-1310410278-r2" x="122" y="20" textLength="12.2" clip-path="url(#terminal-1310410278-line-0)">&lt;</text><text class="terminal-1310410278-r3" x="134.2" y="20" textLength="48.8" clip-path="url(#terminal-1310410278-line-0)">path</text><text class="terminal-1310410278-r2" x="183" y="20" textLength="12.2" clip-path="url(#terminal-1310410278-line-0)">&gt;</text><text class="terminal-1310410278-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-1310410278-line-0)">
+</text><text class="terminal-1310410278-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-1310410278-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 - path : `str` :  Path to the module to show
@@ -187,9 +1111,71 @@ Shows information about a module or experiment.
 
 ---
 
-```
-mate summary <optional svg>
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-1022385851-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-1022385851-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-1022385851-r1 { fill: #d9d9d9 }
+.terminal-1022385851-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-1022385851-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-1022385851-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-1022385851-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-1022385851-clip-terminal)">
+    
+    <g class="terminal-1022385851-matrix">
+    <text class="terminal-1022385851-r1" x="0" y="20" textLength="158.6" clip-path="url(#terminal-1022385851-line-0)">mate&#160;summary&#160;</text><text class="terminal-1022385851-r2" x="158.6" y="20" textLength="12.2" clip-path="url(#terminal-1022385851-line-0)">&lt;</text><text class="terminal-1022385851-r3" x="170.8" y="20" textLength="97.6" clip-path="url(#terminal-1022385851-line-0)">optional</text><text class="terminal-1022385851-r1" x="268.4" y="20" textLength="48.8" clip-path="url(#terminal-1022385851-line-0)">&#160;svg</text><text class="terminal-1022385851-r2" x="317.2" y="20" textLength="12.2" clip-path="url(#terminal-1022385851-line-0)">&gt;</text><text class="terminal-1022385851-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-1022385851-line-0)">
+</text><text class="terminal-1022385851-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-1022385851-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 - svg : `bool` : =False
@@ -199,9 +1185,71 @@ Prints a summary of the mate project.
 
 ---
 
-```
-mate venv <command>
-```
+<svg class="rich-terminal" viewBox="0 0 750 98.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-1027163990-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-1027163990-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-1027163990-r1 { fill: #d9d9d9 }
+.terminal-1027163990-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-1027163990-r3 { fill: #f4005f;font-weight: bold }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-1027163990-clip-terminal">
+      <rect x="0" y="0" width="731.0" height="47.8" />
+    </clipPath>
+    <clipPath id="terminal-1027163990-line-0">
+    <rect x="0" y="1.5" width="732" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="748" height="96.8" rx="8"/>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-1027163990-clip-terminal)">
+    
+    <g class="terminal-1027163990-matrix">
+    <text class="terminal-1027163990-r1" x="0" y="20" textLength="122" clip-path="url(#terminal-1027163990-line-0)">mate&#160;venv&#160;</text><text class="terminal-1027163990-r2" x="122" y="20" textLength="12.2" clip-path="url(#terminal-1027163990-line-0)">&lt;</text><text class="terminal-1027163990-r3" x="134.2" y="20" textLength="85.4" clip-path="url(#terminal-1027163990-line-0)">command</text><text class="terminal-1027163990-r2" x="219.6" y="20" textLength="12.2" clip-path="url(#terminal-1027163990-line-0)">&gt;</text><text class="terminal-1027163990-r1" x="732" y="20" textLength="12.2" clip-path="url(#terminal-1027163990-line-0)">
+</text><text class="terminal-1027163990-r1" x="732" y="44.4" textLength="12.2" clip-path="url(#terminal-1027163990-line-1)">
+</text>
+    </g>
+    </g>
+</svg>
+
 
 **Params**
 - command : `str` :  Command to run in the virtual environment
