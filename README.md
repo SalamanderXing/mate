@@ -24,7 +24,6 @@ Developed in collaboration of Universiteit von Amstedam.
 
 
 ## Installation 🔌
-At the moment Maté is only supported on MacOS and Linux, but soon also windows.
 
 ```bash
 git clone https://github.com/SalamanderXing/mate
