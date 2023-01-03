@@ -12,7 +12,8 @@ mate init my_project venv=false
 ```
 
 """
-
+from .mate_config import MateConfig
+from .mate_project import MateProject
 from .utils import print_markdown, print
 from .mate_cli import Mate
 import inspect
@@ -102,31 +103,41 @@ def generate_help_md() -> str:
     return doc
 
 
-def print_help():
-    print_markdown(generate_help_md())
+class MateHelp:
+    def __init__(self):
+        self.help_options = (
+            "cli",
+            "mate",
+            "config",
+            "project",
+        )
 
+    def print_help(self, what: str = "cli") -> None:
+        if what == "cli":
+            print_markdown(generate_help_md())
+        elif what == "mate":
+            print_markdown(Mate.__doc__)
+        elif what == "config":
+            print_markdown(MateConfig.__doc__)
+        elif what == "project":
+            print_markdown(MateProject.__doc__)
+        else:
+            print_markdown(generate_help_md())
 
-def __convert_str_to_data(input):
-    try:
-        return int(input)
-    except ValueError:
-        try:
-            return float(input)
-        except ValueError:
-            if input.lower() == "true":
-                return True
-            elif input.lower() == "false":
-                return False
+    def get_help_md(self, what: str = "cli") -> str:
+        if what == "cli":
+            return generate_help_md()
+        elif what == "mate":
+            return str(Mate.__doc__)
+        elif what == "config":
+            return str(MateConfig.__doc__)
+        elif what == "project":
+            return str(MateProject.__doc__)
+        else:
+            return generate_help_md()
 
-    return input
-
-
-def __parse_run_params(args: list):
-    params = {}
-    for arg in args:
-        key, value = arg.split("=")
-        params[key[2:]] = __convert_str_to_data(value)
-    return params
+    def get_all_help_md(self) -> dict[str, str]:
+        return {key: self.get_help_md(key) for key in self.help_options}
 
 
 def collect_args(args: list[str], annotations: tuple[Callable]) -> tuple[list, dict]:
@@ -187,24 +198,21 @@ def main():
     methods = __get_methods_with_arguments(Mate)
     args = sys.argv[1:]
     raw_method_args = args[1:]
-    actions = tuple(method.replace("_", "-") for method in methods) + (
-        "--help",
-        "-h",
-    )
-    if len(args) == 0 or not args[0] in actions or args[0] in ("--help", "-h"):
-        print_help()
+    help_args = ("help", "--help", "-h")
+    actions = tuple(method.replace("_", "-") for method in methods) + help_args
+    help = MateHelp()
+    if len(args) == 0 or not args[0] in actions or args[0] in help_args:
+        if len(args) > 1:
+            help.print_help(args[1])
+        else:
+            help.print_help()
     else:
         if args[0] not in actions:
-            print_help()
+            help.print_help()
         action = args[0]
         if len(args) > 1 and args[1] in ("--help", "-h"):
-            # print(__prettify_method(action, methods[args[0]], in_depth=True))
             md = method_to_md(action)
             print_markdown(md)
-            # print_markdown(md)
-            # prints the markdown, but with a max width of 80 characters
-            # the max width is important for the terminal
-            # print(md, width=80)
         else:
             annotations = tuple(
                 param.annotation

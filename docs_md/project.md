@@ -1,21 +1,10 @@
+
 # 🧉 Maté
 
 
-The root of a mate project is where you can find the 'mate.json`. Mate will generate this file for you when you do `mate init`.
+The root of a mate project is where you can find the `mate.json`. Mate will generate this file for you when you do `mate init`.
 
 --- 
-
-## Cli Parser
-
-Mate's CLI parser parses the command line arguments and calls the appropriate method on the Mate class.
-
-Notice that for boolean arguments, you can use either false or False, true or True. And for None you can use either null or None.
-
-**Example**
-
-```
-mate init my_project venv=false
-```
 
 ## File structure of a mate project
 
@@ -24,13 +13,13 @@ The file structure of a mate project is just a collection of nested python modul
 Typically, a file structure will look something like this:
 
 <p align="center" style="margin:0; padding:0;">
-  <img src="./imgs/output.svg" alt="Your Image" style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
+<img src="./imgs/output.svg" alt="Your Image" style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
 </p>
 
 And this is how the `mate summary` command displays it:
 
 <p align="center" style="margin:0; padding:0;">
-  <img src="./imgs/summary.svg" alt="Your Image" style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
+<img src="./imgs/summary.svg" alt="Your Image" style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;">
 </p>
 
 To a mate project, the following rules apply:
@@ -48,8 +37,8 @@ No other files/folders are allowed. Inside the leaf modules, on the other hand (
 
 Experiments are written in **restricted python**. Meaning it's python but with some limitations that will keep your mate project tidy. The following statements are not supported in a Mate experiment:
 
- loops
- functions
+loops
+functions
 math operations
 only one if-elif statement is allowed. To check the command sent to the experiment (usually `train` or `test`).
 
@@ -91,17 +80,14 @@ data_module = MNISTDataModule()
 
 # Initialize a trainer
 trainer = Trainer(
-    accelerator="auto",
-    devices=1 if torch.cuda.is_available() else None,  # limiting got iPython runs
-    max_epochs=1,
-    callbacks=[TQDMProgressBar(refresh_rate=20)],
+accelerator="auto",
+devices=1 if torch.cuda.is_available() else None,  # limiting got iPython runs
+max_epochs=1,
+callbacks=[TQDMProgressBar(refresh_rate=20)],
 )
 if mate.is_train:
-    # Train the model ⚡
-    trainer.fit(mnist_model, data_module)
-    mate.result(trainer.logged_metrics)
+# Train the model ⚡
+trainer.fit(mnist_model, data_module)
+mate.result(trainer.logged_metrics)
 ```
-
-
-
 

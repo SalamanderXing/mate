@@ -1,0 +1,123 @@
+<h1 id="maté">🧉 Maté</h1>
+<p>
+  The root of a mate project is where you can find the <code>mate.json</code>.
+  Mate will generate this file for you when you do <code>mate init</code>.
+</p>
+<hr />
+<h2 id="file-structure-of-a-mate-project">File structure of a mate project</h2>
+<p>
+  The file structure of a mate project is just a collection of nested python
+  modules (a folder is a python module if it contains a
+  <code>__init__.py</code> file, which may be empty). When you do a
+  <code>mate init</code> you’ll automatically generate a simple mate folder
+  structure.
+</p>
+<p>Typically, a file structure will look something like this:</p>
+<p align="center" style="margin: 0; padding: 0">
+  <img
+    src="./imgs/output.svg"
+    alt="Your Image"
+    style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;"
+  />
+</p>
+<p>And this is how the <code>mate summary</code> command displays it:</p>
+<p align="center" style="margin: 0; padding: 0">
+  <img
+    src="./imgs/summary.svg"
+    alt="Your Image"
+    style="width: 30%; height:200; object-fit:cover; margin-left:10px; margin-top:0, border-radius:50%;"
+  />
+</p>
+<p>To a mate project, the following rules apply:</p>
+<ul>
+  <li>
+    all the <code>README.html</code> files are optional but, if present, will be
+    used by the <code>mate show</code> command to display a module (with its
+    submodules).
+  </li>
+  <li>In each python module, you may only have the following:</li>
+  <li>an<code>__init__.py</code></li>
+  <li>a readme</li>
+  <li>
+    other submodules No other files/folders are allowed. Inside the leaf
+    modules, on the other hand (ex <code>models/ae</code>), everything is
+    permitted except for the following rule.
+  </li>
+  <li>
+    Each submodule inside a root module (ex <code>models/ae</code>) may not
+    import from other submodules in the mate project, i.e., it has to be
+    isolated.
+  </li>
+  <li>
+    Different rules apply to the experiment’s files (ex
+    <code>experiments/ae_cifar.py</code>). See the experiments section below.
+  </li>
+</ul>
+<h2 id="experiments">Experiments</h2>
+<p>
+  Experiments are written in <strong>restricted python</strong>. Meaning it’s
+  python but with some limitations that will keep your mate project tidy. The
+  following statements are not supported in a Mate experiment:
+</p>
+<p>
+  loops functions math operations only one if-elif statement is allowed. To
+  check the command sent to the experiment (usually <code>train</code> or
+  <code>test</code>).
+</p>
+<h3 id="imports">Imports</h3>
+<p>You should only import from the root of a module.</p>
+<p>For example, this is not a valid import:</p>
+<div class="sourceCode" id="cb1">
+  <pre
+    class="sourceCode python"
+  ><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..models.ae.ae <span class="im">import</span> AE</span></code></pre>
+</div>
+<p>And this is instead valid:</p>
+<div class="sourceCode" id="cb2">
+  <pre
+    class="sourceCode python"
+  ><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..models.ae <span class="im">import</span> AE</span></code></pre>
+</div>
+<h3 id="why-these-rules">Why these rules?</h3>
+<p>
+  A mate experiment, although a subset of python, is just a configuration file
+  where you should put all your hyperparameters. It’s meant to be where you
+  import all your modules and organize them together to run your experiment.
+  Defining loops and functions here would imply that you can skip organizing
+  your project into modules and do everything in this file, thus losing all the
+  attractive properties you get from modularity.
+</p>
+<p>
+  If you’re tempted to write functions or loops, maybe you should create a new
+  module.
+</p>
+<p>Below you can find an example of a valid mate experiment:</p>
+<div class="sourceCode" id="cb3">
+  <pre
+    class="sourceCode python"
+  ><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mate <span class="im">import</span> mate</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..models.linear <span class="im">import</span> Net</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..trainers.trainer <span class="im">import</span> MNISTModel</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ..data_loaders.mnist <span class="im">import</span> MNISTDataModule</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytorch_lightning <span class="im">import</span> Trainer</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytorch_lightning.callbacks.progress <span class="im">import</span> TQDMProgressBar</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Init our model</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>mnist_model <span class="op">=</span> MNISTModel(Net())</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>data_module <span class="op">=</span> MNISTDataModule()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a trainer</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>trainer <span class="op">=</span> Trainer(</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>accelerator<span class="op">=</span><span class="st">&quot;auto&quot;</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>devices<span class="op">=</span><span class="dv">1</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="va">None</span>,  <span class="co"># limiting got iPython runs</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>max_epochs<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>callbacks<span class="op">=</span>[TQDMProgressBar(refresh_rate<span class="op">=</span><span class="dv">20</span>)],</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> mate.is_train:</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the model ⚡</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>trainer.fit(mnist_model, data_module)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>mate.result(trainer.logged_metrics)</span></code></pre>
+</div>

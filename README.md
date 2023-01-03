@@ -15,10 +15,7 @@ In addition, any project developed with Mate on a public repository gets automat
 Mate is compatible is any python deep learning framework, such as PyTorch, JAX, and TensorFlow/Keras, since it leverages Python features.
 
 
-Feel free to check out:
-
-- [**Mate Project Documentation**](./documentation/intro.md)
-- [**Mate CLI Documentation**](./documentation/docs.md)
+Check out the [documentation](https://salamanderxing.github.io/mate)!
 
 
 > :warning: **This project is still in active development**: It's not yet stable but the first stable version is scheduled by the **10th of January**.
