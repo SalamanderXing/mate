@@ -3,7 +3,17 @@
 
 The root of a mate project is where you can find the `mate.json`. Mate will generate this file for you when you do `mate init`.
 
----
+Mate leverages on modularity. This means that you should organize your project as a set of *independent* modules. Independent means that your modules cannot import each other. This is a good thing because it allows you to reuse your modules in other projects. For example, you can use the same data loader in a different project. This is also a good thing because it allows you to easily test your modules. You can test your data loader without having to test your model or your trainer.
+
+A python module can *export* objects (such as classes or functions) by adding them to the `__init__.py` file at the root of your module. Notice that you don't have to do this manually, you can do `mate export model.my_model.file_name.ClassName` for example (see the [CLI docs](./cli.md))
+
+Each module can belong to one of the following categories:
+
+- **models**: contains the models of your project. If, for example your working with pytorch, each model should be a subclass of `torch.nn.Module`.
+- **data_loaders**: contains the data loaders of your project. If, for example your working with pytorch, each data loader should be a subclass of `torch.utils.data.Dataset`. But mate doesn't check this, so if you want you can also export functions or something else
+- **trainers**: modules in here should contain the training logic/loop.
+- **experiments**: contains the experiments of your project. Each experiment is a python file in charge of running the experiments. See the [experiments docs](./experiments.md) for more info.
+
 
 ## File structure of a mate project
 
@@ -11,14 +21,41 @@ The file structure of a mate project is just a collection of nested python modul
 
 Typically, a file structure will look something like this:
 
-<p align="center" style="">
-    <img src="./imgs/None_b615eff207c7f42c2cc4f6d07ddfe126.svg" alt="Your Image">
-</p>
+```
+.
+├── __init__.py
+├── data_loaders
+│   ├── __init__.py
+│   └── cifar10_ae
+│       ├── __init__.py
+│       ├── cifar.py
+│       └── requirements.txt
+├── experiments
+│   ├── __init__.py
+│   └── ae_on_cifar.py
+├── mate.json
+├── models
+│   ├── __init__.py
+│   └── ae
+│       ├── __init__.py
+│       ├── ae.py
+│       ├── decoder.py
+│       ├── encoder.py
+│       └── requirements.txt
+└── trainers
+    ├── __init__.py
+    └── ae_trainer
+        ├── __init__.py
+        ├── requirements.txt
+        └── trainer.py
+
+8 directories, 18 files
+```
 
 And this is how the `mate summary` command displays it:
 
 <p align="center" style="margin:0; padding:0;">
-  <img src="./imgs/summary.svg" alt="Your Image">
+  <img src="./imgs/summary.svg" alt="Your Image" style="max-width:90%">
 </p>
 
 To a mate project, the following rules apply:
@@ -31,4 +68,5 @@ To a mate project, the following rules apply:
 No other files/folders are allowed. Inside the leaf modules, on the other hand (ex `models/ae`), everything is permitted except for the following rule.
 - Each submodule inside a root module (ex `models/ae`) may not import from other submodules in the mate project, i.e., it has to be isolated.
 - Different rules apply to the experiment's files (ex `experiments/ae_cifar.py`). See the experiments section below.
+
 

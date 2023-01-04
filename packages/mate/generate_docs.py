@@ -10,9 +10,18 @@ import ipdb
 
 def generate_doc(name: str, doc: str):
     stripped_doc = remove_indent(doc)
-    doc_with_svg = replace_code_block_with_svg(stripped_doc)
     with open(f"../docs_md/{name}.md", "w") as f:
-        f.write(doc_with_svg)
+        f.write(stripped_doc)
+
+
+def replace_code_with_svg():
+    for file in glob("../docs_md/*.md"):
+        with open(file, "r") as f:
+            doc = f.read()
+        new_doc = replace_code_block_with_svg(doc)
+        file_name = os.path.basename(file)
+        with open(f"../docs_md_svg/{file_name}", "w") as f:
+            f.write(new_doc)
 
 
 def code_block_to_svg(code: str, language: Optional[str] = None):
@@ -36,7 +45,7 @@ def replace_code_block_with_svg(doc: str):
         return remove_indent(
             f"""
         <p align="center" style="">
-            <img src="./imgs/{img_name}.svg" alt="Your Image">
+            <img src="./imgs/{img_name}.svg" style="max-width:90%" alt="Your Image">
         </p>"""
         )
 
@@ -54,7 +63,7 @@ def replace_code_block_with_svg(doc: str):
             assert code is not None
             svg = code_block_to_svg(code, language)
             img_name = f"{language}_{md5(code.encode()).hexdigest()}"
-            with open(f"../docs_md/imgs/{img_name}.svg", "w") as f:
+            with open(f"../docs_md_svg/imgs/{img_name}.svg", "w") as f:
                 f.write(svg)
             new_lines.append(get_img_tag(img_name).strip())
             code = None
@@ -70,14 +79,12 @@ def generate_docs():
     for key, val in all_docs.items():
         generate_doc(key, val)
 
-    for file in glob("../docs_md/*.md"):
+    replace_code_with_svg()
+    for file in glob("../docs_md_svg/*.md"):
         # gets the file name without the extension
         name = os.path.basename(file).split(".")[0]
-        os.system(f"pandoc ../docs_md/{name}.md -o ../docs/{name}.html")
+        os.system(f"pandoc ../docs_md_svg/{name}.md -o ../docs/{name}.html")
 
-    os.system("pandoc ../docs_md/index.md -o ../docs/index.html")
-    # replaces all the links to .md files to .html
-    # it does this with all the files in the docs folder
     os.system("find ../docs -type f -exec sed -i 's/\.md/\.html/g' {} \;")
     bootstrap_css = """
     <link
@@ -99,6 +106,7 @@ def generate_docs():
         "Mate CLI": "cli",
         "Runtime": "mate",
         "Configuration": "config",
+        "Tutorials": "tutorials",
     }
 
     def get_item(key, val):
@@ -162,12 +170,15 @@ def generate_docs():
         if file.endswith(".html"):
             with open(f"../docs/{file}", "r") as f:
                 contents = f.read()
-            new_contents = bootstrap_css + custom_css + contents + bootstrap_js + bootstrap_bundle
+            new_contents = (
+                bootstrap_css + custom_css + contents + bootstrap_js + bootstrap_bundle
+            )
             with open(f"../docs/{file}", "w") as f:
                 f.write(new_contents)
 
     os.system("rm -rf ../docs/imgs/*")
-    os.system("cp ../docs_md/imgs/* ../docs/imgs/")
+    os.system("cp ../docs_md/imgs/* ../docs_md_svg/imgs/")
+    os.system("cp ../docs_md_svg/imgs/* ../docs/imgs/")
     # adds the div with the class container to all the html files, not in the body but at the beginning and end of each file
 
 

@@ -13,16 +13,16 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
 
 **Example**
 
-<p align="center" style="">
-    <img src="./imgs/None_3544d72fc758ab7373e7fc0a62fa00d2.svg" alt="Your Image">
-</p>
+```
+mate init my_project venv=false
+```
 
 
  --- 
 
-<p align="center" style="">
-    <img src="./imgs/None_92c1e47462b35d33034be1cf7fe1620e.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate clone <source_model> <target_model>
+```
 
 **Params**
 
@@ -34,9 +34,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_a2f6e0f21446936a9a11dcbe6012760f.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate create <path> <name>
+```
 
 **Params**
 
@@ -48,9 +48,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_541828636cfefa595c43495649630a95.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate export <source>
+```
 
 **Params**
 
@@ -61,9 +61,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_6e77dd55ac78915d9166caef490363f0.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate init <project_name> <params>
+```
 
 **Params**
 
@@ -82,9 +82,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_cef0bad48a3a94ee83843cd8e8334d20.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate install <url>
+```
 
 **Params**
 
@@ -96,9 +96,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_7ef6c17c8e136b4604d738a5b6cdae3f.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate md 
+```
 
 **Params**
 
@@ -109,9 +109,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_ebb1ca6d329cbf026d60d6e735fca040.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate pip <commands>
+```
 
 **Params**
 
@@ -126,9 +126,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_bed1debc2ec5effa29d69529f9b35914.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate remove <target>
+```
 
 **Params**
 
@@ -140,9 +140,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_4b2e48421bb6b31f6d829b52f970775c.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate rename <path> <name>
+```
 
 **Params**
 
@@ -155,9 +155,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_251ecbe6e40d398043cf84583209af3a.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate results 
+```
 
 **Params**
 
@@ -168,9 +168,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_03cff6900c374822d50bc86c27244cc0.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate run <experiment_name> <command>
+```
 
 **Params**
 
@@ -183,9 +183,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_60e9f1fb5368cfc8b5d6ad9c6aa259dd.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate show <path>
+```
 
 **Params**
 
@@ -196,9 +196,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_746308276fc508c2f7d4ee7cc72e024d.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate summary <Optional[svg]>
+```
 
 **Params**
 
@@ -209,9 +209,9 @@ Notice that for boolean arguments, you can use either false or False, true or Tr
     
 ---
 
-<p align="center" style="">
-    <img src="./imgs/None_54b6c90b1f708bf47cb1dbf66cd55892.svg" alt="Your Image">
-</p>
+```
+  [bold green]>>[/bold green] mate venv <command>
+```
 
 **Params**
 

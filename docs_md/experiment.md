@@ -12,15 +12,15 @@ Experiments are written in **restricted python**. Meaning it's python but with s
 You should only import from the root of a module.
 
 For example, this is not a valid import:
-<p align="center" style="">
-    <img src="./imgs/python_781fb6a012170781ee7755615a617313.svg" alt="Your Image">
-</p>
+```python
+from ..models.ae.ae import AE
+```
 
 And this is instead valid:
 
-<p align="center" style="">
-    <img src="./imgs/python_d80cc51c2ccb5bf9ede99aeb7ce63170.svg" alt="Your Image">
-</p>
+```python
+from ..models.ae import AE
+```
 
 ### Why these rules?
 
@@ -32,9 +32,9 @@ If you're tempted to write functions or loops, maybe you should create a new mod
 
 In your experiment, you usually want to import the `mate` module, like so:
 
-<p align="center" style="">
-    <img src="./imgs/None_c9495276ed784543b08b104ee0fb2510.svg" alt="Your Image">
-</p>
+```
+from mate import mate
+```
 
 This module contains variables and functions that are useful to run your experiment. For example, the `mate.command` contains the command sent to the experiment (usually `train` or `test`). And `mate.result(...)` allows you to save results of your experiments. Check out [its doc page](./mate.md).
 
@@ -45,6 +45,30 @@ You should create a new experiment for each different configuration you want to 
 Below you can find an example of a valid mate experiment:
 
 
-<p align="center" style="">
-    <img src="./imgs/python_627c3ebbc65dc6ed3d9a69dd6eca558a.svg" alt="Your Image">
-</p>
+```python
+from mate import mate
+from ..models.linear import Net
+from ..trainers.trainer import MNISTModel
+from ..data_loaders.mnist import MNISTDataModule
+from pytorch_lightning import Trainer
+from pytorch_lightning.callbacks.progress import TQDMProgressBar
+import torch
+
+
+# Init our model
+mnist_model = MNISTModel(Net())
+
+data_module = MNISTDataModule()
+
+# Initialize a trainer
+trainer = Trainer(
+    accelerator="auto",
+    devices=1 if torch.cuda.is_available() else None,  # limiting got iPython runs
+    max_epochs=1,
+    callbacks=[TQDMProgressBar(refresh_rate=20)],
+)
+if mate.is_train:
+    # Train the model ⚡
+    trainer.fit(mnist_model, data_module)
+    mate.result(trainer.logged_metrics)
+```

@@ -1,0 +1,187 @@
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous"
+    >
+    <style>
+    html, body{
+        background:#285430;
+        color:black;
+    }
+    code{
+        color:#32CD32;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    div.container {
+        background:#5f8d4e;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+    }
+    nav {
+        background: #5f8d4e;
+    }
+    </style>
+    <nav
+  class="navbar navbar-expand-lg navbar-light"
+  style="background: #5f8d4e; padding: 10px"
+>
+  <a class="navbar-brand" href="./index.html">🧉 Docs</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link active" href="./project.html">Mate Project</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link active" href="./cli.html">Mate CLI</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link active" href="./mate.html">Runtime</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link active" href="./config.html">Configuration</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link active" href="./tutorials.html">Tutorials</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container" style="max-width: 1000px">
+  <h1 id="mate-project-from-scratch">Mate project from scratch</h1>
+  <p>This is a step by step guide to create a new project from scratch.</p>
+  <h2 id="create-a-new-project">1 Create a new project</h2>
+  <p>
+    Make sure you’re inside a <strong>git</strong> repository and run the
+    following command:
+  </p>
+  <p align="center" style>
+    <img
+      src="./imgs/None_4895d540a4c2b1dd4c7970e8ce84c86e.svg"
+      style="max-width: 90%"
+      alt="Your Image"
+    />
+  </p>
+  <p>This will do the following:</p>
+  <ul>
+    <li>
+      Create a new folder called <code>new_project</code>, with inside the
+      default folder structure
+    </li>
+    <li>
+      Create a virtual environment. This will be used to install all the
+      dependencies
+    </li>
+  </ul>
+  <p>
+    To make sure everything worked, first navigate inside the
+    <code>new_project</code> folder:
+  </p>
+  <p align="center" style>
+    <img
+      src="./imgs/bash_789d7abf2adb950f000c2d624e865c20.svg"
+      style="max-width: 90%"
+      alt="Your Image"
+    />
+  </p>
+  <p>Then run:</p>
+  <p align="center" style>
+    <img
+      src="./imgs/bash_cacf09445830e5e547952f44e09ae2a6.svg"
+      style="max-width: 90%"
+      alt="Your Image"
+    />
+  </p>
+  <h2 id="create-a-your-first-module">2 Create a your first module</h2>
+  <p>
+    Make sure you’re still inside the <code>new_project</code> folder and run
+    the following command:
+  </p>
+  <p align="center" style>
+    <img
+      src="./imgs/bash_fc48862cdefaf78f565ff34a1859c353.svg"
+      style="max-width: 90%"
+      alt="Your Image"
+    />
+  </p>
+  <p>Now run again:</p>
+  <p align="center" style>
+    <img
+      src="./imgs/bash_cacf09445830e5e547952f44e09ae2a6.svg"
+      style="max-width: 90%"
+      alt="Your Image"
+    />
+  </p>
+  <p>
+    Now let’s add some code to our module. Create a new file
+    <code>models/my_module/main.py</code> with your favorite editor and add the
+    following code:
+  </p>
+  <p align="center" style>
+    <img
+      src="./imgs/python_9d2be9ba1da6403958c70858e78960c4.svg"
+      style="max-width: 90%"
+      alt="Your Image"
+    />
+  </p>
+  <p>
+    Then export the function to the <code>__init__.py</code> file by running:
+  </p>
+  <p align="center" style>
+    <img
+      src="./imgs/bash_cf0c2b10dbe522a56c0d4552cccf0b79.svg"
+      style="max-width: 90%"
+      alt="Your Image"
+    />
+  </p>
+  <h2 id="create-your-first-experiment">3 Create your first experiment</h2>
+  <p>Now let’s create an experiment. Run the following command:</p>
+  <p align="center" style>
+    <img
+      src="./imgs/bash_936a8f6a68d25d2dcd8df89eda2c8989.svg"
+      style="max-width: 90%"
+      alt="Your Image"
+    />
+  </p>
+  <p>Then edit the file <code>experiments/my_experiment.py</code></p>
+  <p align="center" style>
+    <img
+      src="./imgs/python_7a778df3b29f27c0ebf0a8f1cfab848b.svg"
+      style="max-width: 90%"
+      alt="Your Image"
+    />
+  </p>
+  <h2 id="run-your-experiment">4 Run your experiment</h2>
+  <p>Now let’s run the experiment. Run the following command:</p>
+  <p align="center" style>
+    <img
+      src="./imgs/bash_07f188752de1b294a37b206bc95d59be.svg"
+      style="max-width: 90%"
+      alt="Your Image"
+    />
+  </p>
+  <p>
+    You should see <code>Training a model</code> printed in the console. Hurrah!
+    You just created your first project with mate!
+  </p>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    

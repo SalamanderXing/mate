@@ -11,7 +11,10 @@
 **Example**:
 
 If your `mate.json` lies in `/home/user/project_repo/mate_project/mate.json` and it looks like this:
-<p align="center" style="">
-    <img src="./imgs/json_92f03bfff01a8870814eedb106c54f10.svg" alt="Your Image">
-</p>
+```json
+{
+    "results_folder": "results"
+    "venv":true
+}
+```
 Then the results folder will be `/home/user/project_repo/results`
