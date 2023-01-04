@@ -1,6 +1,3 @@
-<div class="container">
-<div class="container">
-<div class="container">
 <svg class="rich-terminal" viewBox="0 0 872 98.8" xmlns="http://www.w3.org/2000/svg">
     <!-- Generated with Rich https://www.textualize.io -->
     <style>
@@ -22,29 +19,29 @@
         font-weight: 700;
     }
 
-    .terminal-3209986290-matrix {
+    .terminal-3504889139-matrix {
         font-family: Fira Code, monospace;
         font-size: 20px;
         line-height: 24.4px;
         font-variant-east-asian: full-width;
     }
 
-    .terminal-3209986290-title {
+    .terminal-3504889139-title {
         font-size: 18px;
         font-weight: bold;
         font-family: arial;
     }
 
-    .terminal-3209986290-r1 { fill: #d9d9d9 }
-.terminal-3209986290-r2 { fill: #d9d9d9;font-weight: bold }
-.terminal-3209986290-r3 { fill: #f4005f;font-weight: bold }
+    .terminal-3504889139-r1 { fill: #d9d9d9 }
+.terminal-3504889139-r2 { fill: #d9d9d9;font-weight: bold }
+.terminal-3504889139-r3 { fill: #f4005f;font-weight: bold }
     </style>
 
     <defs>
-    <clipPath id="terminal-3209986290-clip-terminal">
+    <clipPath id="terminal-3504889139-clip-terminal">
       <rect x="0" y="0" width="853.0" height="47.8" />
     </clipPath>
-    <clipPath id="terminal-3209986290-line-0">
+    <clipPath id="terminal-3504889139-line-0">
     <rect x="0" y="1.5" width="854" height="24.65"/>
             </clipPath>
     </defs>
@@ -56,14 +53,12 @@
             <circle cx="44" cy="0" r="7" fill="#28c840"/>
             </g>
         
-    <g transform="translate(9, 41)" clip-path="url(#terminal-3209986290-clip-terminal)">
+    <g transform="translate(9, 41)" clip-path="url(#terminal-3504889139-clip-terminal)">
     
-    <g class="terminal-3209986290-matrix">
-    <text class="terminal-3209986290-r1" x="0" y="20" textLength="146.4" clip-path="url(#terminal-3209986290-line-0)">mate&#160;create&#160;</text><text class="terminal-3209986290-r2" x="146.4" y="20" textLength="12.2" clip-path="url(#terminal-3209986290-line-0)">&lt;</text><text class="terminal-3209986290-r3" x="158.6" y="20" textLength="48.8" clip-path="url(#terminal-3209986290-line-0)">path</text><text class="terminal-3209986290-r2" x="207.4" y="20" textLength="12.2" clip-path="url(#terminal-3209986290-line-0)">&gt;</text><text class="terminal-3209986290-r2" x="231.8" y="20" textLength="12.2" clip-path="url(#terminal-3209986290-line-0)">&lt;</text><text class="terminal-3209986290-r3" x="244" y="20" textLength="48.8" clip-path="url(#terminal-3209986290-line-0)">name</text><text class="terminal-3209986290-r2" x="292.8" y="20" textLength="12.2" clip-path="url(#terminal-3209986290-line-0)">&gt;</text><text class="terminal-3209986290-r1" x="854" y="20" textLength="12.2" clip-path="url(#terminal-3209986290-line-0)">
-</text><text class="terminal-3209986290-r1" x="854" y="44.4" textLength="12.2" clip-path="url(#terminal-3209986290-line-1)">
+    <g class="terminal-3504889139-matrix">
+    <text class="terminal-3504889139-r1" x="0" y="20" textLength="146.4" clip-path="url(#terminal-3504889139-line-0)">mate&#160;create&#160;</text><text class="terminal-3504889139-r2" x="146.4" y="20" textLength="12.2" clip-path="url(#terminal-3504889139-line-0)">&lt;</text><text class="terminal-3504889139-r3" x="158.6" y="20" textLength="48.8" clip-path="url(#terminal-3504889139-line-0)">path</text><text class="terminal-3504889139-r1" x="207.4" y="20" textLength="85.4" clip-path="url(#terminal-3504889139-line-0)">&gt;&#160;&lt;name</text><text class="terminal-3504889139-r2" x="292.8" y="20" textLength="12.2" clip-path="url(#terminal-3504889139-line-0)">&gt;</text><text class="terminal-3504889139-r1" x="854" y="20" textLength="12.2" clip-path="url(#terminal-3504889139-line-0)">
+</text><text class="terminal-3504889139-r1" x="854" y="44.4" textLength="12.2" clip-path="url(#terminal-3504889139-line-1)">
 </text>
     </g>
     </g>
 </svg>
-</div>
-</div>

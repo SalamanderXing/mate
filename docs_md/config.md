@@ -1,5 +1,5 @@
 
-### Configuring a mate project
+# Configuring a Mate Project
 
 `mate.json` is the main configuration file for a Mate project. It defines where the root of a mate project is. The format is JSON.
 
@@ -12,6 +12,6 @@
 
 If your `mate.json` lies in `/home/user/project_repo/mate_project/mate.json` and it looks like this:
 <p align="center" style="">
-            <img src="./imgs/json_64c5d0a33c1e69c9db33729d10436088.svg" alt="Your Image">
-        </p>
+    <img src="./imgs/json_92f03bfff01a8870814eedb106c54f10.svg" alt="Your Image">
+</p>
 Then the results folder will be `/home/user/project_repo/results`

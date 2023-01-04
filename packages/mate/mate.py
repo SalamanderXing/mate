@@ -5,6 +5,8 @@ import inspect
 
 class Mate:
     """
+    # Mate Runtime
+
     Class containing all the information about the current run. You usually want to import it into your experiment like this:
 
     ```python
@@ -28,7 +30,7 @@ class Mate:
         # do testing
     ```
     """
-
+        
     @staticmethod
     def load():
         get_top_level_cmd = "git rev-parse --show-toplevel"
@@ -76,6 +78,7 @@ class Mate:
         Save the results of the current run.
 
         **Example**
+
         ```python
         from mate import mate
 
@@ -101,7 +104,6 @@ class Mate:
         if mate.is_train:
             trainer.fit(pl_module)
             mate.result(pl_module.logged_metrics)
-
         ```
 
 
@@ -123,6 +125,7 @@ class Mate:
         """
         Get the results of all experiments. in the form of a dictionary.
         The dictionary is structured as follows:
+
         ```python
         {
             "experiment_name": {

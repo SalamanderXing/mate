@@ -1,7 +1,4 @@
-<div class="container">
-<div class="container">
-<div class="container">
-<svg class="rich-terminal" viewBox="0 0 872 98.8" xmlns="http://www.w3.org/2000/svg">
+<svg class="rich-terminal" viewBox="0 0 872 74.4" xmlns="http://www.w3.org/2000/svg">
     <!-- Generated with Rich https://www.textualize.io -->
     <style>
 
@@ -22,48 +19,43 @@
         font-weight: 700;
     }
 
-    .terminal-1376672780-matrix {
+    .terminal-3146012624-matrix {
         font-family: Fira Code, monospace;
         font-size: 20px;
         line-height: 24.4px;
         font-variant-east-asian: full-width;
     }
 
-    .terminal-1376672780-title {
+    .terminal-3146012624-title {
         font-size: 18px;
         font-weight: bold;
         font-family: arial;
     }
 
-    .terminal-1376672780-r1 { fill: #d9d9d9 }
-.terminal-1376672780-r2 { fill: #fd971f }
-.terminal-1376672780-r3 { fill: #f4005f }
+    .terminal-3146012624-r1 { fill: #c5c8c6 }
+.terminal-3146012624-r2 { fill: #d0b344 }
+.terminal-3146012624-r3 { fill: #98729f }
     </style>
 
     <defs>
-    <clipPath id="terminal-1376672780-clip-terminal">
-      <rect x="0" y="0" width="853.0" height="47.8" />
+    <clipPath id="terminal-3146012624-clip-terminal">
+      <rect x="0" y="0" width="853.0" height="23.4" />
     </clipPath>
-    <clipPath id="terminal-1376672780-line-0">
-    <rect x="0" y="1.5" width="854" height="24.65"/>
-            </clipPath>
+    
     </defs>
 
-    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="870" height="96.8" rx="8"/>
+    <rect fill="#292929" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="870" height="72.4" rx="8"/>
             <g transform="translate(26,22)">
             <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
             <circle cx="22" cy="0" r="7" fill="#febc2e"/>
             <circle cx="44" cy="0" r="7" fill="#28c840"/>
             </g>
         
-    <g transform="translate(9, 41)" clip-path="url(#terminal-1376672780-clip-terminal)">
+    <g transform="translate(9, 41)" clip-path="url(#terminal-3146012624-clip-terminal)">
     
-    <g class="terminal-1376672780-matrix">
-    <text class="terminal-1376672780-r1" x="0" y="20" textLength="329.4" clip-path="url(#terminal-1376672780-line-0)">mate&#160;init&#160;my_fancy_project&#160;</text><text class="terminal-1376672780-r2" x="329.4" y="20" textLength="48.8" clip-path="url(#terminal-1376672780-line-0)">venv</text><text class="terminal-1376672780-r1" x="378.2" y="20" textLength="12.2" clip-path="url(#terminal-1376672780-line-0)">=</text><text class="terminal-1376672780-r3" x="390.4" y="20" textLength="61" clip-path="url(#terminal-1376672780-line-0)">false</text><text class="terminal-1376672780-r1" x="854" y="20" textLength="12.2" clip-path="url(#terminal-1376672780-line-0)">
-</text><text class="terminal-1376672780-r1" x="854" y="44.4" textLength="12.2" clip-path="url(#terminal-1376672780-line-1)">
+    <g class="terminal-3146012624-matrix">
+    <text class="terminal-3146012624-r1" x="0" y="20" textLength="329.4" clip-path="url(#terminal-3146012624-line-0)">mate&#160;init&#160;my_fancy_project&#160;</text><text class="terminal-3146012624-r2" x="329.4" y="20" textLength="48.8" clip-path="url(#terminal-3146012624-line-0)">venv</text><text class="terminal-3146012624-r1" x="378.2" y="20" textLength="12.2" clip-path="url(#terminal-3146012624-line-0)">=</text><text class="terminal-3146012624-r3" x="390.4" y="20" textLength="61" clip-path="url(#terminal-3146012624-line-0)">false</text><text class="terminal-3146012624-r1" x="854" y="20" textLength="12.2" clip-path="url(#terminal-3146012624-line-0)">
 </text>
     </g>
     </g>
 </svg>
-</div>
-</div>

@@ -1,0 +1,193 @@
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous"
+    >
+    <style>
+    html, body{
+        background:#285430;
+        color:black;
+    }
+    code{
+        color:#32CD32;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    div.container {
+        background:#5f8d4e;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+    }
+    nav {
+        background: #5f8d4e;
+    }
+    </style>
+    <nav
+  class="navbar navbar-expand-lg navbar-light"
+  style="background: #5f8d4e; padding: 10px"
+>
+  <a class="navbar-brand" href="./index.html">🧉 Docs</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link active" href="./project.html">Mate Project</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link active" href="./cli.html">Mate CLI</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link active" href="./mate.html">Runtime</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link active" href="./config.html">Configuration</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container" style="max-width: 1000px">
+  <hr />
+  <pre><code>mate clone &lt;source_model&gt; &lt;target_model&gt;</code></pre>
+  <p>
+    <strong>Params</strong> - source_model : <code>str</code> : Path to the
+    source model - target_model : <code>str</code> : Path to the target model
+  </p>
+  <p>Clones a module</p>
+  <hr />
+  <pre><code>mate create &lt;path&gt; &lt;name&gt;</code></pre>
+  <p>
+    <strong>Params</strong> - path : <code>str</code> : Path to the module to
+    create - name : <code>str</code> : Name of the module to create
+  </p>
+  <p>Creates a new module</p>
+  <hr />
+  <pre><code>mate export &lt;source&gt;</code></pre>
+  <p>
+    <strong>Params</strong> - source : <code>str</code> : Path to the object to
+    export
+  </p>
+  <p>Exports a function/class from a module</p>
+  <hr />
+  <pre><code>mate init &lt;project_name&gt; &lt;params&gt;</code></pre>
+  <p>
+    <strong>Params</strong> - project_name : <code>str</code> : Name of the
+    project - params : <code>str</code> : Parameters to pass to the project.
+    These are the same key-value pairs that are in the
+    <code>mate.json</code> file (check out that section).
+  </p>
+  <p>Creates a new mate project in the current folder.</p>
+  <p><strong>Example</strong></p>
+  <pre><code>mate init my_fancy_project venv=false</code></pre>
+  <hr />
+  <pre><code>mate install &lt;url&gt;</code></pre>
+  <p>
+    <strong>Params</strong> - url : <code>str</code> : URL to the package to
+    install
+  </p>
+  <p>
+    Installs a module from url. The URL must be a git repository and point to
+    the full path of the module.
+  </p>
+  <hr />
+  <pre><code>mate md </code></pre>
+  <p><strong>Params</strong></p>
+  <p>Prints the markdown documentation of the project</p>
+  <hr />
+  <pre><code>mate pip &lt;commands&gt;</code></pre>
+  <p><strong>Params</strong> - commands : <code>str</code> :</p>
+  <p>Executes inside the python venv</p>
+  <pre><code>mate pip install numpy</code></pre>
+  <hr />
+  <pre><code>mate remove &lt;target&gt;</code></pre>
+  <p>
+    <strong>Params</strong> - target : <code>str</code> : Path to the module to
+    remove
+  </p>
+  <p>Removes a module</p>
+  <hr />
+  <pre><code>mate rename &lt;path&gt; &lt;name&gt;</code></pre>
+  <p>
+    <strong>Params</strong> - path : <code>str</code> : Path to the module to
+    rename - name : <code>str</code> : New name of the module
+  </p>
+  <p>Renames a module.</p>
+  <hr />
+  <pre><code>mate results </code></pre>
+  <p><strong>Params</strong></p>
+  <p>Prints results</p>
+  <hr />
+  <pre><code>mate run &lt;experiment_name&gt; &lt;command&gt;</code></pre>
+  <p>
+    <strong>Params</strong> - experiment_name : <code>str</code> : Name of the
+    experiment to run - command : <code>str</code> : Command to run
+  </p>
+  <p>Runs an experiment with the given command</p>
+  <hr />
+  <pre><code>mate show &lt;path&gt;</code></pre>
+  <p>
+    <strong>Params</strong> - path : <code>str</code> : Path to the module to
+    show
+  </p>
+  <p>Shows information about a module or experiment.</p>
+  <hr />
+  <pre><code>mate summary </code></pre>
+  <p><strong>Params</strong></p>
+  <p>Prints a summary of the mate project.</p>
+  <hr />
+  <pre><code>mate venv &lt;command&gt;</code></pre>
+  <p>
+    <strong>Params</strong> - command : <code>str</code> : Command to run in the
+    virtual environment
+  </p>
+  <p>Executes inside the python venv</p>
+  <hr />
+  <h3 id="configuring-a-mate-project">Configuring a mate project</h3>
+  <p>
+    <code>mate.json</code> is the main configuration file for a Mate project. It
+    defines where the root of a mate project is. The format is JSON.
+  </p>
+  <p><strong>Key-value pairs</strong></p>
+  <ul>
+    <li>
+      results_folder : <code>str</code> : The folder where all results are
+      stored. This is relative to the root <strong>above</strong> the project.
+    </li>
+    <li>
+      venv : <code>bool</code>=true : Whether to use a virtual environment. If
+      <code>True</code> a virtual environment is created in the project root. If
+      <code>False</code> no virtual environment is created and the same python
+      as the one used to execute mate will be used instead.
+    </li>
+  </ul>
+  <p><strong>Example</strong>:</p>
+  <p>
+    If your <code>mate.json</code> lies in
+    <code>/home/user/project_repo/mate_project/mate.json</code> and it looks
+    like this:
+  </p>
+  <div class="sourceCode" id="cb17">
+    <pre
+      class="sourceCode json"
+    ><code class="sourceCode json"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&quot;results_folder&quot;</span><span class="fu">:</span> <span class="st">&quot;results&quot;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;venv&quot;</span><span class="er">:</span><span class="kw">true</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre>
+  </div>
+  <p>
+    Then the results folder will be <code>/home/user/project_repo/results</code>
+  </p>
+</div>

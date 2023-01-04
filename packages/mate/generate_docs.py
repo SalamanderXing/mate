@@ -4,7 +4,7 @@ from .cli_parser import MateHelp
 from rich.console import Console
 from rich.syntax import Syntax
 from typing import Optional
-from rich.terminal_theme import MONOKAI
+from glob import glob
 import ipdb
 
 
@@ -14,58 +14,31 @@ def generate_doc(name: str, doc: str):
     with open(f"../docs_md/{name}.md", "w") as f:
         f.write(doc_with_svg)
 
-    os.system(f"pandoc ../docs_md/{name}.md -o ../docs/{name}.html")
-
 
 def code_block_to_svg(code: str, language: Optional[str] = None):
+    code = code.strip()
     console = Console(record=True, width=70)
     if language:
-        console.print(Syntax(code, language, theme="monokai", line_numbers=True))
+        console.print(
+            Syntax(code, language, theme="monokai", line_numbers=language == "python")
+        )
     else:
         console.print(code)
-    svg = console.export_svg(title="", theme=MONOKAI)
+    svg = console.export_svg(title="")
     return svg
 
 
-"""
-def replace_code_block_with_svg(doc: str):
-    lines = doc.splitlines()
-    new_lines = []
-    code: Optional[str] = None
-    language = None
-    for line in lines:
-        if code is None and line.startswith("```"):
-            ipdb.set_trace()
-            language = line.replace("```", "") or None
-            code = ""
-        elif line.startswith("```"):
-            assert code is not None
-            svg = code_block_to_svg(code, language)
-            new_lines.append(svg)
-        elif code is not None:
-            code += line + "\n"
-        else:
-            new_lines.append(line)
-    return "\n".join(new_lines)
-"""
-
-
 def replace_code_block_with_svg(doc: str):
 
-    # modified_contents = re.sub(
-    #     r"(?<=```)(.+?)(?=```)",
-    #     lambda m: m.group(1).upper(),
-    #     doc,
-    #     flags=re.DOTALL | re.MULTILINE,
-    # )
-    # does the same as the above but with a for loop
     from hashlib import md5
 
     def get_img_tag(img_name: str):
-        return f"""
+        return remove_indent(
+            f"""
         <p align="center" style="">
             <img src="./imgs/{img_name}.svg" alt="Your Image">
         </p>"""
+        )
 
     code: Optional[str] = None
     language = None
@@ -97,29 +70,85 @@ def generate_docs():
     for key, val in all_docs.items():
         generate_doc(key, val)
 
+    for file in glob("../docs_md/*.md"):
+        # gets the file name without the extension
+        name = os.path.basename(file).split(".")[0]
+        os.system(f"pandoc ../docs_md/{name}.md -o ../docs/{name}.html")
+
     os.system("pandoc ../docs_md/index.md -o ../docs/index.html")
     # replaces all the links to .md files to .html
     # it does this with all the files in the docs folder
     os.system("find ../docs -type f -exec sed -i 's/\.md/\.html/g' {} \;")
-    bootstrap_css = """<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">"""
+    bootstrap_css = """
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous"
+    >"""
     # adds bootstrap css to all the html files
     # keeping in mind that {} means insertion in an f-string
+    pages = {
+        "Mate Project": "project",
+        "Mate CLI": "cli",
+        "Runtime": "mate",
+        "Configuration": "config",
+    }
+
+    def get_item(key, val):
+        return f"""
+        <li class="nav-item active">
+            <a class="nav-link active" href="./{val}.html">{key}</a>
+        </li>"""
+
+    navbar = f"""<nav class="navbar navbar-expand-lg navbar-light" style="background: #5f8d4e; padding:10px">
+      <a class="navbar-brand" href="./index.html">🧉 Docs</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            {"".join(get_item(key,val) for (key,val) in pages.items())}
+        </ul>
+        </div>
+    </nav>
+    """.replace(
+        "\n", ""
+    ).replace(
+        '"', '"'
+    )
     custom_css = """
     <style>
+    html, body{
+        background:#285430;
+        color:black;
+    }
+    code{
+        color:#32CD32;
+    }
     h1 {
         font-size: 2.5rem;
     }
     div.container {
-        margin-top: 2rem;
+        background:#5f8d4e;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+    }
+    nav {
+        background: #5f8d4e;
     }
     </style>
     """
     for file in os.listdir("../docs"):
         if file.endswith(".html"):
             os.system(
-                f"sed -i '1i<div class=\"container\" style='max-width:50%'>' ../docs/{file}"
+                f"sed -i '1i<div class=\"container\" style='max-width:1000px'>' ../docs/{file}"
             )
             os.system(f"sed -i '$a</div>' ../docs/{file}")
+
+            os.system(f"sed -i '1i{navbar}' ../docs/{file}")
 
     os.system('prettier --write "../docs/*.html"')
 
@@ -131,7 +160,8 @@ def generate_docs():
             with open(f"../docs/{file}", "w") as f:
                 f.write(new_contents)
 
-    os.system("cp -r ../docs_md/imgs ../docs/imgs")
+    os.system("rm -rf ../docs/imgs/*")
+    os.system("cp ../docs_md/imgs/* ../docs/imgs/")
     # adds the div with the class container to all the html files, not in the body but at the beginning and end of each file
 
 

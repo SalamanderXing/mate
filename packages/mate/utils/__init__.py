@@ -5,18 +5,28 @@ from rich.markdown import Markdown
 from glob import glob
 import os
 import shutil
+import ipdb
 
 # remove_indent = lambda text: "\n".join(
 #     [line[len(line) - len(line.lstrip()) :] for line in text.split("\n")]
 # )
 def remove_indent(text: str):
-    # counts the indent of the first line
-    indent = len(text) - len(text.lstrip())
-    # removes the indent from all lines
+    indents: dict[int, int] = {}
+    for line in [l for l in text.splitlines() if l.strip() != ""]:
+        indent = len(line) - len(line.lstrip())
+        if indent not in indents:
+            indents[indent] = 0
+        indents[indent] += 1
+
+    selected_indent = max(indents.items(), key=lambda x: x[1])[0]
     def indent_remover(line: str):
-        indent_val = min(indent, len(line) - len(line.lstrip()))
-        return line[indent_val:]
+        current_indent = len(line) - len(line.lstrip())
+        indent = min(current_indent, selected_indent)
+        return line[indent:]
+
     return "\n".join([indent_remover(line) for line in text.split("\n")])
+
+
 console = Console(width=75)
 print = console.print
 print_markdown = lambda x: print(Padding(Markdown(remove_indent(x)), (1, 0, 0, 5)))

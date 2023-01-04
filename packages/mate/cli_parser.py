@@ -13,9 +13,10 @@ mate init my_project venv=false
 
 """
 from .mate_config import MateConfig
-from .mate_project import MateProject
-from .utils import print_markdown, print
-from .mate_cli import Mate
+from .mate_project import MateProject, Experiment
+from .utils import print_markdown, remove_indent
+from .mate_cli import MateCli
+from .mate import Mate
 import inspect
 from typing import Optional, Callable, Sized
 import ipdb
@@ -43,12 +44,12 @@ def __get_methods_with_arguments(class_name):
 
 def method_to_md(method_name, member: Optional[Callable] = None):
     if member is None:
-        member = getattr(Mate, method_name)
+        member = getattr(MateCli, method_name)
     assert member is not None
     params = inspect.signature(member).parameters.values()
     inline_params = " ".join(
         [
-            f"<{('optional ' if (param.default != inspect._empty) else '') + param.name}>"
+            f"<{('Optional[' + param.name + ']' if (param.default != inspect._empty) else param.name)}>"
             for param in params
             if param.name != "self"
         ]
@@ -59,43 +60,52 @@ def method_to_md(method_name, member: Optional[Callable] = None):
         if len(line) > 1 and line[1].startswith("param")
     }
 
-    list_params = "\n".join(
-        [
-            f"  - {param.name} : `{param.annotation.__name__}` : {param_descriptions.get(param.name, '')}"
-            + (f"={param.default}" if param.default != inspect._empty else "")
-            for param in params
-            if param.name != "self"
-        ]
+    raw_list_params = [
+        f"- {param.name} : `{param.annotation.__name__}` : {param_descriptions.get(param.name, '')}"
+        + (f"={param.default}" if param.default != inspect._empty else "")
+        for param in params
+        if param.name != "self"
+    ]
+    list_params = "\n".join(raw_list_params)
+    method_description = (
+        "\n".join(
+            [
+                line
+                for line in str(member.__doc__).split("\n")
+                if not line.strip().startswith(":param")
+            ]
+        )
     )
-    method_description = "\n".join(
-        [
-            line
-            for line in str(member.__doc__).split("\n")
-            if not line.strip().startswith(":param")
-        ]
-    )
-    doc = f"""
+    code = f"""
     ```
-      mate {method_name} {inline_params}
+      [bold green]>>[/bold green] mate {method_name} {inline_params}
     ```
+    """.strip()
+    doc = remove_indent(
+        f"""
+    {code}
 
     **Params**
-    {list_params}
+
+    {list_params.strip()}
 
     {method_description}
     ---
     """
+    )
+    # if len(raw_list_params) > 0:
+    #     ipdb.set_trace()
     return doc
 
 
 def generate_help_md() -> str:
 
-    doc = str(Mate.__doc__) + "\n --- \n"
+    doc = remove_indent(str(MateCli.__doc__)) + "\n --- \n"
     current_docstring = str(sys.modules[__name__].__doc__)
     doc += current_docstring + "\n --- \n"
     members = [
         (k, v)
-        for (k, v) in inspect.getmembers(Mate, predicate=inspect.isfunction)
+        for (k, v) in inspect.getmembers(MateCli, predicate=inspect.isfunction)
         if not k.startswith("_")
     ]
     for name, val in members:
@@ -105,22 +115,38 @@ def generate_help_md() -> str:
 
 class MateHelp:
     def __init__(self):
-        self.help_options = (
-            "cli",
-            "mate",
-            "config",
-            "project",
-        )
+        self.help_options = ("cli", "mate", "config", "project", "experiment")
+
+    def get_full_docs(self, class_value):
+        header = remove_indent(class_value.__doc__)
+        # gets the docstring of the methods and the variables with inspect
+        def get_method_doc(method_name, method):
+            doc = remove_indent(method.__doc__)
+            header = f"### {method_name} \n"
+            return header + doc
+
+        methods = [
+            get_method_doc(method_name, method)
+            for method_name, method in inspect.getmembers(
+                class_value, inspect.isfunction
+            )
+            if not method_name.startswith("_") and method.__doc__ is not None
+        ]
+        nl = "\n"
+        return f"{header}\n\n{remove_indent(nl.join(methods))}"
 
     def print_help(self, what: str = "cli") -> None:
         if what == "cli":
             print_markdown(generate_help_md())
         elif what == "mate":
-            print_markdown(Mate.__doc__)
+            test = self.get_full_docs(Mate)
+            print_markdown(test)
         elif what == "config":
             print_markdown(MateConfig.__doc__)
         elif what == "project":
             print_markdown(MateProject.__doc__)
+        elif what == "experiment":
+            print_markdown(Experiment.__doc__)
         else:
             print_markdown(generate_help_md())
 
@@ -128,11 +154,13 @@ class MateHelp:
         if what == "cli":
             return generate_help_md()
         elif what == "mate":
-            return str(Mate.__doc__)
+            return str(self.get_full_docs(Mate))
         elif what == "config":
             return str(MateConfig.__doc__)
         elif what == "project":
             return str(MateProject.__doc__)
+        elif what == "experiment":
+            return str(Experiment.__doc__)
         else:
             return generate_help_md()
 
@@ -195,7 +223,7 @@ def collect_args(args: list[str], annotations: tuple[Callable]) -> tuple[list, d
 
 
 def main():
-    methods = __get_methods_with_arguments(Mate)
+    methods = __get_methods_with_arguments(MateCli)
     args = sys.argv[1:]
     raw_method_args = args[1:]
     help_args = ("help", "--help", "-h")
@@ -223,7 +251,7 @@ def main():
 
             pos_args, kwargs = collect_args(raw_method_args, annotations)
             if action == "init":
-                Mate.init(*pos_args, **kwargs)
+                MateCli.init(*pos_args, **kwargs)
             else:
-                mate = Mate()
+                mate = MateCli()
                 getattr(mate, action)(*pos_args, **kwargs)
