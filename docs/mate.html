@@ -1,43 +1,78 @@
 <h1 id="mate-runtime">Mate Runtime</h1>
-<p>Class containing all the information about the current run. You
-usually want to import it into your experiment like this:</p>
-<p align="center" style>
-<img src="./imgs/python_de61f1f24fe60afb6f39e39e8a19fa27.svg" style="max-width:550px" alt="Your Image">
+<p>
+  Class containing all the information about the current run. You usually want
+  to import it into your experiment like this:
 </p>
-<p>You can use this to: - Get the current CLI command - Save the run to
-a JSON file - Get the current save directory - Get the current
-checkpoint path</p>
+<p align="center" style>
+  <img
+    src="./imgs/python_de61f1f24fe60afb6f39e39e8a19fa27.svg"
+    style="max-width: 550px"
+    alt="Your Image"
+  />
+</p>
+<p>
+  You can use this to: - Get the current CLI command - Save the run to a JSON
+  file - Get the current save directory - Get the current checkpoint path
+</p>
 <p><strong>Example</strong></p>
 <p align="center" style>
-<img src="./imgs/python_5394662fc05f9041bd2eeb14e6f3316f.svg" style="max-width:550px" alt="Your Image">
+  <img
+    src="./imgs/python_5394662fc05f9041bd2eeb14e6f3316f.svg"
+    style="max-width: 550px"
+    alt="Your Image"
+  />
 </p>
 <hr />
-<h3
-id="mate.resultvalues-dict---none"><code>mate.result(values: dict) -&gt; None</code></h3>
+<h3 id="mate.resultvalues-dict---none">
+  <code>mate.result(values: dict) -&gt; None</code>
+</h3>
 <p>Save the results of the current run.</p>
 <p><strong>Example</strong></p>
 <p align="center" style>
-<img src="./imgs/python_68971974bee6f7c32178807e5e3524c6.svg" style="max-width:550px" alt="Your Image">
+  <img
+    src="./imgs/python_68971974bee6f7c32178807e5e3524c6.svg"
+    style="max-width: 550px"
+    alt="Your Image"
+  />
 </p>
-<p>This is not meant to replace a proper logging framework, but rather
-to provide a simple way to save the results of an experiment. This is
-especially useful when you want to compare multiple experiments (see
-<code>mate.results()</code>).</p>
+<p>
+  This is not meant to replace a proper logging framework, but rather to provide
+  a simple way to save the results of an experiment. This is especially useful
+  when you want to compare multiple experiments (see
+  <code>mate.results()</code>).
+</p>
 <p><strong>Pytorch Lightning Example</strong></p>
-<p>If you want, with pytorch lightning, you can directly pass the
-<code>logged_metrics</code> dictionary to this function.</p>
+<p>
+  If you want, with pytorch lightning, you can directly pass the
+  <code>logged_metrics</code> dictionary to this function.
+</p>
 <p align="center" style>
-<img src="./imgs/python_0eeddeef797fd6a829d422195e2db94d.svg" style="max-width:550px" alt="Your Image">
+  <img
+    src="./imgs/python_0eeddeef797fd6a829d422195e2db94d.svg"
+    style="max-width: 550px"
+    alt="Your Image"
+  />
 </p>
 <hr />
-<h3
-id="mate.results---dictstr-dictstr-float"><code>mate.results() -&gt; dict[str, dict[str, float]]</code></h3>
-<p>Get the results of all experiments. in the form of a dictionary. The
-dictionary is structured as follows:</p>
-<p align="center" style>
-<img src="./imgs/python_b5133ff57f74d897dc3465e4c37ef46b.svg" style="max-width:550px" alt="Your Image">
+<h3 id="mate.results---dictstr-dictstr-float">
+  <code>mate.results() -&gt; dict[str, dict[str, float]]</code>
+</h3>
+<p>
+  Get the results of all experiments. in the form of a dictionary. The
+  dictionary is structured as follows:
 </p>
 <p align="center" style>
-<img src="./imgs/python_cb990227e65fe21658e842f17c77154c.svg" style="max-width:550px" alt="Your Image">
+  <img
+    src="./imgs/python_b5133ff57f74d897dc3465e4c37ef46b.svg"
+    style="max-width: 550px"
+    alt="Your Image"
+  />
+</p>
+<p align="center" style>
+  <img
+    src="./imgs/python_cb990227e65fe21658e842f17c77154c.svg"
+    style="max-width: 550px"
+    alt="Your Image"
+  />
 </p>
 <hr />

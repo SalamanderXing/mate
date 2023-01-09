@@ -6,7 +6,7 @@
   "home": "./",
   "scripts": {
     "dev": "vite",
-    "build": "rm -rf ../docs/* && tsc && vite build --base='https://salamanderxing.github.io/mate/' && mv dist/* ../docs/",
+    "build": "rm -rf ../docs/* && tsc && vite build --base='/mate/' && mv dist/* ../docs/",
     "preview": "vite preview"
   },
   "dependencies": {
