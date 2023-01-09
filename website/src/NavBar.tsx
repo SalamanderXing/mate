@@ -30,13 +30,13 @@ function BasicExample() {
         expand="lg"
         className="sticky-top"
         style={{
-          width: "100vw",
+          width: "100%",
           margin: 0,
           background: "#5f8d4e",
           borderBottom: "1px solid #285430",
         }}
       >
-        <div className="container" style={{ width: "100vw", margin: 0 }}>
+        <div className="container" style={{ margin: 0 }}>
           <Navbar.Brand onClick={unsetExpanded}>Mate</Navbar.Brand>
           <Navbar.Toggle
             ref={navBarToggleRef}
