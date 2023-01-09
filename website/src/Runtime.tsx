@@ -1,7 +1,7 @@
-const html = await (await fetch('/mate.html')).text()
-console.log(html)
+const html = await (await fetch("/mate.html")).text();
+console.log(html);
 function Home() {
-  return <div dangerouslySetInnerHTML={{ __html: html }} />
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
 export default Home;

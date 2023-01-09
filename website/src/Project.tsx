@@ -1,7 +1,6 @@
-const html = await (await fetch('/project.html')).text()
-console.log(html)
+const html = await (await fetch("/project.html")).text();
 function Home() {
-  return <div dangerouslySetInnerHTML={{ __html: html }} />
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
 export default Home;
