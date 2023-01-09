@@ -4,6 +4,7 @@ from .module import Module
 from .modules_dict import ModulesDict
 from .experiments_module import ExperimentsModule
 from .python import Python
+from typing import Optional
 import shutil
 
 
@@ -65,7 +66,7 @@ class MateProject(Module):
     And this is how the `mate summary` command displays it:
 
     <p align="center" style="margin:0; padding:0;">
-      <img src="./imgs/summary.svg" alt="Your Image" style="max-width:90%">
+      <img src="./imgs/summary.svg" alt="Your Image" style="max-width:500px">
     </p>
 
     To a mate project, the following rules apply:
@@ -89,6 +90,12 @@ class MateProject(Module):
         self.data_loaders = ModulesDict(os.path.join(root_dir, "data_loaders"), python)
         self.trainers = ModulesDict(
             os.path.join(root_dir, "trainers"), python, optional=True
+        )
+        self.analyses = ExperimentsModule(
+            tuple(self.__dict__.keys()),
+            os.path.join(root_dir, "analyses"),
+            python,
+            optional=True,
         )
         self.experiments = ExperimentsModule(
             tuple(self.__dict__.keys()), os.path.join(root_dir, "experiments"), python
@@ -114,7 +121,7 @@ class MateProject(Module):
             "project": {
                 k: v.to_dict()
                 for k, v in self.__dict__.items()
-                if not k.startswith("_")
+                if not k.startswith("_") and v.exists
             },
         }
 
@@ -170,23 +177,32 @@ class MateProject(Module):
         ), f"Path {full_destination_path} already exists. Try with a different name?"
         shutil.move(full_source_path, full_destination_path)
 
-    def create(self, path: str, name: str):
+    def create(self, path: str):
         assert isinstance(path, str)
-        assert isinstance(name, str)
-        assert (
-            name.isidentifier()
-        ), "name must be a valid python identifier. Please use snake_case"
-        full_target_path = os.path.join(
-            self.__root_dir, path.replace(".", os.sep), name.replace(".", os.sep)
+        name: Optional[str] = None
+        if "." in path:
+            assert (
+                len(path.split(".")) == 2
+            ), "path must be a valid python path (e.g. models.resnet) and have maximum depth of 2"
+            path, name = path.split(".")
+            assert (
+                name.isidentifier()
+            ), "name must be a valid python identifier. Please use snake_case"
+        full_target_path = (
+            os.path.join(self.__root_dir, path, name)
+            if name
+            else os.path.join(self.__root_dir, path)
         )
         assert not os.path.exists(
             full_target_path
         ), f"Path {full_target_path} already exists. Try with a different name?"
-        if not path == "experiments":
-            os.system(f"mkdir -p {full_target_path}")
-            os.system(f"touch {full_target_path}/__init__.py")
+        if not isinstance(self.__dict__[path], ExperimentsModule) or name is None:
+            os.makedirs(full_target_path)
+            with open(os.path.join(full_target_path, "__init__.py"), "w") as f:
+                f.write("")
         else:
-            os.system(f"touch {full_target_path}.py")
+            with open(os.path.join(f"{full_target_path}.py"), "w") as f:
+                f.write("")
 
     def __str__(self):
         dict_str = set(tuple(k for k in self.__dict__.keys() if not k.startswith("_")))
@@ -205,3 +221,6 @@ class MateProject(Module):
             return self.__dict__[cur]
         else:
             return self.__dict__[cur][".".join(rest)]
+
+    def __contains__(self, key:str):
+        return key in self.__dict__

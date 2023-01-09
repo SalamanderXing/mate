@@ -183,16 +183,10 @@ class Experiment:
         }
 
     def show(self):
-        header = f"""
-        # {self.name}
-
-        ---
-
-        """
-
         with open(self.experiment_path, "r") as f:
             raw = f.read()
-        return str(ast.get_docstring(ast.parse(raw)))
+        docstring = ast.get_docstring(ast.parse(raw))
+        return str(docstring if docstring else "No docstring")
 
     def __init__(self, allowed_modules: tuple[str], experiment_path: str):
         """Check if the experiment is valid"""

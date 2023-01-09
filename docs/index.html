@@ -1,80 +1,42 @@
-
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-        crossorigin="anonymous"
-    >
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🧉Mate</title>
     <style>
-    html, body{
-        background:#285430;
-        color:black;
-    }
-    code{
-        color:#32CD32;
-    }
-    h1 {
-        font-size: 2.5rem;
-    }
-    div.container {
-        background:#5f8d4e;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin-top: 1rem;
-    }
-    nav {
-        background: #5f8d4e;
-    }
+      canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+      }
+      #root {
+        position: absolute;
+        z-index: 0;
+        left: 0px;
+        top: 0px;
+      }
     </style>
-    <nav
-  class="navbar navbar-expand-lg navbar-light"
-  style="background: #5f8d4e; padding: 10px"
->
-  <a class="navbar-brand" href="./index.html">🧉 Docs</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link active" href="./project.html">Mate Project</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link active" href="./cli.html">Mate CLI</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link active" href="./mate.html">Runtime</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link active" href="./config.html">Configuration</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link active" href="./tutorials.html">Tutorials</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<div class="container" style="max-width: 1000px">
-  <h1 id="mate-documentation">Mate 🧉 Documentation</h1>
-  <p>Welcome to the mate documentation!</p>
-  <ul>
-    <li><a href="./cli.html">Mate Cli</a></li>
-    <li><a href="./project.html">How to structure a mate project</a></li>
-    <li><a href="./mate.html">The Mate Runtime</a></li>
-    <li><a href="./config.html">Configuring a mate project</a></li>
-    <li><a href="./tutorials.html">Tutorials</a></li>
-  </ul>
-</div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script type="module" crossorigin src="/assets/index-1fa4bb2e.js"></script>
+    <link rel="stylesheet" href="/assets/index-66726ef9.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <canvas id="particle-canvas" style="width: 100vw; height: 100vh"></canvas>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    
+    <script>
+      const setStuff = () => {
+        Array.from(document.getElementsByTagName("code")).forEach((code) => {
+          code.style.backgroundColor = "#90EE90";
+          code.style.color = "green";
+          code.style.borderRadius = "2px";
+          code.style.padding = "1px";
+        });
+        window.requestAnimationFrame(setStuff);
+      };
+      window.requestAnimationFrame(setStuff);
+    </script>
+  </body>
+</html>

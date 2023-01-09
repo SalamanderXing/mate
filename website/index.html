@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🧉Mate</title>
+    <style>
+      canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+      }
+      #root {
+        position: absolute;
+        z-index: 0;
+        left: 0px;
+        top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <canvas id="particle-canvas" style="width: 100vw; height: 100vh"></canvas>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      const setStuff = () => {
+        Array.from(document.getElementsByTagName("code")).forEach((code) => {
+          code.style.backgroundColor = "#90EE90";
+          code.style.color = "green";
+          code.style.borderRadius = "2px";
+          code.style.padding = "1px";
+        });
+        window.requestAnimationFrame(setStuff);
+      };
+      window.requestAnimationFrame(setStuff);
+    </script>
+  </body>
+</html>

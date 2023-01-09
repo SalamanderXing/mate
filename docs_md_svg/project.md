@@ -22,13 +22,13 @@ The file structure of a mate project is just a collection of nested python modul
 Typically, a file structure will look something like this:
 
 <p align="center" style="">
-    <img src="./imgs/None_b615eff207c7f42c2cc4f6d07ddfe126.svg" style="max-width:90%" alt="Your Image">
+    <img src="./imgs/None_b615eff207c7f42c2cc4f6d07ddfe126.svg" style="max-width:550px" alt="Your Image">
 </p>
 
 And this is how the `mate summary` command displays it:
 
 <p align="center" style="margin:0; padding:0;">
-  <img src="./imgs/summary.svg" alt="Your Image" style="max-width:90%">
+  <img src="./imgs/summary.svg" alt="Your Image" style="max-width:500px">
 </p>
 
 To a mate project, the following rules apply:

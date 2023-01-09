@@ -13,13 +13,13 @@ You should only import from the root of a module.
 
 For example, this is not a valid import:
 <p align="center" style="">
-    <img src="./imgs/python_781fb6a012170781ee7755615a617313.svg" style="max-width:90%" alt="Your Image">
+    <img src="./imgs/python_781fb6a012170781ee7755615a617313.svg" style="max-width:550px" alt="Your Image">
 </p>
 
 And this is instead valid:
 
 <p align="center" style="">
-    <img src="./imgs/python_d80cc51c2ccb5bf9ede99aeb7ce63170.svg" style="max-width:90%" alt="Your Image">
+    <img src="./imgs/python_d80cc51c2ccb5bf9ede99aeb7ce63170.svg" style="max-width:550px" alt="Your Image">
 </p>
 
 ### Why these rules?
@@ -33,7 +33,7 @@ If you're tempted to write functions or loops, maybe you should create a new mod
 In your experiment, you usually want to import the `mate` module, like so:
 
 <p align="center" style="">
-    <img src="./imgs/None_c9495276ed784543b08b104ee0fb2510.svg" style="max-width:90%" alt="Your Image">
+    <img src="./imgs/None_c9495276ed784543b08b104ee0fb2510.svg" style="max-width:550px" alt="Your Image">
 </p>
 
 This module contains variables and functions that are useful to run your experiment. For example, the `mate.command` contains the command sent to the experiment (usually `train` or `test`). And `mate.result(...)` allows you to save results of your experiments. Check out [its doc page](./mate.md).
@@ -46,5 +46,5 @@ Below you can find an example of a valid mate experiment:
 
 
 <p align="center" style="">
-    <img src="./imgs/python_627c3ebbc65dc6ed3d9a69dd6eca558a.svg" style="max-width:90%" alt="Your Image">
+    <img src="./imgs/python_627c3ebbc65dc6ed3d9a69dd6eca558a.svg" style="max-width:550px" alt="Your Image">
 </p>

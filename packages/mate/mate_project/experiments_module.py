@@ -5,8 +5,10 @@ from .python import Python
 
 
 class ExperimentsModule(Module, dict):
-    def __init__(self, allowed_modules: tuple[str], root_dir: str, python: Python):
-        super().__init__(root_dir, python)
+    def __init__(
+        self, allowed_modules: tuple[str], root_dir: str, python: Python, optional=False
+    ):
+        super().__init__(root_dir, python, optional)
         exps = self.__list_experiments()
         for path in exps:
             # local_path = ".".join(name[:-3].split(os.sep)[-3:])
@@ -16,6 +18,8 @@ class ExperimentsModule(Module, dict):
             # check_experiment(name)
 
     def __list_experiments(self):
+        if not os.path.exists(self.root_dir):
+            return []
         assert all(
             os.path.isfile(os.path.join(self.root_dir, name))
             for name in os.listdir(self.root_dir)

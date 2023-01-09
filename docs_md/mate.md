@@ -25,7 +25,10 @@ elif mate.command == "test":
 ```
 
 
-### result 
+ --- 
+
+
+### `mate.result(values: dict) -> None`
 
 Save the results of the current run.
 
@@ -60,7 +63,9 @@ if mate.is_train:
 
 
 
-### results 
+ --- 
+
+### `mate.results() -> dict[str, dict[str, float]]`
 
 Get the results of all experiments. in the form of a dictionary.
 The dictionary is structured as follows:
@@ -82,3 +87,5 @@ results = mate.results()
 # do your analyses and plotting
 
 ```
+
+ --- 

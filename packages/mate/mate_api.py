@@ -1,10 +1,12 @@
 import os
 import sys
 import json
+import ipdb
 import glob
+from typing import Optional
 from .utils import print_markdown, print, rmwithin
 from .mate_config import MateConfig
-from .mate import Mate 
+from .mate import Mate
 from .git_manager import GitManager
 
 # from .data.package_repository import PackageRepository
@@ -13,7 +15,7 @@ from rich.text import Text
 from rich.table import Table
 from . import io
 import os
-from .mate_project import MateProject, colors, Python
+from .mate_project import MateProject, colors, Python, Experiment
 from glob import glob
 import shutil
 
@@ -65,6 +67,10 @@ class MateAPI:
                     f.write(value)
 
     def __setup(self, root: str):
+        os.makedirs(
+            os.path.join(self.config.results_folder, "experiments"), exist_ok=True
+        )
+        os.makedirs(os.path.join(self.config.results_folder, "analyses"), exist_ok=True)
         get_top_level_cmd = "git rev-parse --show-toplevel"
         # gets the ouptut of the command
         top_level = os.popen(get_top_level_cmd).read().strip()
@@ -146,7 +152,7 @@ class MateAPI:
         pass
 
     def pip(self, *commands: str):
-        self.python.pip(" ".join(command))
+        self.python.pip(" ".join(commands))
 
     def to_tree(self) -> Tree:
         vals = self.project.to_dict()["project"]
@@ -184,15 +190,35 @@ class MateAPI:
     def show(self, path: str):
         node = self.project[path]
         # tree = node.to_tree()
-
-        # os.system(f"echo '{remove_indent(node.show())}' | glow -")
-
-        # print(tree)
         print_markdown(node.show())
+
+    def inspect(self, path: str):
+        node = self.project[path]
         if len(node.errors) > 0:
             print(f"[{colors.error} bold]ERRORS:[/{colors.error} bold]")
             for e in node.errors:
-                print(f"    [{colors.error}]❌[/{colors.error}][yellow]{e}[/yellow]")
+                print(f" [{colors.error}]❌[/{colors.error}] [yellow]{e}[/yellow]")
+
+        if isinstance(node, Experiment):
+            if len(node.imports) > 0:
+                tree = Tree(f"[pink bold]{node.name}[/pink bold]")
+                for k, v in node.imports_dict.items():
+                    sub = tree.add(k)
+                    for name, val in v.items():
+                        sub.add(f"{name} : {','.join([i.names[0].name for i in val])}")
+                print(tree)
+
+            print(f"[green bold]RESULTS:[/green bold]")
+            results = self.__get_results_dict()
+            if node.name in results:
+                result = results[node.name]
+                for k, v in result.items():
+                    if k != "experiment":
+                        print(f" - {k}: {round(v, 3)}")
+        elif len(node.exports) > 0:
+            print(f"[green bold]EXPORTS:[/green bold]")
+            for export in node.exports.values():
+                print(" - ", export.names[0].name)
 
     def export(self, source: str):
         assert isinstance(source, str), "Source must be a string"
@@ -222,7 +248,7 @@ class MateAPI:
 
         results_folders = [
             folder
-            for folder in glob.glob(os.path.join(self.config.results_folder, "*"))
+            for folder in glob(os.path.join(self.config.results_folder, "*"))
             if os.path.isdir(folder)
         ]
         all_results = []
@@ -230,7 +256,7 @@ class MateAPI:
             experiment_name = folder.split(os.sep)[-1]
             if experiment_name in self.project["experiments"]:
                 experiment = self.project["experiments"][experiment_name]
-                results = glob.glob(os.path.join(folder, "result.json"))
+                results = glob(os.path.join(folder, "result.json"))
                 if len(results) > 0:
                     with open(results[0], "r") as f:
                         written_results = {
@@ -278,19 +304,40 @@ class MateAPI:
         installed_location = git.clone(os.path.join(self.mate_dir, "tmp"))
         self.python.install_module_requirements(installed_location)
 
-    def create(self, path: str, name: str):
-        self.project.create(path, name)
+    def create(self, path: str):
+        self.project.create(path)
 
-    def run(self, experiment_name: str, command: str):
-        assert (
-            experiment_name in self.project.experiments
-        ), f"Experiment:{experiment_name} not found"
-        save_dir = os.path.join(self.config.results_folder, experiment_name)
-        checkpoint_path = os.path.join(save_dir, "checkpoints")
+    """
+    def check_for_errors(self, experiment:Experiment):
+        ## checks not only for errors in the experiment, but also in the modules it imports
+        errors = []
+        for module in experiment.imports:
+            errors += self.check_for_errors(self.project["modules"][module])
+        errors += experiment.errors
+        return errors
+    """
+
+    def run(self, target: str, command: Optional[str]):
+        if "." in target:
+            path, name = target.split(".")
+            assert not (path == "analyses" and command is not None), (
+                "Analyses do not have commands, "
+                "you can only run them with the 'mate run' command"
+            )
+        else:
+            path = "experiments"  # by default runs experiments
+            name = target
+        assert path in self.project, f"Path '{path}' does not exist"
+        assert name in self.project[path], f"Name {path}.{name} does not exist"
+        save_dir = os.path.join(self.config.results_folder, path, name)
+        checkpoint_path = os.path.join(
+            self.config.results_folder, "experiments", "checkpoints"
+        )
+
         if not os.path.exists(checkpoint_path):
             os.makedirs(checkpoint_path)
         runtime = Mate(
-            command=command,
+            command=command if command is not None else "",
             save_dir=save_dir,
             checkpoint_path=checkpoint_path,
         )
@@ -298,9 +345,14 @@ class MateAPI:
         if self.config.verbose:
             print(runtime)
         # self.python("-m {self.project.experiments[experiment_name].module_path}")
-        exp_path = self.project.experiments[experiment_name].module_path
-        self.python(f"-m {exp_path}")
-        print(f"  ✅ [green]Experiment {experiment_name} finished[/green]")
+        exp_path = self.project[f"{path}.{name}"].module_path
+        exit_code = self.python(f"-m {exp_path}")
+        if exit_code != 0:
+            print(
+                f" [red]❌ Experiment {path}.{name} failed with exit code {exit_code} [/red]"
+            )
+        else:
+            print(f"  ✅ [green]Experiment {target} finished[/green]")
 
     def clone(self, source: str, destination: str):
         self.project.clone(source, destination)

@@ -17,27 +17,22 @@ class Module:
         optional=False,
     ):
         assert isinstance(root_dir, str)
-        self._python = python
-        self.__root_dir = root_dir
         self.__name = os.path.basename(root_dir)
+        self.__root_dir = root_dir
+        self._python = python
+        self.__check_validity(optional)
         # checks that the name is python-friendly
         self.__doc = self.__get_docs()
         self.__errors = []
-        assert (
-            self.__name.isidentifier()
-        ), f"Module name {self.__name} is not a valid python identifier. Please rename the module folder to something python friendly (no spaces, '-' or strange characters)"
-        if os.path.exists(root_dir):
-            assert os.path.isdir(root_dir), "root_dir must be a directory"
-            assert os.path.isfile(
-                os.path.join(root_dir, "__init__.py")
-            ), f"{self.relative_path()} must be a python module.\n You should add an __init__.py and import the functions/classes you want to export from there."
-        else:
-            assert optional, f"root_dir {root_dir} does not exist"
 
-        self._hash = dirhash(
-            root_dir,
-            "sha1",
-            ignore=["__pycache__", "README.md", "requirements.txt", ".matemodule"],
+        self._hash = (
+            dirhash(
+                root_dir,
+                "sha1",
+                ignore=["__pycache__", "README.md", "requirements.txt", ".matemodule"],
+            )
+            if os.path.exists(self.root_dir)
+            else ""
         )
         self.__mate_dir = os.path.join(root_dir, ".matemodule")
         self._exports = self.__collect_exports()
@@ -70,6 +65,8 @@ class Module:
                     json.dump({"hash": self._hash, "installed": True}, f, indent=2)
 
     def __get_docs(self):
+        if not os.path.exists(self.root_dir):
+            return ""
         md_path = os.path.join(self.__root_dir, "README.md")
         if os.path.exists(md_path):
             with open(md_path, "r") as f:
@@ -91,6 +88,18 @@ class Module:
                 leafs.extend(child.children())
         return tuple(leafs)
 
+    def __check_validity(self, optional: bool):
+        assert (
+            self.name.isidentifier()
+        ), f"Module name {self.name} is not a valid python identifier. Please rename the module folder to something python friendly (no spaces, '-' or strange characters)"
+        if os.path.exists(self.root_dir):
+            assert os.path.isdir(self.root_dir), "root_dir must be a directory"
+            assert os.path.isfile(
+                os.path.join(self.root_dir, "__init__.py")
+            ), f"{self.relative_path()} must be a python module.\n You should add an __init__.py and import the functions/classes you want to export from there."
+        else:
+            assert optional, f"root_dir {self.root_dir} does not exist"
+
     @property
     def errors(self):
         return self.__errors
@@ -109,6 +118,8 @@ class Module:
 
     @property
     def dependencies(self):
+        if not os.path.exists(self.root_dir):
+            return []
         res = ""
         dep_path = os.path.join(self.__root_dir, "requirements.txt")
         if os.path.exists(dep_path):
@@ -118,7 +129,13 @@ class Module:
             a.split("==") if "==" in a else a for a in res.split("\n") if len(a) > 0
         ]
 
+    @property
+    def exists(self):
+        return os.path.exists(self.root_dir)
+
     def __collect_exports(self) -> dict:
+        if not os.path.exists(self.root_dir):
+            return {}
         with open(os.path.join(self.__root_dir, "__init__.py"), "r") as f:
             tree = ast.parse(f.read())
         exports = {}

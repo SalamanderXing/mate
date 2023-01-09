@@ -1,6 +1,7 @@
 import json
 import os
 import inspect
+from glob import glob
 
 
 class Mate:
@@ -30,11 +31,12 @@ class Mate:
         # do testing
     ```
     """
-        
+
     @staticmethod
     def load():
         get_top_level_cmd = "git rev-parse --show-toplevel"
         top_level = os.popen(get_top_level_cmd).read().strip()
+        full_stack = list([o.filename for o in inspect.stack()])
         stack = [al.filename for al in inspect.stack()][-3].split(os.sep)
         if len(stack) > 1:
             cur = stack[-3]
@@ -43,9 +45,17 @@ class Mate:
                 with open(runtime_filename, "r") as f:
                     runtime = json.load(f)
             else:
-                runtime = {"command": "", "save_dir": "", "checkpoint_path": ""}
+                runtime = {
+                    "command": "",
+                    "save_dir": "",
+                    "checkpoint_path": "",
+                }
         else:
-            runtime = {"command": "", "save_dir": "", "checkpoint_path": ""}
+            runtime = {
+                "command": "",
+                "save_dir": "",
+                "checkpoint_path": "",
+            }
         return Mate(**runtime)
 
     def save(self, location: str):
@@ -53,11 +63,12 @@ class Mate:
             json.dump(self.to_dict(), f)
 
     def to_dict(self):
-        return {
+        result = {
             key: value
             for key, value in self.__dict__.items()
             if not key.startswith("_")
         }
+        return result
 
     def __repr__(self):
         return str(self.to_dict())
@@ -112,6 +123,7 @@ class Mate:
             k: (v if isinstance(v, (int, float)) else v.item())
             for k, v in values.items()
         }
+        os.makedirs(self.save_dir, exist_ok=True)
         result_path = os.path.join(self.save_dir, "result.json")
         result = {}
         if os.path.exists(result_path):
@@ -144,7 +156,18 @@ class Mate:
 
         ```
         """
-        pass
+        results_files = [
+            (os.path.basename(folder), os.path.join(folder, "result.json"))
+            for folder in glob(os.path.join(self.__results_folder, "experiments", "*"))
+            if os.path.isdir(folder)
+            and os.path.exists(os.path.join(folder, "result.json"))
+        ]
+        results = {}
+        for exp_name, result_path in results_files:
+            with open(result_path, "r") as f:
+                result = json.load(f)
+            results[exp_name] = result
+        return results
 
     def __init__(
         self,
@@ -152,7 +175,8 @@ class Mate:
         save_dir: str,
         checkpoint_path: str,
     ):
+        self.__results_folder = os.sep.join(save_dir.split(os.sep)[:-2])
         self.command: str = command
         self.checkpoint_path: str = ""
         self.save_dir = save_dir
-        self.checkpoint_path = os.path.join(checkpoint_path, "checkpoint.ckpt")
+        self.checkpoint_path = checkpoint_path

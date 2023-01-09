@@ -1,4 +1,5 @@
 
+
 # Configuring a Mate Project
 
 `mate.json` is the main configuration file for a Mate project. It defines where the root of a mate project is. The format is JSON.

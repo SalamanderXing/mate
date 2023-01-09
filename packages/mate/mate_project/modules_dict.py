@@ -39,7 +39,7 @@ class ModulesDict(Module, dict):
                 with open(os.path.join(root_dir, "__init__.py"), "w") as f:
                     f.write("")
                 print(f"Created {root_dir}")
-        super().__init__(root_dir, python)
+        super().__init__(root_dir, python, optional)
 
     def to_dict(self):
         return {k: v.to_dict() for k, v in self.items()}

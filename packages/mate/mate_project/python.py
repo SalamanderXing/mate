@@ -98,7 +98,27 @@ class Python:
         return self.cfg["version"].split()[0]
 
     def __call__(self, command: str):
-        os.system(f"{self.python_path} {command}")
+        # os.system(f"{self.python_path} {command}")
+        # executes the above command but as a subprocess, checks for errors. It does not return anything
+        # it has to also print output in real time. It has to also return the exit code
+        # The ouptut is not collected, it is printed in real time
+
+        process = subprocess.Popen(
+            f"{self.python_path} {command}",
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+        )
+        while True:
+            if process.stdout:
+                line = process.stdout.readline()
+            else:
+                line = None
+            if not line:
+                break
+            print(line.decode("utf-8").strip())
+        process.wait()
+        return process.returncode
 
     def pipreqs(self, path: str):
         os.system(f"{self.pipreqs_path} --force {path}")

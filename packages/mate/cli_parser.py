@@ -15,7 +15,7 @@ mate init my_project venv=false
 from .mate_config import MateConfig
 from .mate_project import MateProject, Experiment
 from .utils import print_markdown, remove_indent
-from .mate_cli import MateCli
+from .mate_cli import MateCLI
 from .mate import Mate
 import inspect
 from typing import Optional, Callable, Sized
@@ -44,12 +44,12 @@ def __get_methods_with_arguments(class_name):
 
 def method_to_md(method_name, member: Optional[Callable] = None):
     if member is None:
-        member = getattr(MateCli, method_name)
+        member = getattr(MateCLI, method_name)
     assert member is not None
     params = inspect.signature(member).parameters.values()
     inline_params = " ".join(
         [
-            f"<{('Optional[' + param.name + ']' if (param.default != inspect._empty) else param.name)}>"
+            f"<{param.name}{('=' + str(param.default)) if (param.default != inspect._empty) else ''}>"
             for param in params
             if param.name != "self"
         ]
@@ -67,45 +67,46 @@ def method_to_md(method_name, member: Optional[Callable] = None):
         if param.name != "self"
     ]
     list_params = "\n".join(raw_list_params)
-    method_description = (
-        "\n".join(
-            [
-                line
-                for line in str(member.__doc__).split("\n")
-                if not line.strip().startswith(":param")
-            ]
-        )
+    method_description = "\n".join(
+        [
+            line
+            for line in str(member.__doc__).split("\n")
+            if not line.strip().startswith(":param")
+        ]
     )
-    code = f"""
+
+    code = remove_indent(
+        f"""
     ```
-      [bold green]>>[/bold green] mate {method_name} {inline_params}
+      ❯ mate {method_name} {inline_params}
     ```
-    """.strip()
+    """
+    ).strip()
     doc = remove_indent(
         f"""
-    {code}
+{code}
 
-    **Params**
+**Params**
 
-    {list_params.strip()}
+{list_params.strip()}
 
-    {method_description}
-    ---
-    """
+{remove_indent(method_description)}
+
+---
+"""
     )
-    # if len(raw_list_params) > 0:
-    #     ipdb.set_trace()
-    return doc
+
+    return remove_indent(doc)
 
 
 def generate_help_md() -> str:
 
-    doc = remove_indent(str(MateCli.__doc__)) + "\n --- \n"
+    doc = remove_indent(str(MateCLI.__doc__)) + "\n --- \n"
     current_docstring = str(sys.modules[__name__].__doc__)
     doc += current_docstring + "\n --- \n"
     members = [
         (k, v)
-        for (k, v) in inspect.getmembers(MateCli, predicate=inspect.isfunction)
+        for (k, v) in inspect.getmembers(MateCLI, predicate=inspect.isfunction)
         if not k.startswith("_")
     ]
     for name, val in members:
@@ -117,13 +118,31 @@ class MateHelp:
     def __init__(self):
         self.help_options = ("cli", "mate", "config", "project", "experiment")
 
+    def get_index(self):
+        nl = "\n"
+        return remove_indent(
+            f"""
+        # Help Index
+        Type `mate help <option>` to get more information about a topic.
+
+        Available options are:
+
+        {'- ' + (nl + ' - ').join(self.help_options)}
+        """
+        )
+
     def get_full_docs(self, class_value):
-        header = remove_indent(class_value.__doc__)
+        header = remove_indent(class_value.__doc__) + "\n\n --- \n"
         # gets the docstring of the methods and the variables with inspect
         def get_method_doc(method_name, method):
             doc = remove_indent(method.__doc__)
-            header = f"### {method_name} \n"
-            return header + doc
+            signature = inspect.signature(method)
+            args = list(signature.parameters.values())
+            is_static = args[0].name != "self"
+            args = [arg for arg in args if arg.name != "self"]
+            annotations = ", ".join([str(a) for a in list(args)])
+            header = f"### `{class_value.__name__ if is_static else class_value.__name__.lower()}.{method_name}({annotations}) -> {signature.return_annotation if signature.return_annotation != inspect._empty else None}`\n"
+            return header + doc + "\n --- \n"
 
         methods = [
             get_method_doc(method_name, method)
@@ -135,8 +154,9 @@ class MateHelp:
         nl = "\n"
         return f"{header}\n\n{remove_indent(nl.join(methods))}"
 
-    def print_help(self, what: str = "cli") -> None:
+    def print_help(self, what: str = "") -> None:
         if what == "cli":
+            print(generate_help_md())
             print_markdown(generate_help_md())
         elif what == "mate":
             test = self.get_full_docs(Mate)
@@ -148,7 +168,8 @@ class MateHelp:
         elif what == "experiment":
             print_markdown(Experiment.__doc__)
         else:
-            print_markdown(generate_help_md())
+            # print_markdown(generate_help_md())
+            print_markdown(self.get_index())
 
     def get_help_md(self, what: str = "cli") -> str:
         if what == "cli":
@@ -203,16 +224,22 @@ def collect_args(args: list[str], annotations: tuple[Callable]) -> tuple[list, d
 
     if len(annotations) < len(args):
         annotations = annotations + (good_guess_type,) * (len(args) - len(annotations))
+    from typing import Union
+
     for i, (arg, annotation) in enumerate(zip(args, annotations)):
         if annotation == bool:
             annotation = boolean_type
         elif annotation == inspect._empty:
             annotation = good_guess_type
+        elif hasattr(annotation, "__args__"):
+            annotation = annotation.__args__
         if "=" in arg:
             key, value = arg.split("=")
             kwargs[key] = annotation(value)
             positional_args_started = True
         else:
+            if isinstance(annotation, tuple):
+                annotation = annotation[0]
             positional_args.append(annotation(arg))
             if positional_args_started:
                 raise ValueError(
@@ -223,7 +250,7 @@ def collect_args(args: list[str], annotations: tuple[Callable]) -> tuple[list, d
 
 
 def main():
-    methods = __get_methods_with_arguments(MateCli)
+    methods = __get_methods_with_arguments(MateCLI)
     args = sys.argv[1:]
     raw_method_args = args[1:]
     help_args = ("help", "--help", "-h")
@@ -251,7 +278,7 @@ def main():
 
             pos_args, kwargs = collect_args(raw_method_args, annotations)
             if action == "init":
-                MateCli.init(*pos_args, **kwargs)
+                MateCLI.init(*pos_args, **kwargs)
             else:
-                mate = MateCli()
+                mate = MateCLI()
                 getattr(mate, action)(*pos_args, **kwargs)

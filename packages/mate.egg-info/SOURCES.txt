@@ -7,7 +7,6 @@ setup.py
 packages/mate/__init__.py
 packages/mate/__main__.py
 packages/mate/cli_parser.py
-packages/mate/constants.py
 packages/mate/generate_docs.py
 packages/mate/git_manager.py
 packages/mate/io.py
@@ -15,7 +14,6 @@ packages/mate/mate.py
 packages/mate/mate_api.py
 packages/mate/mate_cli.py
 packages/mate/mate_config.py
-packages/mate/mate_runtime.py
 packages/mate.egg-info/PKG-INFO
 packages/mate.egg-info/SOURCES.txt
 packages/mate.egg-info/dependency_links.txt

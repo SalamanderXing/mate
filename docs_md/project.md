@@ -55,7 +55,7 @@ Typically, a file structure will look something like this:
 And this is how the `mate summary` command displays it:
 
 <p align="center" style="margin:0; padding:0;">
-  <img src="./imgs/summary.svg" alt="Your Image" style="max-width:90%">
+  <img src="./imgs/summary.svg" alt="Your Image" style="max-width:500px">
 </p>
 
 To a mate project, the following rules apply:
