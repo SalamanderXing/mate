@@ -29,6 +29,7 @@ Developed in collaboration of Universiteit von Amstedam.
 <p align="center" style="">
     <img src="./imgs/bash_8b3d5a8def640d1dc9b67d83aff7397e.svg" style="max-width:550px" alt="Your Image">
 </p>
+
 ---
 
 ## Example Projects
