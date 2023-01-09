@@ -108,6 +108,8 @@ def generate_docs():
     os.system("cp ../docs_md_svg/imgs/* ../docs_html/imgs/")
     # adds the div with the class container to all the html files, not in the body but at the beginning and end of each file
     os.system("cp -r ../docs_html/* ../website/public/")
+    os.system('cp ../docs_md_svg/imgs/* ../imgs/')
+    os.system('cp ../docs_md_svg/index.md ../README.md')
 
 
 if __name__ == "__main__":
