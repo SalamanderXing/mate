@@ -1,67 +1,89 @@
 <h1 id="mate-project">Mate Project</h1>
-<p>The root of a mate project is where you can find the
-<code>mate.json</code>. Mate will generate this file for you when you do
-<code>mate init</code>.</p>
-<p>Mate leverages on modularity. This means that you should organize
-your project as a set of <em>independent</em> modules. Independent means
-that your modules cannot import each other. This is a good thing because
-it allows you to reuse your modules in other projects. For example, you
-can use the same data loader in a different project. This is also a good
-thing because it allows you to easily test your modules. You can test
-your data loader without having to test your model or your trainer.</p>
-<p>A python module can <em>export</em> objects (such as classes or
-functions) by adding them to the <code>__init__.py</code> file at the
-root of your module. Notice that you don’t have to do this manually, you
-can do <code>mate export model.my_model.file_name.ClassName</code> for
-example (see the <a href="./cli.md">CLI docs</a>)</p>
+<p>
+  The root of a mate project is where you can find the <code>mate.json</code>.
+  Mate will generate this file for you when you do <code>mate init</code>.
+</p>
+<p>
+  Mate leverages on modularity. This means that you should organize your project
+  as a set of <em>independent</em> modules. Independent means that your modules
+  cannot import each other. This is a good thing because it allows you to reuse
+  your modules in other projects. For example, you can use the same data loader
+  in a different project. This is also a good thing because it allows you to
+  easily test your modules. You can test your data loader without having to test
+  your model or your trainer.
+</p>
+<p>
+  A python module can <em>export</em> objects (such as classes or functions) by
+  adding them to the <code>__init__.py</code> file at the root of your module.
+  Notice that you don’t have to do this manually, you can do
+  <code>mate export model.my_model.file_name.ClassName</code> for example (see
+  the <a href="./cli.md">CLI docs</a>)
+</p>
 <p>Each module can belong to one of the following categories:</p>
 <ul>
-<li><strong>models</strong>: contains the models of your project. If,
-for example your working with pytorch, each model should be a subclass
-of <code>torch.nn.Module</code>.</li>
-<li><strong>data_loaders</strong>: contains the data loaders of your
-project. If, for example your working with pytorch, each data loader
-should be a subclass of <code>torch.utils.data.Dataset</code>. But mate
-doesn’t check this, so if you want you can also export functions or
-something else</li>
-<li><strong>trainers</strong>: modules in here should contain the
-training logic/loop.</li>
-<li><strong>experiments</strong>: contains the experiments of your
-project. Each experiment is a python file in charge of running the
-experiments. See the <a href="./experiments.md">experiments docs</a> for
-more info.</li>
+  <li>
+    <strong>models</strong>: contains the models of your project. If, for
+    example your working with pytorch, each model should be a subclass of
+    <code>torch.nn.Module</code>.
+  </li>
+  <li>
+    <strong>data_loaders</strong>: contains the data loaders of your project.
+    If, for example your working with pytorch, each data loader should be a
+    subclass of <code>torch.utils.data.Dataset</code>. But mate doesn’t check
+    this, so if you want you can also export functions or something else
+  </li>
+  <li>
+    <strong>trainers</strong>: modules in here should contain the training
+    logic/loop.
+  </li>
+  <li>
+    <strong>experiments</strong>: contains the experiments of your project. Each
+    experiment is a python file in charge of running the experiments. See the
+    <a href="./experiments.md">experiments docs</a> for more info.
+  </li>
 </ul>
-<h2 id="file-structure-of-a-mate-project">File structure of a mate
-project</h2>
-<p>The file structure of a mate project is just a collection of nested
-python modules (a folder is a python module if it contains a
-<code>__init__.py</code> file, which may be empty). When you do a
-<code>mate init</code> you’ll automatically generate a simple mate
-folder structure.</p>
+<h2 id="file-structure-of-a-mate-project">File structure of a mate project</h2>
+<p>
+  The file structure of a mate project is just a collection of nested python
+  modules (a folder is a python module if it contains a
+  <code>__init__.py</code> file, which may be empty). When you do a
+  <code>mate init</code> you’ll automatically generate a simple mate folder
+  structure.
+</p>
 <p>Typically, a file structure will look something like this:</p>
 <p align="center" style>
-<img src="./imgs/None_b615eff207c7f42c2cc4f6d07ddfe126.svg" style="max-width:550px" alt="Your Image">
+  <img
+    src="./imgs/None_b615eff207c7f42c2cc4f6d07ddfe126.svg"
+    style="max-width: 550px"
+    alt="Your Image"
+  />
 </p>
-<p>And this is how the <code>mate summary</code> command displays
-it:</p>
-<p align="center" style="margin:0; padding:0;">
-<img src="./imgs/summary.svg" alt="Your Image" style="max-width:500px">
+<p>And this is how the <code>mate summary</code> command displays it:</p>
+<p align="center" style="margin: 0; padding: 0">
+  <img src="./imgs/summary.svg" alt="Your Image" style="max-width: 500px" />
 </p>
 <p>To a mate project, the following rules apply:</p>
 <ul>
-<li>all the <code>README.md</code> files are optional but, if present,
-will be used by the <code>mate show</code> command to display a module
-(with its submodules).</li>
-<li>In each python module, you may only have the following:</li>
-<li>an<code>__init__.py</code></li>
-<li>a readme</li>
-<li>other submodules No other files/folders are allowed. Inside the leaf
-modules, on the other hand (ex <code>models/ae</code>), everything is
-permitted except for the following rule.</li>
-<li>Each submodule inside a root module (ex <code>models/ae</code>) may
-not import from other submodules in the mate project, i.e., it has to be
-isolated.</li>
-<li>Different rules apply to the experiment’s files (ex
-<code>experiments/ae_cifar.py</code>). See the experiments section
-below.</li>
+  <li>
+    all the <code>README.md</code> files are optional but, if present, will be
+    used by the <code>mate show</code> command to display a module (with its
+    submodules).
+  </li>
+  <li>In each python module, you may only have the following:</li>
+  <li>an<code>__init__.py</code></li>
+  <li>a readme</li>
+  <li>
+    other submodules No other files/folders are allowed. Inside the leaf
+    modules, on the other hand (ex <code>models/ae</code>), everything is
+    permitted except for the following rule.
+  </li>
+  <li>
+    Each submodule inside a root module (ex <code>models/ae</code>) may not
+    import from other submodules in the mate project, i.e., it has to be
+    isolated.
+  </li>
+  <li>
+    Different rules apply to the experiment’s files (ex
+    <code>experiments/ae_cifar.py</code>). See the experiments section below.
+  </li>
 </ul>

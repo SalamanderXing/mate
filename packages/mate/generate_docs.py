@@ -106,10 +106,18 @@ def generate_docs():
     os.system("rm -rf ../docs_html/imgs/*")
     os.system("cp ../docs_md/imgs/* ../docs_md_svg/imgs/")
     os.system("cp ../docs_md_svg/imgs/* ../docs_html/imgs/")
-    # adds the div with the class container to all the html files, not in the body but at the beginning and end of each file
-    os.system("cp -r ../docs_html/* ../website/public/")
-    os.system('cp ../docs_md_svg/imgs/* ../imgs/')
-    os.system('cp ../docs_md_svg/index.md ../README.md')
+    # reads all the html files and merges them into a json
+    merged = {}
+    for file in glob("../docs_html/*.html"):
+        key = os.path.basename(file).split(".")[0]
+        with open(file, "r") as f:
+            merged[key] = f.read()
+    import json
+    with open("../website/src/merged.json", "w") as f:
+        json.dump(merged, f)
+
+    os.system("cp ../docs_md_svg/imgs/* ../imgs/")
+    os.system("cp ../docs_md_svg/index.md ../README.md")
 
 
 if __name__ == "__main__":

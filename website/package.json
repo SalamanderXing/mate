@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "home":"./",
+  "home": "./",
   "scripts": {
     "dev": "vite",
     "build": "rm -rf ../docs/* && tsc && vite build --base='https://salamanderxing.github.io/mate/' && mv dist/* ../docs/",

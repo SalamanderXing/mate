@@ -1,24 +1,32 @@
 <h1 id="configuring-a-mate-project">Configuring a Mate Project</h1>
-<p><code>mate.json</code> is the main configuration file for a Mate
-project. It defines where the root of a mate project is. The format is
-JSON.</p>
+<p>
+  <code>mate.json</code> is the main configuration file for a Mate project. It
+  defines where the root of a mate project is. The format is JSON.
+</p>
 <p><strong>Key-value pairs</strong></p>
 <ul>
-<li>results_folder : <code>str</code> : The folder where all results are
-stored. This is relative to the root <strong>above</strong> the
-project.</li>
-<li>venv : <code>bool</code>=true : Whether to use a virtual
-environment. If <code>True</code> a virtual environment is created in
-the project root. If <code>False</code> no virtual environment is
-created and the same python as the one used to execute mate will be used
-instead.</li>
+  <li>
+    results_folder : <code>str</code> : The folder where all results are stored.
+    This is relative to the root <strong>above</strong> the project.
+  </li>
+  <li>
+    venv : <code>bool</code>=true : Whether to use a virtual environment. If
+    <code>True</code> a virtual environment is created in the project root. If
+    <code>False</code> no virtual environment is created and the same python as
+    the one used to execute mate will be used instead.
+  </li>
 </ul>
 <p><strong>Example</strong>:</p>
 If your <code>mate.json</code> lies in
-<code>/home/user/project_repo/mate_project/mate.json</code> and it looks
-like this:
+<code>/home/user/project_repo/mate_project/mate.json</code> and it looks like
+this:
 <p align="center" style>
-<img src="./imgs/json_92f03bfff01a8870814eedb106c54f10.svg" style="max-width:550px" alt="Your Image">
+  <img
+    src="./imgs/json_92f03bfff01a8870814eedb106c54f10.svg"
+    style="max-width: 550px"
+    alt="Your Image"
+  />
 </p>
-<p>Then the results folder will be
-<code>/home/user/project_repo/results</code></p>
+<p>
+  Then the results folder will be <code>/home/user/project_repo/results</code>
+</p>
