@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "home":"./",
   "scripts": {
     "dev": "vite",
     "build": "rm -rf ../docs/* && tsc && vite build && mv dist/* ../docs/",
