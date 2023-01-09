@@ -31,6 +31,7 @@ git clone https://github.com/SalamanderXing/mate
 cd mate
 pip install -e .
 ```
+
 ---
 
 ## Example Projects
