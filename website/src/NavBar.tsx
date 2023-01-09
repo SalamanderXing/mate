@@ -50,16 +50,16 @@ function BasicExample() {
           >
             <Nav className="me-auto">
               <NavDropdown title="Documentation" id="basic-nav-dropdown">
-                <NavDropdown.Item onClick={unsetExpanded} href="">
+                <NavDropdown.Item onClick={unsetExpanded}>
                   Mate Project
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={unsetExpanded} href="">
+                <NavDropdown.Item onClick={unsetExpanded}>
                   Mate CLI
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={unsetExpanded} href="">
+                <NavDropdown.Item onClick={unsetExpanded}>
                   Mate Runtime
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={unsetExpanded} href="">
+                <NavDropdown.Item onClick={unsetExpanded}>
                   Project Configuration
                 </NavDropdown.Item>
               </NavDropdown>
