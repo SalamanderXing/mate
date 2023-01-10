@@ -6,8 +6,15 @@ html,
 body {
   background: #285430;
   /*color: black;*/
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+a {
+  color: black;
+}
+nav-item {
+  color: black;
 }
 code {
   color: blue;

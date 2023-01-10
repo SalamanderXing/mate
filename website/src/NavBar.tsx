@@ -1,6 +1,7 @@
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import NavItem from "react-bootstrap/NavItem";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import merged from "./merged.json";
@@ -23,7 +24,24 @@ function BasicExample() {
     // @ts-ignore
     setRoute(event.target.innerText);
   };
-
+  const routes = {
+    Mate: <div dangerouslySetInnerHTML={{ __html: merged["index"] }} />,
+    "Mate Project": (
+      <div dangerouslySetInnerHTML={{ __html: merged["project"] }} />
+    ),
+    "Mate CLI": <div dangerouslySetInnerHTML={{ __html: merged["cli"] }} />,
+    "Mate Runtime": (
+      <div dangerouslySetInnerHTML={{ __html: merged["mate"] }} />
+    ),
+    "Project Configuration": (
+      <div dangerouslySetInnerHTML={{ __html: merged["config"] }} />
+    ),
+    Tutorials: (
+      <div dangerouslySetInnerHTML={{ __html: merged["tutorials"] }} />
+    ),
+  } as Record<string,JSX.Element> ;
+  routes['GitHub'] = routes["Mate"]
+  routes["MateHub"] = routes["Mate"]
   return (
     <>
       <Navbar
@@ -34,6 +52,7 @@ function BasicExample() {
           margin: 0,
           background: "#5f8d4e",
           borderBottom: "1px solid #285430",
+          color: "black",
         }}
       >
         <div className="container" style={{ margin: 0 }}>
@@ -47,10 +66,18 @@ function BasicExample() {
           <Navbar.Collapse
             id="basic-navbar-nav"
             className={`${!expanded ? "" : "show"}`}
+            style={{ color: "black" }}
           >
             <Nav className="me-auto">
-              <NavDropdown title="Documentation" id="basic-nav-dropdown">
-                <NavDropdown.Item onClick={unsetExpanded}>
+              <NavDropdown
+                style={{ color: "black" }}
+                title="Documentation"
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item
+                  style={{ color: "black" }}
+                  onClick={unsetExpanded}
+                >
                   Mate Project
                 </NavDropdown.Item>
                 <NavDropdown.Item onClick={unsetExpanded}>
@@ -63,34 +90,41 @@ function BasicExample() {
                   Project Configuration
                 </NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link onClick={unsetExpanded}>Tutorials</Nav.Link>
+
               <Nav.Link
                 onClick={unsetExpanded}
                 href="https://salamanderxing.github.io/matehub/"
+                target="_blank"
               >
                 MateHub
+              </Nav.Link>
+              <Nav.Link
+                onClick={unsetExpanded}
+                href="https://github.com/salamanderxing/mate"
+                target="_blank"
+              >
+                GitHub
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </div>
       </Navbar>
-      <div className="container" style={{ background: "#5f8d4e" }}>
-        {
-          {
-            Mate: <div dangerouslySetInnerHTML={{ __html: merged["index"] }} />,
-            "Mate Project": (
-              <div dangerouslySetInnerHTML={{ __html: merged["project"] }} />
-            ),
-            "Mate CLI": (
-              <div dangerouslySetInnerHTML={{ __html: merged["cli"] }} />
-            ),
-            "Mate Runtime": (
-              <div dangerouslySetInnerHTML={{ __html: merged["mate"] }} />
-            ),
-            "Project Configuration": (
-              <div dangerouslySetInnerHTML={{ __html: merged["config"] }} />
-            ),
-          }[route]
-        }
+      <div
+        className="container"
+        style={{
+          maxWidth: 800,
+          paddingTop: "20px",
+          paddingRight: "50px",
+          paddingLeft: "50px",
+          paddingBottom: "50px",
+          borderBottomRightRadius: "50px",
+          borderBottomLeftRadius: "50px",
+          background: "#5f8d4e",
+          color: "black",
+        }}
+      >
+        {routes[route]}
       </div>
     </>
   );
