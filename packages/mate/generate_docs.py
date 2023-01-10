@@ -102,7 +102,7 @@ def generate_docs():
         name = os.path.basename(file).split(".")[0]
         os.system(f"pandoc ../docs_md_svg/{name}.md -o ../docs_html/{name}.html")
 
-    os.system("find ../docs -type f -exec sed -i 's/\.md/\.html/g' {} \;")
+    os.system("find ../docs_html -type f -exec sed -i 's/\.md/\.html/g' {} \;")
     os.system("rm -rf ../docs_html/imgs/*")
     os.system("cp ../docs_md/imgs/* ../docs_md_svg/imgs/")
     os.system("cp ../docs_md_svg/imgs/* ../docs_html/imgs/")
