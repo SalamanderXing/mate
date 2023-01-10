@@ -36,8 +36,8 @@ function BasicExample() {
     "Project Configuration": (
       <div dangerouslySetInnerHTML={{ __html: merged["config"] }} />
     ),
-    Tutorials: (
-      <div dangerouslySetInnerHTML={{ __html: merged["tutorials"] }} />
+    "Mate project from scratch": (
+      <div dangerouslySetInnerHTML={{ __html: merged["mate_project_from_scratch"] }} />
     ),
   } as Record<string,JSX.Element> ;
   routes['GitHub'] = routes["Mate"]
@@ -90,7 +90,19 @@ function BasicExample() {
                   Project Configuration
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link onClick={unsetExpanded}>Tutorials</Nav.Link>
+              <NavDropdown
+                style={{ color: "black" }}
+                title="Tutorials"
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item
+                  style={{ color: "black" }}
+                  onClick={unsetExpanded}
+                >
+                Mate project from scratch 
+                </NavDropdown.Item>
+              </NavDropdown>
+
 
               <Nav.Link
                 onClick={unsetExpanded}
