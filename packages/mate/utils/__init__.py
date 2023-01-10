@@ -29,7 +29,16 @@ def remove_indent(text: str):
 
 console = Console(width=75)
 print = console.print
-print_markdown = lambda x: print(Padding(Markdown(remove_indent(x)), (1, 0, 0, 5)))
+def print_markdown(x, svg:bool=False, file_name:str="", title:str=""):
+    if svg:
+        console = Console(width=50, record=True)
+        local_print = console.print
+    else:
+        local_print = print
+    local_print(Padding(Markdown(remove_indent(x)), (1, 0, 0, 5)))
+    if svg:
+        console.save_svg(file_name, title=title)
+        
 
 
 def rmwithin(path: str):

@@ -86,12 +86,13 @@ mate init my_fancy_project venv=false
 ---
 
 ```
-  ❯ mate inspect <path>
+  ❯ mate inspect <path> <svg=True>
 ```
 
 **Params**
 
 - path : `str` :  Path to the module to inspect
+- svg : `_empty` :  Export result as svg=True
 
 
 
@@ -231,12 +232,13 @@ mate run analyses.my_analysis
 ---
 
 ```
-  ❯ mate show <path>
+  ❯ mate show <path> <svg=False>
 ```
 
 **Params**
 
 - path : `str` :  Path to the module to show
+- svg : `bool` : =False
 
 
 

@@ -86,12 +86,13 @@ Creates a new mate project in the current folder.
 ---
 
 <p align="center" style="">
-    <img src="./imgs/None_1cd94dfe83298068c525b70e3768d97f.svg" style="max-width:550px" alt="Your Image">
+    <img src="./imgs/None_f3df8014b0a3954bec55d3e4dac4d3b2.svg" style="max-width:550px" alt="Your Image">
 </p>
 
 **Params**
 
 - path : `str` :  Path to the module to inspect
+- svg : `_empty` :  Export result as svg=True
 
 
 
@@ -231,12 +232,13 @@ Alternatively, you can run an analysis:
 ---
 
 <p align="center" style="">
-    <img src="./imgs/None_2a1323bc1fcf20aac12c1fc08b5d846c.svg" style="max-width:550px" alt="Your Image">
+    <img src="./imgs/None_aed301ac22e93424b20994eb0df91875.svg" style="max-width:550px" alt="Your Image">
 </p>
 
 **Params**
 
 - path : `str` :  Path to the module to show
+- svg : `bool` : =False
 
 
 

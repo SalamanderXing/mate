@@ -129,7 +129,9 @@ class MateAPI:
 
         results_folders = [
             folder
-            for folder in glob(os.path.join(self.config.results_folder, "*"))
+            for folder in glob(
+                os.path.join(self.config.results_folder, "experiments", "*")
+            )
             if os.path.isdir(folder)
         ]
         all_results = {}
@@ -187,17 +189,24 @@ class MateAPI:
     def get_json_summary(self):
         return self.project.to_dict()
 
-    def show(self, path: str):
+    def show(self, path: str, svg: bool = False):
         node = self.project[path]
         # tree = node.to_tree()
-        print_markdown(node.show())
+        print_markdown(node.show(), svg, "show.svg", "mate show")
 
-    def inspect(self, path: str):
+    def inspect(self, path: str, svg: bool = False):
+        if svg:
+            from rich.console import Console
+
+            console = Console(width=50, record=True)
+            local_print = console.print
+        else:
+            local_print = print
         node = self.project[path]
         if len(node.errors) > 0:
-            print(f"[{colors.error} bold]ERRORS:[/{colors.error} bold]")
+            local_print(f"[{colors.error} bold]ERRORS:[/{colors.error} bold]")
             for e in node.errors:
-                print(f" [{colors.error}]❌[/{colors.error}] [yellow]{e}[/yellow]")
+                local_print(f" [{colors.error}]❌[/{colors.error}] [yellow]{e}[/yellow]")
 
         if isinstance(node, Experiment):
             if len(node.imports) > 0:
@@ -206,19 +215,21 @@ class MateAPI:
                     sub = tree.add(k)
                     for name, val in v.items():
                         sub.add(f"{name} : {','.join([i.names[0].name for i in val])}")
-                print(tree)
+                local_print(tree)
 
-            print(f"[green bold]RESULTS:[/green bold]")
+            local_print(f"[green bold]RESULTS:[/green bold]")
             results = self.__get_results_dict()
             if node.name in results:
                 result = results[node.name]
                 for k, v in result.items():
                     if k != "experiment":
-                        print(f" - {k}: {round(v, 3)}")
+                        local_print(f" - {k}: {round(v, 3)}")
         elif len(node.exports) > 0:
-            print(f"[green bold]EXPORTS:[/green bold]")
+            local_print(f"[green bold]EXPORTS:[/green bold]")
             for export in node.exports.values():
-                print(" - ", export.names[0].name)
+                local_print(" - ", export.names[0].name)
+        if svg:
+            console.save_svg("inspect.svg", title="mate inspect")
 
     def export(self, source: str):
         assert isinstance(source, str), "Source must be a string"

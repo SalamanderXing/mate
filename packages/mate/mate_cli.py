@@ -60,12 +60,12 @@ mate pip install numpy
 Removes a module"""
         self.api.remove(target)
 
-    def show(self, path: str):
+    def show(self, path: str, svg:bool=False):
         """
 :param path: Path to the module to show
 
 Shows information about a module or experiment."""
-        self.api.show(path)
+        self.api.show(path, svg)
 
     def venv(self, command: str):
         """
@@ -114,9 +114,10 @@ Creates a new module
 The path respects the python format, (e.g. `my_module.sub_module`)."""
         self.api.create(path)
 
-    def inspect(self, path: str):
+    def inspect(self, path: str, svg=True):
         """
 :param path: Path to the module to inspect
+:param svg: Export result as svg
 
 Provides information about a module, such as:
 
@@ -129,7 +130,7 @@ Provides information about a module, such as:
 ```
 mate inspect experiments.my_experiment
 ```"""
-        self.api.inspect(path)
+        self.api.inspect(path, svg)
 
     def run(self, target: str, command: Optional[str] = None):
         """

@@ -70,23 +70,30 @@ function BasicExample() {
           >
             <Nav className="me-auto">
               <NavDropdown
-                style={{ color: "black" }}
+                style={{ color: "black",background:"#5f8d4e" }}
                 title="Documentation"
                 id="basic-nav-dropdown"
               >
                 <NavDropdown.Item
-                  style={{ color: "black" }}
+                  style={{ color: "black", background:"#5f8d4e"}}
                   onClick={unsetExpanded}
                 >
                   Mate Project
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={unsetExpanded}>
+                <NavDropdown.Item onClick={unsetExpanded}
+
+                  style={{ color: "black", background:"#5f8d4e"}}
+                >
                   Mate CLI
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={unsetExpanded}>
+                <NavDropdown.Item onClick={unsetExpanded}
+                  style={{ color: "black", background:"#5f8d4e"}}
+                >
                   Mate Runtime
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={unsetExpanded}>
+                <NavDropdown.Item onClick={unsetExpanded}
+                  style={{ color: "black", background:"#5f8d4e"}}
+                >
                   Project Configuration
                 </NavDropdown.Item>
               </NavDropdown>
@@ -96,7 +103,7 @@ function BasicExample() {
                 id="basic-nav-dropdown"
               >
                 <NavDropdown.Item
-                  style={{ color: "black" }}
+                  style={{ color: "black", background:"#5f8d4e"}}
                   onClick={unsetExpanded}
                 >
                 Mate project from scratch 

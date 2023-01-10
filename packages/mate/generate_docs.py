@@ -1,6 +1,8 @@
 import os
 from .utils import remove_indent
 from .cli_parser import MateHelp
+import json
+from hashlib import md5
 from rich.console import Console
 from rich.syntax import Syntax
 from typing import Optional
@@ -45,19 +47,18 @@ def code_block_to_svg(code: str, language: Optional[str] = None):
     else:
         new_code = code.replace("$tmp", os.path.join(os.getcwd(), "tmp.svg"))
         os.system(new_code)
+
         if os.path.exists("tmp.svg"):
             with open("tmp.svg", "r") as f:
                 svg = f.read()
             os.remove("tmp.svg")
         else:
             svg = ""
+        # if ''
     return svg
 
 
 def replace_code_block_with_svg(doc: str):
-
-    from hashlib import md5
-
     def get_img_tag(img_name: str):
         return remove_indent(
             f"""
@@ -106,16 +107,18 @@ def generate_docs():
     os.system("rm -rf ../docs_html/imgs/*")
     os.system("cp ../docs_md/imgs/* ../docs_md_svg/imgs/")
     os.system("cp ../docs_md_svg/imgs/* ../docs_html/imgs/")
+    os.system("cp ../docs_md_svg/imgs/* ../docs/imgs/")
     # reads all the html files and merges them into a json
     merged = {}
     for file in glob("../docs_html/*.html"):
         key = os.path.basename(file).split(".")[0]
         with open(file, "r") as f:
             merged[key] = f.read()
-    import json
+
     with open("../website/src/merged.json", "w") as f:
         json.dump(merged, f)
 
+    os.system("cp -r ../docs_md_svg/imgs/* ../website/public/imgs/")
     os.system("cp ../docs_md_svg/imgs/* ../imgs/")
     os.system("cp ../docs_md_svg/index.md ../README.md")
 
