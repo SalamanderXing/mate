@@ -1,7 +1,7 @@
 <h1 id="maté">Maté 🧉</h1>
 <p>Mate is a tool designed to improve reproducibility and facilitate
 development in deep learning. It is a command line tool that offers a
-variety of features to help you manage your project, including:</p>
+variety of features to help you manage your project, including</p>
 <ul>
 <li>Validating the structure of your project</li>
 <li>Visualizing/summarizing your project</li>
@@ -9,23 +9,14 @@ variety of features to help you manage your project, including:</p>
 <li>Running/testing your experiments.</li>
 <li>Managment of Python virtual environment</li>
 </ul>
-<p>It also creates a universal template for deep learning projects.</p>
-<p>In addition, any project developed with Mate on a public repository
-gets automatically listed on <a
-href="https://salamanderxing.github.io/matehub">MateHub</a>. This
-website is a browser for finding and reusing components created by
-others (or yourself).</p>
-<p>Mate is compatible is any python deep learning framework, such as
-PyTorch, JAX, and TensorFlow/Keras, since it leverages Python
-features.</p>
-<p>Check out the <a
-href="https://salamanderxing.github.io/mate">documentation</a>!</p>
-<blockquote>
-<p>⚠️ <strong>This project is still in active development</strong>: It’s
-not yet stable but the first stable version is scheduled by the
-<strong>10th of January</strong>.</p>
-</blockquote>
-<p>Developed in collaboration of Universiteit von Amstedam.</p>
+<p>It also creates a universal template for deep learning projects. In
+addition, any project developed with Mate on a public repository gets
+automatically listed on MateHub. This website is a browser for finding
+and reusing components created by others (or yourself). Mate is
+compatible with any python deep learning framework, such as PyTorch,
+JAX, and TensorFlow/Keras, since it leverages Python features.</p>
+<p>Mate is developed in collaboration with the University of
+Amsterdam.</p>
 <hr />
 <h2 id="installation">Installation 🔌</h2>
 <p align="center" style>
@@ -33,7 +24,6 @@ not yet stable but the first stable version is scheduled by the
 </p>
 <hr />
 <h2 id="example-projects">Example Projects</h2>
-<p>More examples coming soon :)</p>
 <h3 id="pytorch-lightning">PyTorch Lightning</h3>
 <ul>
 <li><a
@@ -42,7 +32,7 @@ Classifier</a></li>
 </ul>
 <h3 id="jax-with-flax">JAX (with Flax)</h3>
 <p><a href="https://github.com/google/jax">JAX</a> is the (relatively)
-new framework by Google. That uses just-in-time-compilation to improve
+new framework by Google. That uses just-in-time compilation to improve
 performance of your neural network. These projects are based on this <a
 href="https://github.com/phlippe/uvadlc_notebooks/tree/master/docs/tutorial_notebooks/JAX">amazing
 repo</a>.</p>
@@ -70,7 +60,7 @@ for anomaly detection</a></li>
 <hr />
 <h2 id="quick-start">Quick Start ⚡</h2>
 <p>This example will walk you through training and showing results of
-your model on a Pytorch-Lithtning example.</p>
+your model on a Pytorch-Lightning example.</p>
 First let’s clone the project, for example:
 <p align="center" style>
 <img src="./imgs/bash_49449704768719c08e05230ff2ab1f5b.svg" style="max-width:550px" alt="Your Image">
@@ -83,11 +73,10 @@ Then run:
 <p align="center" style>
 <img src="./imgs/None_cacf09445830e5e547952f44e09ae2a6.svg" style="max-width:550px" alt="Your Image">
 </p>
-This will give you an overview of your projec and your componens.
-Besides that, it will also create a local python virtual environment and
-install all the dependencies of this project in it. It also tells you
-where your components have issues. In this case, (hopefully) you will
-see something like this:
+<p>This will give you an overview of your project and its components.
+Besides, it will create a local python virtual environment and install
+dependencies of this project. It also tells you where your components
+have issues.</p>
 <p align="center" style>
 <img src="./imgs/exec_5ac24db831400cf68943454e2be32f48.svg" style="max-width:550px" alt="Your Image">
 </p>
@@ -115,21 +104,23 @@ training was successful:
 according to that and put them in the same table.</p>
 <hr />
 <h2 id="matehub">MateHub</h2>
-<p><a href="https://salamanderxing.github.io/mate/">MateHub</a>. Before
-creating a new module (trainer, data_loader, model) you might want to
-head over to this site and look if there is anything that either fits
+<p><a href="https://salamanderxing.github.io/matehub/">MateHub</a>.</p>
+<p>Before creating a new module (trainer, data_loader, model), you might
+want to head over to this site and see if there is anything that fits
 your need or allows you to not start from scratch.</p>
-<h3 id="how-it-works">How it works</h3>
-<p>All mate projects on public github repo (published by anyone) will be
+<h3 id="how-it-works">How it works,</h3>
+<p>All mate projects on public GitHub repo (published by anyone) will be
 automatically listed on MateHub. It works by using the GitHub rest
 API.</p>
 <hr />
 <h2 id="comparison-to-familiar-tools">Comparison to familiar tools</h2>
 <ul>
-<li><em>Weights &amp; Biases</em>, <em>Tensorboard</em> is a logger and
-allows model weights sharing as well. Mate does not attempt to replace
-logger’s functionalities. Use the logger your like best :) That would
-happend probably inside your trainer module.</li>
+<li><em><a href="https://wandb.ai/site">Weights &amp; Biases</a></em>,
+<em><a
+href="https://www.tensorflow.org/tensorboard">Tensorboard</a></em> is a
+logger and allows model weights sharing as well. Mate does not attempt
+to replace logger’s functionalities. Use the logger your like best :)
+That would happend probably inside your trainer module.</li>
 <li><em><a href="https://github.com/Project-MONAI/MONAI">Monai</a></em>:
 Focuses on medical imaging and provides pretrained models as well as
 preprocessing pipelines</li>
