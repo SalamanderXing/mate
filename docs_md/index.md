@@ -110,13 +110,11 @@ Mate has inferred the dataset and will group our experiments according to that a
 
 ---
 
-## MateHub
-
-[MateHub](https://salamanderxing.github.io/matehub/). 
+## [MateHub](https://salamanderxing.github.io/matehub/)
 
 Before creating a new module (trainer, data_loader, model), you might want to head over to this site and see if there is anything that fits your need or allows you to not start from scratch.
 
-### How it works,
+### How it works
 
 All mate projects on public GitHub repo (published by anyone) will be automatically listed on MateHub. It works by using the GitHub rest API.
 
@@ -128,6 +126,7 @@ All mate projects on public GitHub repo (published by anyone) will be automatica
 - *[Monai](https://github.com/Project-MONAI/MONAI)*: Focuses on medical imaging and provides pretrained models as well as preprocessing pipelines
 - *[Ivy](https://github.com/unifyai/ivy)*: Provides a unified tensor type that work with all backends (frameworks). Works with mate!
 - *[THINGSvision](https://github.com/ViCCo-Group/thingsvision)*: Provides a set pretrained models for analysis of their activation. In particular to compare them with brain activations.
+- *[HuggingFace](https://huggingface.co/), [Model Zoo](https://modelzoo.co/)*: These frameworks focus on sharing pretrained models. Mate instead focuses on (among other things) sharing the model components.
 
 ---
 
@@ -135,6 +134,6 @@ All mate projects on public GitHub repo (published by anyone) will be automatica
 
 For any question, please contact:
 
-[Giulio Zani](mailto:g.zani@uva.nl)
-
-Or join the [discord channel](https://discord.gg/HyNgjBAQZR)
+- [Email](mailto:g.zani@uva.nl)
+- [Personal Website](https://salamanderxing.github.io/)
+- Or join the [discord channel](https://discord.gg/HyNgjBAQZR)

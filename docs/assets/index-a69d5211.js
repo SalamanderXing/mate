@@ -3519,12 +3519,12 @@ training was successful:
 <p>Mate has inferred the dataset and will group our experiments
 according to that and put them in the same table.</p>
 <hr />
-<h2 id="matehub">MateHub</h2>
-<p><a href="https://salamanderxing.github.io/matehub/">MateHub</a>.</p>
+<h2 id="matehub"><a
+href="https://salamanderxing.github.io/matehub/">MateHub</a></h2>
 <p>Before creating a new module (trainer, data_loader, model), you might
 want to head over to this site and see if there is anything that fits
 your need or allows you to not start from scratch.</p>
-<h3 id="how-it-works">How it works,</h3>
+<h3 id="how-it-works">How it works</h3>
 <p>All mate projects on public GitHub repo (published by anyone) will be
 automatically listed on MateHub. It works by using the GitHub rest
 API.</p>
@@ -3547,11 +3547,19 @@ with mate!</li>
 href="https://github.com/ViCCo-Group/thingsvision">THINGSvision</a></em>:
 Provides a set pretrained models for analysis of their activation. In
 particular to compare them with brain activations.</li>
+<li><em><a href="https://huggingface.co/">HuggingFace</a>, <a
+href="https://modelzoo.co/">Model Zoo</a></em>: These frameworks focus
+on sharing pretrained models. Mate instead focuses on (among other
+things) sharing the model components.</li>
 </ul>
 <hr />
 <h2 id="contact">Contact 🤝</h2>
 <p>For any question, please contact:</p>
-<p><a href="mailto:g.zani@uva.nl">Giulio Zani</a></p>
-<p>Or join the <a href="https://discord.gg/HyNgjBAQZR">discord
-channel</a></p>
+<ul>
+<li><a href="mailto:g.zani@uva.nl">Email</a></li>
+<li><a href="https://salamanderxing.github.io/">Personal
+Website</a></li>
+<li>Or join the <a href="https://discord.gg/HyNgjBAQZR">discord
+channel</a></li>
+</ul>
 `,It={mate_cli:L0,tutorials:D0,replicating_an_existing_project:z0,mate:F0,mate_project_from_scratch:A0,cli:$0,config:B0,experiment:H0,installing_a_mate_package:K0,project:V0,index:Y0};function U0(){const[e,n]=y.useState(!1),[t,r]=y.useState("Mate"),a=y.createRef(),o=l=>{e&&a.current?.click(),r(l.target.innerText)},i={Mate:I("div",{dangerouslySetInnerHTML:{__html:It.index}}),"Mate Project":I("div",{dangerouslySetInnerHTML:{__html:It.project}}),"Mate CLI":I("div",{dangerouslySetInnerHTML:{__html:It.cli}}),"Mate Runtime":I("div",{dangerouslySetInnerHTML:{__html:It.mate}}),"Project Configuration":I("div",{dangerouslySetInnerHTML:{__html:It.config}}),"Mate project from scratch":I("div",{dangerouslySetInnerHTML:{__html:It.mate_project_from_scratch}})};return i.GitHub=i.Mate,i.MateHub=i.Mate,Rn(Xt,{children:[I(Ma,{expand:"lg",className:"sticky-top",style:{width:"100%",margin:0,background:"#5f8d4e",borderBottom:"1px solid #285430",color:"black"},children:Rn("div",{className:"container",style:{margin:0},children:[I(Ma.Brand,{onClick:o,children:"Mate"}),I(Ma.Toggle,{ref:a,"aria-controls":"basic-navbar-nav",className:`${e?"collapse":""}`,onClick:()=>n(!e)}),I(Ma.Collapse,{id:"basic-navbar-nav",className:`${e?"show":""}`,style:{color:"black"},children:Rn(xi,{className:"me-auto",children:[Rn(rt,{style:{color:"black",background:"#5f8d4e"},title:"Documentation",id:"basic-nav-dropdown",children:[I(rt.Item,{style:{color:"black",background:"#5f8d4e"},onClick:o,children:"Mate Project"}),I(rt.Item,{onClick:o,style:{color:"black",background:"#5f8d4e"},children:"Mate CLI"}),I(rt.Item,{onClick:o,style:{color:"black",background:"#5f8d4e"},children:"Mate Runtime"}),I(rt.Item,{onClick:o,style:{color:"black",background:"#5f8d4e"},children:"Project Configuration"})]}),I(rt,{style:{color:"black"},title:"Tutorials",id:"basic-nav-dropdown",children:I(rt.Item,{style:{color:"black",background:"#5f8d4e"},onClick:o,children:"Mate project from scratch"})}),I(xi.Link,{onClick:o,href:"https://salamanderxing.github.io/matehub/",target:"_blank",children:"MateHub"}),I(xi.Link,{onClick:o,href:"https://github.com/salamanderxing/mate",target:"_blank",children:"GitHub"})]})})]})}),I("div",{className:"container",style:{maxWidth:800,paddingTop:"20px",paddingRight:"50px",paddingLeft:"50px",paddingBottom:"50px",borderBottomRightRadius:"50px",borderBottomLeftRadius:"50px",background:"#5f8d4e",color:"black"},children:i[t]})]})}Pi.createRoot(document.getElementById("root")).render(I(en.StrictMode,{children:I(U0,{})}));
