@@ -100,13 +100,11 @@ Mate has inferred the dataset and will group our experiments according to that a
 
 ---
 
-## MateHub
-
-[MateHub](https://salamanderxing.github.io/matehub/). 
+## [MateHub](https://salamanderxing.github.io/matehub/)
 
 Before creating a new module (trainer, data_loader, model), you might want to head over to this site and see if there is anything that fits your need or allows you to not start from scratch.
 
-### How it works,
+### How it works
 
 All mate projects on public GitHub repo (published by anyone) will be automatically listed on MateHub. It works by using the GitHub rest API.
 
