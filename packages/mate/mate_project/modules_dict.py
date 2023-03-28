@@ -1,7 +1,8 @@
 import os
 from .module import Module
 from .python import Python
-
+from rich import print
+from .colors import colors
 # class ModuleStatus:
 #     def __init__(self,):
 #         self.name = name
@@ -25,7 +26,7 @@ class ModulesDict(Module, dict):
                 if os.path.isfile(os.path.join(root_dir, f)) and f != "__init__.py"
             ]
             if len(files) > 0:
-                console.print(
+                print(
                     f"[{colors.error} bold]ERROR[/{colors.error} bold]: [yellow]found file(s) in {root_dir}: \n\t{files}[yellow]\nPlease move them to a subfolder or delete them."
                 )
                 exit(1)
