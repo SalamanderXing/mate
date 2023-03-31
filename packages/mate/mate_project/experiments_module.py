@@ -51,6 +51,6 @@ class ExperimentsModule(Module, dict):
     def __getitem__(self, path: str):
         assert isinstance(path, str)
         assert not "." in path, "Experiments don't have submodules"
-        assert path in self.keys()
+        assert path in self.keys(), f"Experiment '{path}' not found."
         selected = tuple((k, v) for k, v in self.items() if k == path)[0][1]
         return selected

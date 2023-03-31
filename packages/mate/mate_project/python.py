@@ -126,11 +126,12 @@ class Python:
     def install_packages(self, module_location: str):
         requirements_file = os.path.join(module_location, "requirements.txt")
         requirements = self.__requirements_to_packages(requirements_file)
-        # os.system(f"{self.python_path} -m pip install -r {requirements_file}")
+        
+        """
         for i in requirements:
             if i not in self.installed_packages:
                 self.pip_install(i.name)
-
+        """
     def uninstall_packages(self, module_location: str):
         pass
 
@@ -138,6 +139,19 @@ class Python:
         module_required_packages = self.__requirements_to_packages(
             os.path.join(module_path, "requirements.txt")
         )
-        for package in module_required_packages:
-            if package not in self.installed_packages:
-                self.pip_install(package.name)
+        # for package in module_required_packages:
+        #if package not in self.installed_packages:
+        #    self.pip_install(package.name)
+        uninstalled_requirements = [
+            i for i in module_required_packages if i not in self.installed_packages
+        ]
+        if uninstalled_requirements:
+            # ask user if they want to install the requirements
+            print(
+                f"Module {module_path} requires the following packages to be installed: {uninstalled_requirements}"
+            )
+            print("Do you want to install them? (y/n)")
+            if input() == "y":
+                for i in uninstalled_requirements:
+                    self.pip_install(i.name)
+

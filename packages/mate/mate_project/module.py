@@ -60,7 +60,7 @@ class Module:
 
             if not status.get("installed", False):
                 self._python.install_module_requirements(self.root_dir)
-                print(f"Installed requirements for {self.relative_path()}")
+                # print(f"Installed requirements for {self.relative_path()}")
                 with open(status_path, "w") as f:
                     json.dump({"hash": self._hash, "installed": True}, f, indent=2)
 

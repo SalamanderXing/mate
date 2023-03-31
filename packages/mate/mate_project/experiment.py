@@ -147,7 +147,7 @@ class Experiment:
         # checks that the other statements are only assignments, function calls and imports
         other_statements = [node for node in body if not isinstance(node, ast.If)]
         for node in other_statements:
-            if not isinstance(node, (ast.Assign, ast.Expr, ast.Import, ast.ImportFrom)):
+            if not isinstance(node, self.__allowed_instructions):
                 self.errors.append(
                     "The experiment should only contain assignments, function calls and imports"
                 )
@@ -190,6 +190,14 @@ class Experiment:
 
     def __init__(self, allowed_modules: tuple[str], experiment_path: str):
         """Check if the experiment is valid"""
+        self.errors = []
+        self.__allowed_instructions = (
+            ast.Assign,
+            ast.Expr,
+            ast.Import,
+            ast.ImportFrom,
+            ast.Assert,
+        )
         self.allowed_modules = tuple(allowed_modules)
         with open(experiment_path, "r") as f:
             experiment = ast.parse(f.read())
@@ -200,7 +208,6 @@ class Experiment:
         self.imports_dict: dict[str, dict[str, list[ast.ImportFrom]]] = {}
         self.name = os.path.basename(experiment_path).split(".")[0]
         self.module_path = ".".join(experiment_path[:-3].split(os.sep)[-3:])
-        self.errors = []
         self.__get_imports(experiment.body)
         for import_node in self.relative_imports:
             assert (
