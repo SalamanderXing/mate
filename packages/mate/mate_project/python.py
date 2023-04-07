@@ -2,12 +2,13 @@ import os
 import subprocess
 import sys
 import shutil
-
+from rich import print
+import ipdb
 
 class Package:
     def __init__(self, name: str, version: str):
         self.name = name
-        self.version = version  # TODO: add version check
+        self.version = version.strip()  # TODO: add version check
 
     def __hash__(self):
         return self.name.__hash__()
@@ -61,10 +62,7 @@ class Python:
         with open(self.requirements_path, "w") as f:
             f.write(output)
 
-        self.installed_packages = self.__requirements_to_packages(
-            self.requirements_path
-        )
-        if not "pipreqs" in self.installed_packages:
+        if not self.is_installed("pipreqs"):
             self.pip_install("pipreqs")
         try:
             # FIXME: handle different mate versions
@@ -89,6 +87,7 @@ class Python:
 
     def pip_install(self, *packages: str):
         self(f'-m pip install {" ".join(packages)}')
+        # adds the packages to the requirements file
 
     def pip(self, command: str):
         os.system(f"{self.python_path} -m pip {command}")
@@ -97,18 +96,14 @@ class Python:
     def version(self):
         return self.cfg["version"].split()[0]
 
-    def __call__(self, command: str):
-        # os.system(f"{self.python_path} {command}")
-        # executes the above command but as a subprocess, checks for errors. It does not return anything
-        # it has to also print output in real time. It has to also return the exit code
-        # The ouptut is not collected, it is printed in real time
-
+    def __call__(self, command: str, print_output: bool = True) -> tuple[int, str]:
         process = subprocess.Popen(
             f"{self.python_path} {command}",
             shell=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
         )
+        output = []
         while True:
             if process.stdout:
                 line = process.stdout.readline()
@@ -116,9 +111,13 @@ class Python:
                 line = None
             if not line:
                 break
-            print(line.decode("utf-8").strip())
+            current_output = line.decode("utf-8").strip()
+            if print_output:
+                print(current_output)
+            output.append(current_output)
         process.wait()
-        return process.returncode
+        # returns the exit code as well as the output
+        return process.returncode, "\n".join(output)
 
     def pipreqs(self, path: str):
         os.system(f"{self.pipreqs_path} --force {path}")
@@ -126,24 +125,24 @@ class Python:
     def install_packages(self, module_location: str):
         requirements_file = os.path.join(module_location, "requirements.txt")
         requirements = self.__requirements_to_packages(requirements_file)
-        
-        """
-        for i in requirements:
-            if i not in self.installed_packages:
-                self.pip_install(i.name)
-        """
+
     def uninstall_packages(self, module_location: str):
         pass
+
+    def is_installed(self, package: str):
+        _, output = self(
+            f"""-c 'import importlib.util; print(importlib.util.find_spec("{package}"))'""", print_output=False
+        )
+        return output != "None"
 
     def install_module_requirements(self, module_path: str):
         module_required_packages = self.__requirements_to_packages(
             os.path.join(module_path, "requirements.txt")
         )
         # for package in module_required_packages:
-        #if package not in self.installed_packages:
         #    self.pip_install(package.name)
         uninstalled_requirements = [
-            i for i in module_required_packages if i not in self.installed_packages
+            i for i in module_required_packages if not self.is_installed(i.name)
         ]
         if uninstalled_requirements:
             # ask user if they want to install the requirements
@@ -154,4 +153,3 @@ class Python:
             if input() == "y":
                 for i in uninstalled_requirements:
                     self.pip_install(i.name)
-
