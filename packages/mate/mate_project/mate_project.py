@@ -206,7 +206,7 @@ class MateProject(Module):
 
     def __str__(self):
         dict_str = set(tuple(k for k in self.__dict__.keys() if not k.startswith("_")))
-        return f"MateProject(name={self.__name}, submodules={dict_str})"
+        return f"MateProject(name={self.name}, submodules={dict_str}, location={self.root_dir})"
 
     def __repr__(self):
         return self.__str__()
@@ -222,5 +222,5 @@ class MateProject(Module):
         else:
             return self.__dict__[cur][".".join(rest)]
 
-    def __contains__(self, key:str):
+    def __contains__(self, key: str):
         return key in self.__dict__

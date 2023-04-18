@@ -1,9 +1,8 @@
 import os
 import subprocess
 import sys
-import shutil
-from rich import print
 import ipdb
+
 
 class Package:
     def __init__(self, name: str, version: str):
@@ -97,41 +96,39 @@ class Python:
         return self.cfg["version"].split()[0]
 
     def __call__(self, command: str, print_output: bool = True) -> tuple[int, str]:
-        process = subprocess.Popen(
-            f"{self.python_path} {command}",
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-        )
-        output = []
-        while True:
-            if process.stdout:
-                line = process.stdout.readline()
-            else:
-                line = None
-            if not line:
-                break
-            current_output = line.decode("utf-8").strip()
-            if print_output:
-                print(current_output)
-            output.append(current_output)
-        process.wait()
+        cmd = [self.python_path] + command.split(" ")
+        output = ""
+        returncode = 0
+        if not print_output:
+            result = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+            )
+            returncode = result.returncode
+            output = result.stdout
+        else:
+            returncode = subprocess.call(cmd)
+
         # returns the exit code as well as the output
-        return process.returncode, "\n".join(output)
+        return returncode, output
 
     def pipreqs(self, path: str):
         os.system(f"{self.pipreqs_path} --force {path}")
+        with open(os.path.join(path, "requirements.txt"), "r") as f:
+            requirements = [l for l in f.readlines() if not "==info" in l]
+        with open(os.path.join(path, "requirements.txt"), "w") as f:
+            f.write("\n".join(requirements))
 
     def install_packages(self, module_location: str):
         requirements_file = os.path.join(module_location, "requirements.txt")
         requirements = self.__requirements_to_packages(requirements_file)
 
-    def uninstall_packages(self, module_location: str):
-        pass
-
     def is_installed(self, package: str):
         _, output = self(
-            f"""-c 'import importlib.util; print(importlib.util.find_spec("{package}"))'""", print_output=False
+            f"""-c 'import importlib.util; print(importlib.util.find_spec("{package}"))'""",
+            print_output=False,
         )
         return output != "None"
 

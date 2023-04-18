@@ -4,6 +4,8 @@ import json
 import ipdb
 import glob
 from typing import Optional
+
+default_print = print
 from .utils import print_markdown, print, rmwithin
 from .mate_config import MateConfig
 from .mate import Mate
@@ -67,6 +69,10 @@ class MateAPI:
                     f.write(value)
 
     def __setup(self, root: str):
+        before_project_root = os.path.sep.join(root.split(os.path.sep)[:-1])
+        self.config.results_folder = os.path.join(
+            before_project_root, self.config.results_folder
+        )
         os.makedirs(
             os.path.join(self.config.results_folder, "experiments"), exist_ok=True
         )
@@ -126,7 +132,6 @@ class MateAPI:
             print(f"Created {summary_json_location}")
 
     def __get_results_dict(self):
-
         results_folders = [
             folder
             for folder in glob(
@@ -256,7 +261,6 @@ class MateAPI:
                 print(f"{to_export} already exported, skipping.")
 
     def results(self):
-
         results_folders = [
             folder
             for folder in glob(os.path.join(self.config.results_folder, "*"))
@@ -340,7 +344,10 @@ class MateAPI:
             name = target
         assert path in self.project, f"Path '{path}' does not exist"
         assert name in self.project[path], f"Name {path}.{name} does not exist"
-        save_dir = os.path.join(self.config.results_folder, path, name)
+        base_results = os.path.join(
+            self.project.root_dir, "..", self.config.results_folder
+        )
+        save_dir = os.path.join(base_results, path, name)
         checkpoint_path = os.path.join(
             self.config.results_folder, "experiments", "checkpoints"
         )
@@ -357,7 +364,7 @@ class MateAPI:
             print(runtime)
         # self.python("-m {self.project.experiments[experiment_name].module_path}")
         exp_path = self.project[f"{path}.{name}"].module_path
-        exit_code = self.python(f"-m {exp_path}")
+        exit_code, _ = self.python(f"-m {exp_path}")
         if exit_code != 0:
             print(
                 f" [red]❌ Experiment {path}.{name} failed with exit code {exit_code} [/red]"
