@@ -1,8 +1,7 @@
 from jaxtyping import jaxtyped as __jaxtyped, Int, Float, Bool, Array, UInt
-from typeguard import typechecked as __typechecked
+from beartype import beartype as __typechecked
 from jax import jit as __jit
 from jax.random import KeyArray
-from typing import Callable
 import functools
 
 
