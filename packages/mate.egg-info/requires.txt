@@ -1,4 +1,6 @@
+beartype==0.13.1
 dirhash==0.2.1
 ipdb==0.13.9
-rich==13.3.2
+jaxtyping==0.2.15
+rich==13.3.4
 validators==0.20.0

@@ -22,9 +22,9 @@ def typed(func):
 
 
 # defines an alias type called ScalarInt for Int[Array, ""]
-SInt = Int[Array, ""]
-SFloat = Float[Array, ""]
-SBool = Bool[Array, ""]
-SUInt = UInt[Array, ""]
+SInt = Int[Array, ""] | int
+SFloat = Float[Array, ""] | float
+SBool = Bool[Array, ""] | bool
+SUInt = UInt[Array, ""] | int
 
 Key = UInt[Array, "2"] | KeyArray
