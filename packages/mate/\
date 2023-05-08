@@ -179,22 +179,8 @@ class Mate:
         wandb.init(
             project=self.__project_name,
             name=self.__experiment_name,
-            dir=self.save_dir,
-            reinit=True,
+            dir=os.path.join(self.save_dir, 'wandb'),
         )
-    @property
-    def project_name(self) -> str:
-        """
-        Get the name of the current project.
-        """
-        return self.__project_name
-
-    @property
-    def experiment_name(self) -> str:
-        """
-        Get the name of the current experiment.
-        """
-        return self.__experiment_name
 
     def __init__(
         self,
@@ -208,5 +194,5 @@ class Mate:
         self.save_dir = save_dir
         self.checkpoint_path = checkpoint_path
         self.__experiment_name = os.path.basename(save_dir) if save_dir else ""
-        self.__project_name = save_dir.split(os.sep)[-4] if save_dir else ""
-        # print(f"{self.__project_name} - {self.__experiment_name}")
+        self.__project_name = save_dir.split(os.sep)[-2] if save_dir else ""
+        print(f"{self.__project_name} - {self.__experiment_name}")
