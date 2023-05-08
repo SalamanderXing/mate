@@ -1,0 +1,5 @@
+#!python
+from mate.cli_parser import main
+
+
+main()
