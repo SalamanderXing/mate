@@ -1,9 +1,11 @@
 import os
 import ipdb
+from beartype import beartype
 from .module import Module
 from .modules_dict import ModulesDict
 from .experiments_module import ExperimentsModule
 from .python import Python
+from rich import print
 from typing import Optional
 import shutil
 
@@ -91,14 +93,19 @@ class MateProject(Module):
         self.trainers = ModulesDict(
             os.path.join(root_dir, "trainers"), python, optional=True
         )
-        self.analyses = ExperimentsModule(
-            tuple(self.__dict__.keys()),
-            os.path.join(root_dir, "analyses"),
-            python,
-            optional=True,
+        # self.analyses = ExperimentsModule(
+        #     tuple(self.__dict__.keys()),
+        #     os.path.join(root_dir, "analyses"),
+        #     python,
+        #     optional=True,
+        # )
+        self.shared = ModulesDict(
+            os.path.join(root_dir, "shared"), python, optional=True
         )
         self.experiments = ExperimentsModule(
-            tuple(self.__dict__.keys()), os.path.join(root_dir, "experiments"), python
+            tuple(key for key in self.__dict__.keys() if not key.startswith("_")),
+            os.path.join(root_dir, "experiments"),
+            python,
         )
         super().__init__(root_dir, python)
         self.__whitelist = ["mate.json", "README.md"]
@@ -176,6 +183,35 @@ class MateProject(Module):
             full_destination_path
         ), f"Path {full_destination_path} already exists. Try with a different name?"
         shutil.move(full_source_path, full_destination_path)
+
+    def exists(self, path: str):
+        assert isinstance(path, str)
+        full_target_path = os.path.join(self.__root_dir, path.replace(".", os.sep))
+        if path.startswith("experiments"):
+            full_target_path += ".py"
+        return os.path.exists(full_target_path)
+
+    @beartype
+    def share(self, source: str, destination: str):
+        assert (
+            not "." in source
+        ), "source must be a submodule of 'shared'. E.g. `mate share utils`"
+        full_source = ".".join(("shared", source))
+        assert self.exists(full_source), f"Invalid path {source}"
+        assert self.exists(destination), f"Invalid path {destination}"
+        full_source_path = os.path.join(self.__root_dir, source.replace(".", os.sep))
+        full_destination_path = os.path.join(
+            self.__root_dir, destination.replace(".", os.sep), source
+        )
+        assert not os.path.exists(
+            full_destination_path
+        ), f"Path {full_destination_path} already exists. Maybe rename it?"
+        assert not os.path.islink(
+            full_destination_path
+        ), f"Looks like the destination is already shared."
+        # creates a soft link from source to destination
+        os.link(full_source_path, full_destination_path)
+        print(f"Shared {full_source_path} to {full_destination_path}")
 
     def create(self, path: str):
         assert isinstance(path, str)

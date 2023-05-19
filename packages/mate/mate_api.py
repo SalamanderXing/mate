@@ -19,6 +19,7 @@ from . import io
 import os
 from .mate_project import MateProject, colors, Python, Experiment
 from glob import glob
+from rich.emoji import EMOJI
 import shutil
 
 
@@ -67,6 +68,10 @@ class MateAPI:
             if value not in gitignore:
                 with open(".gitignore", "a") as f:
                     f.write(value)
+
+    def tag(self, tag_name: str, target: str):
+        print(f"Tagging {target} with :{tag_name}:")
+        self.project[target].add_tag(tag_name)
 
     def __setup(self, root: str):
         before_project_root = os.path.sep.join(root.split(os.path.sep)[:-1])
@@ -155,6 +160,12 @@ class MateAPI:
         # self.python.venv(command)
         self.python(command)
 
+    def share(self, source: str, destination_path: str) -> None:
+        """
+        Creates a soft link from source that must be located in the 'shared' folder to destination_path
+        """
+        self.project.share(source, destination_path)
+
     def to_markdown(self):
         pass
 
@@ -165,7 +176,7 @@ class MateAPI:
         vals = self.project.to_dict()["project"]
         # turns this nested dict into a rich tree
         tree = Tree(
-            Text("🧉 ")
+            Text(EMOJI["mate"] + " ")
             + Text(self.project.name, "underline #32CD30")
             + Text(f" 🐍{self.python.version}", "grey"),
             style="bold",
@@ -182,6 +193,15 @@ class MateAPI:
                     text += Text(f"❌", f"bold {colors.error}")
                 else:
                     text += Text(f"☑ ", "bold #00FF00")
+                if len(e["tags"]) > 0:
+                    if k2 == "gat_tu_PROTEINS":
+                        ipdb.set_trace()
+                    tags = [
+                        EMOJI.get(t.replace(":", ""), f":{t}:")
+                        for t in e["tags"]
+                        if len(t) > 0
+                    ]
+                    text += Text("".join(tags), "bold #FFD700")
                 if k == "experiments":
                     if k2 in results:
                         # text += Text("📊 ")
@@ -348,17 +368,15 @@ class MateAPI:
             self.project.root_dir, "..", self.config.results_folder
         )
         save_dir = os.path.join(base_results, path, name)
-        checkpoint_path = os.path.join(
-            self.config.results_folder, "experiments", "checkpoints"
-        )
-
-        if not os.path.exists(checkpoint_path):
-            os.makedirs(checkpoint_path)
         runtime = Mate(
             command=command if command is not None else "",
             save_dir=save_dir,
-            checkpoint_path=checkpoint_path,
+            auto_wandb=self.config.auto_wandb
+            if self.config.auto_wandb is not None
+            else False,
+            project_name=self.project.name,
         )
+        print(runtime.to_dict())
         runtime.save(os.path.join(self.mate_dir, "runtime.json"))
         if self.config.verbose:
             print(runtime)

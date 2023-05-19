@@ -9,5 +9,6 @@ colors = Bunch(
         "trainers": "yellow",
         "experiments": "#ff6908",
         "analyses": "#8e44ad",
+        "shared": "#2ecc71",
     }
 )

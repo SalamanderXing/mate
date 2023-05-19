@@ -96,6 +96,13 @@ class Python:
         return self.cfg["version"].split()[0]
 
     def __call__(self, command: str, print_output: bool = True) -> tuple[int, str]:
+        env = None
+        if command.startswith("-m"):
+            root_module = command.split(" ")[1].split(".")[0]
+            env = os.environ.copy()
+            env["PYTHONPATH"] = (
+                env.get("PYTHONPATH", "") + f":./{os.path.join(root_module, 'shared')}"
+            )
         cmd = [self.python_path] + command.split(" ")
         output = ""
         returncode = 0
@@ -105,11 +112,12 @@ class Python:
                 capture_output=True,
                 text=True,
                 encoding="utf-8",
+                env=env,
             )
             returncode = result.returncode
             output = result.stdout
         else:
-            returncode = subprocess.call(cmd)
+            returncode = subprocess.call(cmd, env=env)
 
         # returns the exit code as well as the output
         return returncode, output
