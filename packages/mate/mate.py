@@ -217,6 +217,15 @@ class Mate:
         """
         return os.path.join(self.save_dir, "data")
 
+    @property
+    def plots_dir(self) -> str:
+        """
+        Get the path to the current plots directory.
+        """
+        plots_dir = os.path.join(self.save_dir, "plots")
+        os.makedirs(plots_dir, exist_ok=True)
+        return plots_dir
+
     def __init__(
         self,
         command: str,

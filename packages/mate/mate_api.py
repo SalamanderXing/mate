@@ -376,7 +376,6 @@ class MateAPI:
             else False,
             project_name=self.project.name,
         )
-        print(runtime.to_dict())
         runtime.save(os.path.join(self.mate_dir, "runtime.json"))
         if self.config.verbose:
             print(runtime)
