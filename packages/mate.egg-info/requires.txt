@@ -1,7 +1,9 @@
-beartype==0.13.1
+beartype==0.14.0
 dirhash==0.2.1
-ipdb==0.13.9
-jaxtyping==0.2.15
-rich==13.3.5
+ipdb==0.13.13
+jaxtyping==0.2.20
+PyYAML==6.0
+PyYAML==6.0
+rich==13.4.1
 validators==0.20.0
-wandb==0.14.0
+wandb==0.15.3

@@ -1,0 +1,42 @@
+2023-05-09 08:36:29,927 INFO    MainThread:18245 [wandb_setup.py:_flush():76] Current SDK version is 0.15.2
+2023-05-09 08:36:29,928 INFO    MainThread:18245 [wandb_setup.py:_flush():76] Configure stats pid to 18245
+2023-05-09 08:36:29,928 INFO    MainThread:18245 [wandb_setup.py:_flush():76] Loading settings from /home/bluesk/.config/wandb/settings
+2023-05-09 08:36:29,928 INFO    MainThread:18245 [wandb_setup.py:_flush():76] Loading settings from /home/bluesk/Documents/mate/wandb/settings
+2023-05-09 08:36:29,928 INFO    MainThread:18245 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'api_key': '***REDACTED***'}
+2023-05-09 08:36:29,928 INFO    MainThread:18245 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-05-09 08:36:29,928 INFO    MainThread:18245 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-05-09 08:36:29,928 INFO    MainThread:18245 [wandb_init.py:_log_setup():507] Logging user logs to /home/bluesk/Documents/mate/wandb/run-20230509_083629-gm075ez4/logs/debug.log
+2023-05-09 08:36:29,928 INFO    MainThread:18245 [wandb_init.py:_log_setup():508] Logging internal logs to /home/bluesk/Documents/mate/wandb/run-20230509_083629-gm075ez4/logs/debug-internal.log
+2023-05-09 08:36:29,928 INFO    MainThread:18245 [wandb_init.py:init():547] calling init triggers
+2023-05-09 08:36:29,928 INFO    MainThread:18245 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {}
+2023-05-09 08:36:29,928 INFO    MainThread:18245 [wandb_init.py:init():596] starting backend
+2023-05-09 08:36:29,928 INFO    MainThread:18245 [wandb_init.py:init():600] setting up manager
+2023-05-09 08:36:29,929 INFO    MainThread:18245 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-05-09 08:36:29,930 INFO    MainThread:18245 [wandb_init.py:init():606] backend started and connected
+2023-05-09 08:36:29,930 INFO    MainThread:18245 [wandb_init.py:init():700] updated telemetry
+2023-05-09 08:36:29,934 INFO    MainThread:18245 [wandb_init.py:init():737] communicating run to backend with 60.0 second timeout
+2023-05-09 08:37:19,930 WARNING MainThread:18245 [wandb_init.py:init():1172] interrupted
+Traceback (most recent call last):
+  File "/home/bluesk/.local/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 1150, in init
+    run = wi.init()
+          ^^^^^^^^^
+  File "/home/bluesk/.local/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 740, in init
+    result = run_init_handle.wait(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bluesk/.local/lib/python3.11/site-packages/wandb/sdk/lib/mailbox.py", line 283, in wait
+    found, abandoned = self._slot._get_and_clear(timeout=wait_timeout)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bluesk/.local/lib/python3.11/site-packages/wandb/sdk/lib/mailbox.py", line 130, in _get_and_clear
+    if self._wait(timeout=timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bluesk/.local/lib/python3.11/site-packages/wandb/sdk/lib/mailbox.py", line 126, in _wait
+    return self._event.wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/threading.py", line 622, in wait
+    signaled = self._cond.wait(timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/threading.py", line 324, in wait
+    gotit = waiter.acquire(True, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

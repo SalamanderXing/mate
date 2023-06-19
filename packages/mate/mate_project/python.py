@@ -123,11 +123,14 @@ class Python:
         return returncode, output
 
     def pipreqs(self, path: str):
-        os.system(f"{self.pipreqs_path} --force {path}")
-        with open(os.path.join(path, "requirements.txt"), "r") as f:
-            requirements = [l for l in f.readlines() if not "==info" in l]
-        with open(os.path.join(path, "requirements.txt"), "w") as f:
-            f.write("\n".join(requirements))
+        # FIXME: pipreqs is too slow
+
+        # os.system(f"{self.pipreqs_path} --force {path}")
+        # with open(os.path.join(path, "requirements.txt"), "r") as f:
+        #     requirements = [l for l in f.readlines() if not "==info" in l]
+        # with open(os.path.join(path, "requirements.txt"), "w") as f:
+        #     f.write("\n".join(requirements))
+        pass
 
     def install_packages(self, module_location: str):
         requirements_file = os.path.join(module_location, "requirements.txt")
