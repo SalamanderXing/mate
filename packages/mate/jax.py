@@ -5,20 +5,24 @@ from jax.random import KeyArray
 import functools
 
 
-def jit(func):
-    @functools.wraps(func)
-    def wrapped(*args, **kwargs):
-        return __jit(__jaxtyped(__typechecked(func)))(*args, **kwargs)
+# def jit(func):
+#     @functools.wraps(func)
+#     def wrapped(*args, **kwargs):
+#         return __jit(__jaxtyped(__typechecked(func)))(*args, **kwargs)
+#
+#     return wrapped
+#
+#
+# def typed(func):
+#     @functools.wraps(func)
+#     def wrapper(*args, **kwargs):
+#         return __jaxtyped(__typechecked(func))(*args, **kwargs)
+#
+#     return wrapper
 
-    return wrapped
 
-
-def typed(func):
-    @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        return __jaxtyped(__typechecked(func))(*args, **kwargs)
-
-    return wrapper
+def typed(f):
+    return __jaxtyped(__typechecked(f))
 
 
 # defines an alias type called ScalarInt for Int[Array, ""]

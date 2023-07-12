@@ -2,6 +2,7 @@ import os
 import subprocess
 import sys
 import ipdb
+from rich import print
 
 
 class Package:
@@ -144,20 +145,23 @@ class Python:
         return output != "None"
 
     def install_module_requirements(self, module_path: str):
-        module_required_packages = self.__requirements_to_packages(
-            os.path.join(module_path, "requirements.txt")
-        )
-        # for package in module_required_packages:
-        #    self.pip_install(package.name)
-        uninstalled_requirements = [
-            i for i in module_required_packages if not self.is_installed(i.name)
-        ]
-        if uninstalled_requirements:
-            # ask user if they want to install the requirements
-            print(
-                f"Module {module_path} requires the following packages to be installed: {uninstalled_requirements}"
-            )
-            print("Do you want to install them? (y/n)")
-            if input() == "y":
-                for i in uninstalled_requirements:
-                    self.pip_install(i.name)
+        req_path = os.path.join(module_path, "requirements.txt")
+        if os.path.exists(req_path):
+            module_required_packages = self.__requirements_to_packages(req_path)
+            # for package in module_required_packages:
+            #    self.pip_install(package.name)
+            uninstalled_requirements = [
+                i for i in module_required_packages if not self.is_installed(i.name)
+            ]
+            if uninstalled_requirements:
+                # ask user if they want to install the requirements
+                print(
+                    f"Module {module_path} requires the following packages to be installed: {uninstalled_requirements}"
+                )
+                print("Do you want to install them? (y/n)")
+                if input() == "y":
+                    for i in uninstalled_requirements:
+                        self.pip_install(i.name)
+
+        else:
+            print(f"[yellow] Requirements for {module_path} not found.[/yellow]")
