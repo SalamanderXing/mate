@@ -2,18 +2,27 @@ import os
 from .module import Module
 from .experiment import Experiment
 from .python import Python
+import ipdb
+from beartype import beartype
 
 
 class ExperimentsModule(Module, dict):
+    @beartype
     def __init__(
-        self, allowed_modules: tuple[str], root_dir: str, python: Python, optional=False
+        self,
+        allowed_modules: tuple[str, ...],
+        root_dir: str,
+        python: Python,
+        optional=False,
     ):
         super().__init__(root_dir, python, optional)
         exps = self.__list_experiments()
         for path in exps:
             # local_path = ".".join(name[:-3].split(os.sep)[-3:])
             self[os.path.basename(path)[:-3]] = Experiment(
-                allowed_modules=allowed_modules, experiment_path=path
+                root_dir=path,
+                python=python,
+                allowed_modules=allowed_modules,
             )  # local_path
             # check_experiment(name)
 

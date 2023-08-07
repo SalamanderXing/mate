@@ -2,6 +2,7 @@ import os
 import subprocess
 import sys
 import ipdb
+from rich import print
 
 
 class Package:
@@ -96,6 +97,13 @@ class Python:
         return self.cfg["version"].split()[0]
 
     def __call__(self, command: str, print_output: bool = True) -> tuple[int, str]:
+        env = None
+        if command.startswith("-m"):
+            root_module = command.split(" ")[1].split(".")[0]
+            env = os.environ.copy()
+            env["PYTHONPATH"] = (
+                env.get("PYTHONPATH", "") + f":./{os.path.join(root_module, 'shared')}"
+            )
         cmd = [self.python_path] + command.split(" ")
         output = ""
         returncode = 0
@@ -105,21 +113,25 @@ class Python:
                 capture_output=True,
                 text=True,
                 encoding="utf-8",
+                env=env,
             )
             returncode = result.returncode
             output = result.stdout
         else:
-            returncode = subprocess.call(cmd)
+            returncode = subprocess.call(cmd, env=env)
 
         # returns the exit code as well as the output
         return returncode, output
 
     def pipreqs(self, path: str):
-        os.system(f"{self.pipreqs_path} --force {path}")
-        with open(os.path.join(path, "requirements.txt"), "r") as f:
-            requirements = [l for l in f.readlines() if not "==info" in l]
-        with open(os.path.join(path, "requirements.txt"), "w") as f:
-            f.write("\n".join(requirements))
+        # FIXME: pipreqs is too slow
+
+        # os.system(f"{self.pipreqs_path} --force {path}")
+        # with open(os.path.join(path, "requirements.txt"), "r") as f:
+        #     requirements = [l for l in f.readlines() if not "==info" in l]
+        # with open(os.path.join(path, "requirements.txt"), "w") as f:
+        #     f.write("\n".join(requirements))
+        pass
 
     def install_packages(self, module_location: str):
         requirements_file = os.path.join(module_location, "requirements.txt")
@@ -133,20 +145,23 @@ class Python:
         return output != "None"
 
     def install_module_requirements(self, module_path: str):
-        module_required_packages = self.__requirements_to_packages(
-            os.path.join(module_path, "requirements.txt")
-        )
-        # for package in module_required_packages:
-        #    self.pip_install(package.name)
-        uninstalled_requirements = [
-            i for i in module_required_packages if not self.is_installed(i.name)
-        ]
-        if uninstalled_requirements:
-            # ask user if they want to install the requirements
-            print(
-                f"Module {module_path} requires the following packages to be installed: {uninstalled_requirements}"
-            )
-            print("Do you want to install them? (y/n)")
-            if input() == "y":
-                for i in uninstalled_requirements:
-                    self.pip_install(i.name)
+        req_path = os.path.join(module_path, "requirements.txt")
+        if os.path.exists(req_path):
+            module_required_packages = self.__requirements_to_packages(req_path)
+            # for package in module_required_packages:
+            #    self.pip_install(package.name)
+            uninstalled_requirements = [
+                i for i in module_required_packages if not self.is_installed(i.name)
+            ]
+            if uninstalled_requirements:
+                # ask user if they want to install the requirements
+                print(
+                    f"Module {module_path} requires the following packages to be installed: {uninstalled_requirements}"
+                )
+                print("Do you want to install them? (y/n)")
+                if input() == "y":
+                    for i in uninstalled_requirements:
+                        self.pip_install(i.name)
+
+        else:
+            print(f"[yellow] Requirements for {module_path} not found.[/yellow]")

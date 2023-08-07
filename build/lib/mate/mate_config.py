@@ -1,6 +1,7 @@
 # from .api.data.metadata.metadata import BaseMetadata, Metadata
 from enum import Enum
 import json
+import ipdb
 from typing import Union, Optional
 
 
@@ -65,28 +66,29 @@ class Config:
 class MateConfig(Config):
     """
 
-# Configuring a Mate Project
+    # Configuring a Mate Project
 
-`mate.json` is the main configuration file for a Mate project. It defines where the root of a mate project is. The format is JSON.
+    `mate.json` is the main configuration file for a Mate project. It defines where the root of a mate project is. The format is JSON.
 
-**Key-value pairs**
+    **Key-value pairs**
 
-- results_folder : `str` : The folder where all results are stored. This is relative to the root **above** the project.
-- venv : `bool`=true : Whether to use a virtual environment. If `True` a virtual environment is created in the project root. If `False` no virtual environment is created and the same python as the one used to execute mate will be used instead.
+    - results_folder : `str` : The folder where all results are stored. This is relative to the root **above** the project.
+    - venv : `bool`=true : Whether to use a virtual environment. If `True` a virtual environment is created in the project root. If `False` no virtual environment is created and the same python as the one used to execute mate will be used instead.
 
-**Example**:
+    **Example**:
 
-If your `mate.json` lies in `/home/user/project_repo/mate_project/mate.json` and it looks like this:
-```json
-{
-    "results_folder": "results"
-    "venv":true
-}
-```
-Then the results folder will be `/home/user/project_repo/results`"""
+    If your `mate.json` lies in `/home/user/project_repo/mate_project/mate.json` and it looks like this:
+    ```json
+    {
+        "results_folder": "results"
+        "venv":true
+    }
+    ```
+    Then the results folder will be `/home/user/project_repo/results`"""
 
     venv: Optional[bool] = None
     verbose: Optional[bool] = None
+    auto_wandb: Optional[bool] = None
     results_folder: str = ""
 
     def __init__(self, config):
@@ -99,6 +101,5 @@ Then the results folder will be `/home/user/project_repo/results`"""
         return self.__str__()
 
     def save(self, path="mate.json"):
-
         with open(path, "w") as f:
             f.write(self.__str__())

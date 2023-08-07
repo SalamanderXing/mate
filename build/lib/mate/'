@@ -1,0 +1,91 @@
+import inspect
+import ipdb
+
+
+class Interface(type):
+    """A metaclass for creating interfaces."""
+
+    required_methods = set()
+    base_class = None
+
+    def __new__(mcs, name, bases, attrs):
+        # Save the base classes
+        if bases:
+            Interface.base_class = bases[0]
+
+        for attr_name, attr_value in attrs.items():
+            if inspect.isfunction(attr_value) or inspect.ismethod(attr_value):
+                mcs.required_methods.add(attr_name)
+        return super().__new__(mcs, name, bases, attrs)
+
+    def __instancecheck__(cls, instance):
+        return cls.__subclasscheck__(type(instance))
+
+    def __subclasscheck__(cls, subclass):
+        subclass_methods = set(
+            name
+            for name, _ in inspect.getmembers(subclass, predicate=inspect.isfunction)
+        )
+        methods_check = cls.required_methods.issubset(subclass_methods)
+
+        # Check if the subclass inherits from the base class of TestInterface
+        base_class_check = (
+            issubclass(subclass, cls.base_class) if cls.base_class else True
+        )
+
+        return methods_check and base_class_check
+
+
+def __test():
+    print(f"Testing..")
+    class TestInterface(metaclass=Interface):
+        """An interface for test classes."""
+
+        def __init__(self, test_name):
+            self.test_name = test_name
+
+        def run(self):
+            raise NotImplementedError
+
+        def __call__(self):
+            raise NotImplementedError
+
+    class TestSub:
+        """A test class that implements the TestInterface."""
+
+        def __init__(self, test_name):
+            self.test_name = test_name
+
+        def run(self):
+            print("Running test {}".format(self.test_name))
+
+        def __call__(self):
+            print("Calling test {}".format(self.test_name))
+
+    class TestSub2:
+        """A test class that implements the TestInterface."""
+
+        def __init__(self, test_name):
+            self.test_name = test_name
+
+        def run(self):
+            print("Running test {}".format(self.test_name))
+
+    class TestSub3:
+        """A test class that implements the TestInterface."""
+
+        def __init__(self, test_name):
+            self.test_name = test_name
+
+    # Test that TestSub implements TestInterface
+    assert issubclass(TestSub, TestInterface)
+    # print(isinstance(TestSub("test"), TestInterface))
+
+    # Test that TestSub2 does not implement TestInterface
+    assert not (issubclass(TestSub2, TestInterface))
+    # print(isinstance(TestSub2("test"), TestInterface))
+    assert not (issubclass(TestSub3, TestInterface))
+
+
+if __name__ == "__main__":
+    __test()

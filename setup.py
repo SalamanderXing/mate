@@ -2,11 +2,19 @@ from setuptools import setup, find_packages
 import os
 
 # Generate requirements.txt, using pipreqs, saving the file in current directory
-os.system("pipreqs --force packages/mate --savepath requirements.txt --ignore docker")
+# os.system("pipreqs --force packages/mate --savepath requirements.txt --ignore docker")
 
-with open("requirements.txt") as f:
-    requirements = f.read().splitlines()
-
+# with open("requirements.txt") as f:
+#     requirements = [el.split("==")[0] for el in f.read().splitlines()]
+#     requirements.remove("beartype")
+reqs = [
+    "dirhash",
+    "ipdb",
+    "PyYAML",
+    "rich",
+    "validators",
+    "wandb",
+]
 setup(
     name="mate",
     description="📦 Modularize your deep learning project to improve reproducibility",
@@ -20,7 +28,7 @@ setup(
     license="Apache License 2.0",
     license_files=("LICENSE.md",),
     version="0.0.1",
-    install_requires=requirements,
+    install_requires=[],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",

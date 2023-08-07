@@ -22,7 +22,6 @@ packages/mate/types.py
 packages/mate.egg-info/PKG-INFO
 packages/mate.egg-info/SOURCES.txt
 packages/mate.egg-info/dependency_links.txt
-packages/mate.egg-info/requires.txt
 packages/mate.egg-info/top_level.txt
 packages/mate/__pycache__/__init__.cpython-311.pyc
 packages/mate/__pycache__/__main__.cpython-311.pyc
