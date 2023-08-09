@@ -232,7 +232,14 @@ class Mate:
         Bind an object to the current Mate instance.
         It will automatically call the method specified by the `command` attribute.
         """
-        getattr(obj, self.command)()
+        try:
+            getattr(obj, self.command)()
+        except Exception as e:
+            if self.auto_wandb:
+                import wandb
+
+                wandb.finish()
+            raise e
 
     def __init__(
         self,
