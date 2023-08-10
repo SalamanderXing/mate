@@ -34,15 +34,17 @@ class Module:
         self.__yaml = self.__parse_yaml()
         self.__mate_dir = os.path.join(root_path, ".matemodule")
 
-        self._hash = (
-            dirhash(
-                root_path,
-                "sha1",
-                ignore=["__pycache__", "README.md", "requirements.txt", ".matemodule"],
-            )
-            if (os.path.exists(self.root_dir) and os.path.isdir(self.root_dir))
-            else ""
-        )
+        # FIXME: Disabled hash for now. Screws up with git
+        # self._hash = (
+        #     dirhash(
+        #         root_path,
+        #         "sha1",
+        #         ignore=["__pycache__", "README.md", "requirements.txt", ".matemodule"],
+        #     )
+        #     if (os.path.exists(self.root_dir) and os.path.isdir(self.root_dir))
+        #     else ""
+        # )
+        self._hash = ""  # FIXME
         self._exports = self.__collect_exports()
         if self.__class__.__name__ == "Module":
             status_path = os.path.join(self.__mate_dir, "status.json")
@@ -50,27 +52,27 @@ class Module:
                 self._errors.append(
                     f"No exports found in {self.relative_path}. Consider exporting with 'mate export <module>'"
                 )
-            os.makedirs(self.__mate_dir, exist_ok=True)
-            if os.path.exists(status_path):
-                with open(os.path.join(self.__mate_dir, "status.json"), "r") as f:
-                    status = json.load(f)
-            else:
-                status = {"hash": "-1", "installed": False}
-            if status["hash"] != self._hash or not os.path.exists(
-                os.path.join(self.__root_path, "requirements.txt")
-            ):
-                self._python.pipreqs(self.root_dir)
-                print(f"Generated requirements for {self.relative_path}")
-                with open(status_path, "w") as f:
-                    json.dump({"hash": self._hash}, f, indent=2)
-
-                self._python.install_module_requirements(self.root_dir)
-
-            if not status.get("installed", False):
-                self._python.install_module_requirements(self.root_dir)
-                # print(f"Installed requirements for {self.relative_path()}")
-                with open(status_path, "w") as f:
-                    json.dump({"hash": self._hash, "installed": True}, f, indent=2)
+            # os.makedirs(self.__mate_dir, exist_ok=True)
+            # if os.path.exists(status_path):
+            #     with open(os.path.join(self.__mate_dir, "status.json"), "r") as f:
+            #         status = json.load(f)
+            # else:
+            #     status = {"hash": "-1", "installed": False}
+            # if status["hash"] != self._hash or not os.path.exists(
+            #     os.path.join(self.__root_path, "requirements.txt")
+            # ):
+            #     self._python.pipreqs(self.root_dir)
+            #     print(f"Generated requirements for {self.relative_path}")
+            #     with open(status_path, "w") as f:
+            #         json.dump({"hash": self._hash}, f, indent=2)
+            #
+            #     self._python.install_module_requirements(self.root_dir)
+            #
+            # if not status.get("installed", False):
+            #     self._python.install_module_requirements(self.root_dir)
+            #     # print(f"Installed requirements for {self.relative_path()}")
+            #     with open(status_path, "w") as f:
+            #         json.dump({"hash": self._hash, "installed": True}, f, indent=2)
 
     @property
     def root_file(self):
