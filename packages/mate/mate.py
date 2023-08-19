@@ -44,7 +44,9 @@ class Mate:
         runtime = {
             "auto_wandb": False,
             "command": "",
-            "save_dir": "",
+            "data_dir": "",
+            "command": "",
+            "results_dir": "",
         }
         if len(stack) > 1:
             cur = stack[-3]
@@ -119,8 +121,8 @@ class Mate:
             k: (v if isinstance(v, (int, float)) else v.item())
             for k, v in values.items()
         }
-        os.makedirs(self.save_dir, exist_ok=True)
-        result_path = os.path.join(self.save_dir, "result.json")
+        os.makedirs(self.results_dir, exist_ok=True)
+        result_path = os.path.join(self.results_dir, "result.json")
         result = {}
         if os.path.exists(result_path):
             with open(result_path, "r") as f:
@@ -175,7 +177,7 @@ class Mate:
         wandb.init(
             project=self.project_name,
             name=self.__experiment_name,
-            dir=self.save_dir,
+            dir=self.results_dir,
             reinit=True,
         )
 
@@ -191,7 +193,7 @@ class Mate:
         """
         Get the path to the current log directory.
         """
-        logdir = os.path.join(self.save_dir, "logs")
+        logdir = os.path.join(self.results_dir, "logs")
         os.makedirs(logdir, exist_ok=True)
         return logdir
 
@@ -200,7 +202,7 @@ class Mate:
         """
         Get the path to the current checkpoint directory.
         """
-        checkpoint_dir = os.path.join(self.save_dir, "checkpoints")
+        checkpoint_dir = os.path.join(self.results_dir, "checkpoints")
         os.makedirs(checkpoint_dir, exist_ok=True)
         return checkpoint_dir
 
@@ -212,18 +214,11 @@ class Mate:
         return os.path.join(self.checkpoint_dir, "default.ckpt")
 
     @property
-    def data_dir(self) -> str:
-        """
-        Get the path to the current data directory.
-        """
-        return os.path.join(self.save_dir, "data")
-
-    @property
     def plots_dir(self) -> str:
         """
         Get the path to the current plots directory.
         """
-        plots_dir = os.path.join(self.save_dir, "plots")
+        plots_dir = os.path.join(self.results_dir, "plots")
         os.makedirs(plots_dir, exist_ok=True)
         return plots_dir
 
@@ -244,14 +239,16 @@ class Mate:
     def __init__(
         self,
         command: str,
-        save_dir: str,
+        data_dir: str,
+        results_dir: str,
         auto_wandb: bool = False,
         project_name: str = "",
     ):
-        self.__results_folder = os.sep.join(save_dir.split(os.sep)[:-2])
+        self.data_dir = data_dir
+        self.__results_folder = os.sep.join(results_dir.split(os.sep)[:-2])
         self.command: str = command
-        self.save_dir = save_dir
-        self.__experiment_name = os.path.basename(save_dir) if save_dir else ""
+        self.results_dir = results_dir
+        self.__experiment_name = os.path.basename(results_dir) if results_dir else ""
         self.project_name = (
             project_name  # save_dir.split(os.sep)[-4] if save_dir else ""
         )

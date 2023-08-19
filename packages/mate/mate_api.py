@@ -367,10 +367,13 @@ class MateAPI:
         base_results = os.path.join(
             self.project.root_dir, "..", self.config.results_folder
         )
-        save_dir = os.path.join(base_results, path, name)
+        results_dir = os.path.join(base_results, path, name)
+        data_loader_name = self.project.experiments[name].data_loader
+        data_dir = os.path.join(self.project.root_dir, "..", "data", data_loader_name)
         runtime = Mate(
+            data_dir=data_dir,
             command=command if command is not None else "",
-            save_dir=save_dir,
+            results_dir=results_dir,
             auto_wandb=self.config.auto_wandb
             if self.config.auto_wandb is not None
             else False,

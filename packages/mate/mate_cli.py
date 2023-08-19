@@ -34,14 +34,14 @@ class MateCLI:
         ```"""
         MateAPI.init(project_name, params)
 
-    def tag(self, tag_name: str, target_module: str):
+    def tag(self, tag_name: str, target_module:str):
         """
         :param tag_name: Name of the tag (will be converted to emoji if possible)
         :param target_module: Module to tag
 
         Tags a module"""
         self.api.tag(tag_name, target_module)
-
+        
     def md(self):
         """
 
