@@ -2,6 +2,7 @@ from jaxtyping import jaxtyped as __jaxtyped, Int, Float, Bool, Array, UInt
 from beartype import beartype as __typechecked
 from jax import jit as __jit
 from jax.random import KeyArray
+from jaxtyping import PRNGKeyArray
 import functools
 
 
@@ -30,5 +31,4 @@ SInt = Int[Array, ""] | int
 SFloat = Float[Array, ""] | float
 SBool = Bool[Array, ""] | bool
 SUInt = UInt[Array, ""] | int
-
-Key = UInt[Array, "2"] | KeyArray
+Key = PRNGKeyArray
