@@ -1,6 +1,5 @@
 from .bunch import Bunch
 
-# analyses should be violet
 colors = Bunch(
     {
         "error": "#FF0000",
@@ -10,5 +9,6 @@ colors = Bunch(
         "experiments": "#ff6908",
         "analyses": "#8e44ad",
         "shared": "#2ecc71",
+        "experiment_bases": "magenta",
     }
 )

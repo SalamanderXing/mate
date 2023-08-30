@@ -28,6 +28,7 @@ packages/mate/__pycache__/__main__.cpython-311.pyc
 packages/mate/__pycache__/cli_parser.cpython-311.pyc
 packages/mate/__pycache__/git_manager.cpython-311.pyc
 packages/mate/__pycache__/io.cpython-311.pyc
+packages/mate/__pycache__/jax.cpython-311.opt-jaxtyping67087742665242386027.pyc
 packages/mate/__pycache__/jax.cpython-311.pyc
 packages/mate/__pycache__/mate.cpython-311.pyc
 packages/mate/__pycache__/mate_api.cpython-311.pyc

@@ -102,6 +102,9 @@ class MateProject(Module):
         self.shared = ModulesDict(
             os.path.join(root_dir, "shared"), python, optional=True
         )
+        self.experiment_bases = ModulesDict(
+            os.path.join(root_dir, "experiment_bases"), python, optional=True
+        )
         self.experiments = ExperimentsModule(
             tuple(key for key in self.__dict__.keys() if not key.startswith("_")),
             os.path.join(root_dir, "experiments"),
