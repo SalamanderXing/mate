@@ -114,10 +114,14 @@ class Python:
         print_output: bool = True,
         input: str | None = None,
         ssh_command: str | None = None,
+        remote_dir: str | None = None,
     ) -> tuple[int, str]:
         assert not (
             (input is not None) and not print_output
         ), "Cannot print output and not provide input"
+        assert not (
+            ssh_command is not None and remote_dir is None
+        ), "Cannot provide ssh command without remote dir"
         env = None
         if command.startswith("-m"):
             root_module = command.split(" ")[1].split(".")[0]
@@ -149,10 +153,12 @@ class Python:
                 child = pexpect.spawn(ssh_command)
                 child.expect("(venv)")
                 child.sendline(
-                    f"echo '{encoded_tarball}' | base64 --decode | tar -xz -C /home/bluesk/discrete-graph-diffusion"
+                    f"echo '{encoded_tarball}' | base64 --decode | tar -xz -C {remote_dir} && echo 'Done syncing'"
                 )
+                child.expect("(venv)")
+                child.sendline(f"mkdir -p {remote_dir}")
                 child.sendline(
-                    f"(bash -c 'cd /home/bluesk/discrete-graph-diffusion && {' '.join(cmd)}; exit'); exit"
+                    f"(bash -c 'cd {remote_dir} && {' '.join(cmd)}; exit'); exit"
                 )
             else:
                 child = pexpect.spawn(" ".join(cmd), encoding="utf-8")

@@ -31,7 +31,7 @@ class Hyperparameters:
     def __init__(self, root_path: str, python: Python, optional: bool = False):
         self.root_path = root_path
         self._assert_is_valid_file()
-        self.__special_keys = ["experiment", "ssh_command"]
+        self.__special_keys = ["experiment", "ssh_command", "remote_dir"]
         special, self.hyperparameters = self.__parse_hyperparameters()
         # for key, val in special.items():
         #     setattr(self, key, val)
@@ -40,6 +40,9 @@ class Hyperparameters:
                 setattr(self, key, special[key])
             else:
                 setattr(self, key, None)
+
+        if self.ssh_command is not None and self.remote_dir is None:
+            self.remote_dir = "~"
 
     def to_dict(self):
         return {"errors": [], "tags": []}

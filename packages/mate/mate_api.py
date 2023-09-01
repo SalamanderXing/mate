@@ -387,6 +387,7 @@ class MateAPI:
             f"-m {exp_path}",
             input=runtime.to_cli(),
             ssh_command=hyperparameters.ssh_command,
+            remote_dir=hyperparameters.remote_dir,
         )
         if exit_code != 0:
             print(
