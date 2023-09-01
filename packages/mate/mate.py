@@ -60,7 +60,6 @@ class Mate:
 
         mate = None
         input_data = {}
-        print(f"{sys.argv[1:]=}")
         if len(sys.argv) > 1 and sys.argv[1] != "run":
             input_data = {
                 a.split("=")[0]: a.split("=")[1] for a in sys.argv[1:] if "=" in a
