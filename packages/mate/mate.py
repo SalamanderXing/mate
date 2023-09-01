@@ -2,11 +2,12 @@ import json
 import os
 import inspect
 from glob import glob
-from typing import Any
+from typing import Any, Callable
 from rich import print
 import sys
-import ipdb
-import select
+import yaml
+from beartype import beartype
+from inspect import signature
 
 
 class Mate:
@@ -60,12 +61,9 @@ class Mate:
 
         mate = None
         input_data = {}
-        if len(sys.argv) > 1 and sys.argv[1] != "run":
-            input_data = {
-                a.split("=")[0]: json.loads(a.split("=")[1])
-                for a in sys.argv[1:]
-                if "=" in a
-            }
+        if len(sys.argv) > 1 and "=" in sys.argv[1]:
+            yml = "\n".join([arg.replace("=", ": ") for arg in sys.argv[1:]])
+            input_data = yaml.safe_load(yml)
         if len(input_data) > 0:
             try:
                 mate = Mate(**input_data)
@@ -109,6 +107,15 @@ class Mate:
             if not key.startswith("_")
         }
         return result
+
+    def call(self, func: Callable[..., Any]):
+        """
+        Call a function with the current Mate instance as the first argument.
+        """
+        func_params = signature(func).parameters.keys()
+        matching_args = {k: getattr(self, k) for k in func_params if hasattr(self, k)}
+        func = beartype(func)
+        return func(**matching_args)
 
     def __repr__(self):
         return str(self.to_dict())
