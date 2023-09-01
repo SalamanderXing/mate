@@ -3,6 +3,18 @@ import subprocess
 import sys
 import ipdb
 from rich import print
+import pexpect
+import base64
+
+
+def generate_encoded_tarball(to_tar: str):
+    tar_command = ["tar", "-cz", to_tar]
+    tar_process = subprocess.Popen(
+        tar_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )
+    tar_output, _ = tar_process.communicate()
+    encoded_tarball = base64.b64encode(tar_output).decode("utf-8")
+    return encoded_tarball
 
 
 class Package:
@@ -97,7 +109,11 @@ class Python:
         return self.cfg["version"].split()[0]
 
     def __call__(
-        self, command: str, print_output: bool = True, input: str | None = None
+        self,
+        command: str,
+        print_output: bool = True,
+        input: str | None = None,
+        ssh_command: str | None = None,
     ) -> tuple[int, str]:
         assert not (
             (input is not None) and not print_output
@@ -127,67 +143,20 @@ class Python:
             if input is not None:
                 cmd += [input]
 
-            def generate_tarball(to_tar):
-                tar_command = ["tar", "-cz", to_tar]
-                tar_process = subprocess.Popen(
-                    tar_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+            if ssh_command is not None:
+                to_tar = cmd[2].split(".")[0]
+                encoded_tarball = generate_encoded_tarball(to_tar)
+                child = pexpect.spawn(ssh_command)
+                child.expect("(venv)")
+                child.sendline(
+                    f"echo '{encoded_tarball}' | base64 --decode | tar -xz -C /home/bluesk/discrete-graph-diffusion"
                 )
-                tar_output, _ = tar_process.communicate()
-                return tar_output
-
-            to_tar = cmd[2].split(".")[0]
-            tar_command = ["tar", "-cz"] + [to_tar]
-
-            print(f"[yellow]Running command: {' '.join(cmd)}[/yellow]")
-            zone = "us-central1-a"
-            # ssh_command = [
-            #     "gcloud",
-            #     "compute",
-            #     "tpus",
-            #     "tpu-vm",
-            #     "ssh",
-            #     f"--zone={zone}",
-            #     "tpu-giulio-dev",
-            #     "--command",
-            #     f"tar -xz -C /home/bluesk/discrete-graph-diffusion",
-            # ]
-            # tar_process = subprocess.Popen(tar_command, stdout=subprocess.PIPE)
-            # subprocess.call(ssh_command, env=env, stdin=tar_process.stdout)
-            # tar_process.wait()
-
-            import pexpect
-            import base64
-
-            tarball_content = generate_tarball(to_tar)
-            encoded_tarball = base64.b64encode(tarball_content).decode("utf-8")
-            ssh_command = [
-                "gcloud",
-                "compute",
-                "tpus",
-                "tpu-vm",
-                "ssh",
-                f"--zone={zone}",
-                "tpu-giulio-dev",
-            ]
-            # sub = subprocess.call(ssh_command, env=env, stdin=tar_process.stdout)
-            # sub.stdin.write(
-            #     f"(cd /home/bluesk/discrete-graph-diffusion && {' '.join(cmd)})"
-            # )
-            child = pexpect.spawn(" ".join(ssh_command))
-            # (venv) bluesk@t1v-n-5f29d40a-w-0:~$pe.expect(":~$")
-            child.expect("(venv)")
-            # child.sendline("tar -xz -C /home/bluesk/discrete-graph-diffusion")
-            child.sendline(
-                f"echo '{encoded_tarball}' | base64 --decode | tar -xz -C /home/bluesk/discrete-graph-diffusion"
-            )
-            child.sendline(
-                f"(cd /home/bluesk/discrete-graph-diffusion && {' '.join(cmd)})"
-            )
-            child.expect("(venv)")
+                child.sendline(
+                    f"(bash -c 'cd /home/bluesk/discrete-graph-diffusion && {' '.join(cmd)}; exit'); exit"
+                )
+            else:
+                child = pexpect.spawn(" ".join(cmd), encoding="utf-8")
             child.interact()
-
-            # Pass the file descriptor to subprocess.call
-            # returncode = subprocess.call(cmd, env=env)
 
         # returns the exit code as well as the output
         return returncode, output

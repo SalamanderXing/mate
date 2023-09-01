@@ -287,17 +287,20 @@ class Mate:
     ):
         self.data_dir = data_dir
         self.__results_folder = os.sep.join(results_dir.split(os.sep)[:-2])
-        self.command: str = command
+        self.command = command
         self.results_dir = results_dir
         self.__experiment_name = os.path.basename(results_dir) if results_dir else ""
-        self.project_name = (
-            project_name  # save_dir.split(os.sep)[-4] if save_dir else ""
-        )
+        self.project_name = project_name
         self.auto_wandb = auto_wandb
         for key, value in hyperparameters.items():
             assert not hasattr(
                 self, key
             ), f"Duplicate hyperparameter: {key}. Please use a different name because it is already used by Mate."
             setattr(self, key, value)
+
+        paths = [self.data_dir, self.results_dir]
+        for path in paths:
+            if path and not os.path.exists(path):
+                os.makedirs(path, exist_ok=True)
         if self.auto_wandb:
             self.wandb()

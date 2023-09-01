@@ -3,6 +3,9 @@ from .module import Module
 from .experiment import Experiment
 from .python import Python
 import ipdb
+from typing import Any
+import yaml
+import json
 
 
 class Hyperparameters:
@@ -28,30 +31,35 @@ class Hyperparameters:
     def __init__(self, root_path: str, python: Python, optional: bool = False):
         self.root_path = root_path
         self._assert_is_valid_file()
-        self.hyperparameters = self.__parse_hyperparameters()
+        self.__special_keys = ["experiment", "ssh_command"]
+        special, self.hyperparameters = self.__parse_hyperparameters()
+        # for key, val in special.items():
+        #     setattr(self, key, val)
+        for key in self.__special_keys:
+            if key in special:
+                setattr(self, key, special[key])
+            else:
+                setattr(self, key, None)
 
     def to_dict(self):
         return {"errors": [], "tags": []}
 
-    @property
-    def experiment(self):
-        return self.hyperparameters["experiment"]
-
-    def __parse_hyperparameters(self):
+    def __parse_hyperparameters(self) -> tuple[dict[str, Any], dict[str, Any]]:
+        special, hyperparameters = {}, {}
         if self.root_path.endswith(".yaml") or self.root_path.endswith(".yml"):
-            import yaml
-
             with open(self.root_path, "r") as f:
-                return yaml.load(f, Loader=yaml.FullLoader)
+                hyperparameters = yaml.load(f, Loader=yaml.FullLoader)
         elif self.root_path.endswith(".json"):
-            import json
-
             with open(self.root_path, "r") as f:
-                return json.load(f)
+                hyperparameters = json.load(f)
         else:
             raise ValueError(
                 f"Invalid hyperparameters file: {self.root_path}. Valid extensions: {self.valid_extensions}"
             )
+        for key in self.__special_keys:
+            if key in hyperparameters:
+                special[key] = hyperparameters.pop(key)
+        return special, hyperparameters
 
 
 class HyperparametersModule(dict):

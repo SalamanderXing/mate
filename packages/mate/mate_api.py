@@ -383,7 +383,11 @@ class MateAPI:
             **hyperparameters.hyperparameters,
         )
         exp_path = experiment.module_path
-        exit_code, _ = self.python(f"-m {exp_path}", input=runtime.to_cli())
+        exit_code, _ = self.python(
+            f"-m {exp_path}",
+            input=runtime.to_cli(),
+            ssh_command=hyperparameters.ssh_command,
+        )
         if exit_code != 0:
             print(
                 f" [red]❌ Experiment {path}.{name} failed with exit code {exit_code} [/red]"
