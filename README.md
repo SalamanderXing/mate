@@ -131,8 +131,6 @@ help you manage your project, including
 <!-- ## Contact 🤝  -->
 <!---->
 
-For any question, please contact:
+## Contacts
 
 - [Email](mailto:g.zani@uva.nl)
-- [Personal Website](https://salamanderxing.github.io/)
-- Or join the [discord channel](https://discord.gg/HyNgjBAQZR)
