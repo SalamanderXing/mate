@@ -62,7 +62,9 @@ class Mate:
         input_data = {}
         if len(sys.argv) > 1 and sys.argv[1] != "run":
             input_data = {
-                a.split("=")[0]: a.split("=")[1] for a in sys.argv[1:] if "=" in a
+                a.split("=")[0]: json.loads(a.split("=")[1])
+                for a in sys.argv[1:]
+                if "=" in a
             }
         if len(input_data) > 0:
             try:
@@ -90,7 +92,7 @@ class Mate:
         """
         Get the CLI command that was used to run the current experiment.
         """
-        return " ".join(f"{k}={v}" for k, v in self.to_dict().items())
+        return " ".join(f"{k}={json.dumps(v)}" for k, v in self.to_dict().items())
 
     def json_base64(self) -> str:
         """
