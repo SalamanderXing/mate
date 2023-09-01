@@ -196,7 +196,7 @@ class Experiment(Module):
         experiment_path = self.root_dir
         with open(experiment_path, "r") as f:
             experiment = ast.parse(f.read())
-        self.__check_experiment(experiment)
+        # self.__check_experiment(experiment)
         self.relative_imports: list[ast.ImportFrom] = []
         self.imports: list[ast.Import] = []
         self.imports_dict: dict[str, dict[str, list[ast.ImportFrom]]] = {}

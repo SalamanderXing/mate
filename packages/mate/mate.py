@@ -4,7 +4,9 @@ import inspect
 from glob import glob
 from typing import Any
 from rich import print
+import sys
 import ipdb
+import select
 
 
 class Mate:
@@ -36,29 +38,48 @@ class Mate:
     """
 
     @staticmethod
-    def load():
-        get_top_level_cmd = "git rev-parse --show-toplevel"
-        top_level = os.popen(get_top_level_cmd).read().strip()
-        full_stack = list([o.filename for o in inspect.stack()])
-        stack = [al.filename for al in inspect.stack()][-3].split(os.sep)
-        runtime = {
-            "auto_wandb": False,
-            "command": "",
-            "data_dir": "",
-            "command": "",
-            "results_dir": "",
-        }
-        if len(stack) > 1:
-            cur = stack[-3]
-            runtime_filename = os.path.join(top_level, ".mate", cur, "runtime.json")
-            if os.path.exists(runtime_filename):
-                with open(runtime_filename, "r") as f:
-                    runtime = json.load(f)
-        return Mate(**runtime)
+    def load() -> "Mate | None":
+        # get_top_level_cmd = "git rev-parse --show-toplevel"
+        # top_level = os.popen(get_top_level_cmd).read().strip()
+        # full_stack = list([o.filename for o in inspect.stack()])
+        # stack = [al.filename for al in inspect.stack()][-3].split(os.sep)
+        # runtime = {
+        #     "auto_wandb": False,
+        #     "command": "",
+        #     "data_dir": "",
+        #     "command": "",
+        #     "results_dir": "",
+        # }
+        # if len(stack) > 1:
+        #     cur = stack[-3]
+        #     runtime_filename = os.path.join(top_level, ".mate", cur, "runtime.json")
+        #     if os.path.exists(runtime_filename):
+        #         with open(runtime_filename, "r") as f:
+        #             runtime = json.load(f)
+        # return Mate(**runtime)
+
+        mate = None
+        input_data = None
+        if len(sys.argv) > 1:
+            received_json_str = sys.argv[1]
+            print(f"[red] received_json_str {received_json_str} [/red]")
+            try:
+                input_data = json.loads(received_json_str)
+            except:
+                pass
+        if input_data is not None:
+            mate = Mate(**input_data)
+        return mate
 
     def save(self, location: str):
         with open(location, "w") as f:
             json.dump(self.to_dict(), f)
+
+    def json(self) -> str:
+        """
+        Get the JSON representation of the current Mate instance.
+        """
+        return json.dumps(self.to_dict())
 
     def to_dict(self):
         result = {
@@ -243,6 +264,7 @@ class Mate:
         results_dir: str,
         auto_wandb: bool = False,
         project_name: str = "",
+        **hyperparameters: dict[str, Any],
     ):
         self.data_dir = data_dir
         self.__results_folder = os.sep.join(results_dir.split(os.sep)[:-2])
@@ -253,5 +275,10 @@ class Mate:
             project_name  # save_dir.split(os.sep)[-4] if save_dir else ""
         )
         self.auto_wandb = auto_wandb
+        for key, value in hyperparameters.items():
+            assert not hasattr(
+                self, key
+            ), f"Duplicate hyperparameter: {key}. Please use a different name because it is already used by Mate."
+            setattr(self, key, value)
         if self.auto_wandb:
             self.wandb()

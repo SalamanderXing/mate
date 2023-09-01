@@ -18,7 +18,7 @@ from .utils import print_markdown, remove_indent
 from .mate_cli import MateCLI
 from .mate import Mate
 import inspect
-from typing import Optional, Callable, Sized
+from typing import Optional, Callable, Sequence
 import ipdb
 import os
 import sys
@@ -100,7 +100,6 @@ def method_to_md(method_name, member: Optional[Callable] = None):
 
 
 def generate_help_md() -> str:
-
     doc = remove_indent(str(MateCLI.__doc__)) + "\n --- \n"
     current_docstring = str(sys.modules[__name__].__doc__)
     doc += current_docstring + "\n --- \n"
@@ -133,6 +132,7 @@ class MateHelp:
 
     def get_full_docs(self, class_value):
         header = remove_indent(class_value.__doc__) + "\n\n --- \n"
+
         # gets the docstring of the methods and the variables with inspect
         def get_method_doc(method_name, method):
             doc = remove_indent(method.__doc__)
@@ -189,7 +189,7 @@ class MateHelp:
         return {key: self.get_help_md(key) for key in self.help_options}
 
 
-def collect_args(args: list[str], annotations: tuple[Callable]) -> tuple[list, dict]:
+def collect_args(args: list[str], annotations: Sequence[Callable]) -> tuple[list, dict]:
     # collects the arguments into a list and a dictionary
     # the list contains the positional arguments
     # the dictionary contains the keyword arguments

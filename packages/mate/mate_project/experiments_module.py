@@ -7,7 +7,6 @@ from beartype import beartype
 
 
 class ExperimentsModule(Module, dict):
-    @beartype
     def __init__(
         self,
         allowed_modules: tuple[str, ...],

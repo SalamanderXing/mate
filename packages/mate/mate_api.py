@@ -352,7 +352,7 @@ class MateAPI:
         return errors
     """
 
-    def run(self, target: str, command: Optional[str]):
+    def run(self, target: str, command: str | None):
         if "." in target:
             path, name = target.split(".")
             assert not (path == "analyses" and command is not None), (
@@ -360,7 +360,7 @@ class MateAPI:
                 "you can only run them with the 'mate run' command"
             )
         else:
-            path = "experiments"  # by default runs experiments
+            path = "hyperparameters"  # by default runs experiments
             name = target
         assert path in self.project, f"Path '{path}' does not exist"
         assert name in self.project[path], f"Name {path}.{name} does not exist"
@@ -368,7 +368,9 @@ class MateAPI:
             self.project.root_dir, "..", self.config.results_folder
         )
         results_dir = os.path.join(base_results, path, name)
-        data_loader_name = self.project.experiments[name].data_loader
+        hyperparameters = self.project[path][name]
+        experiment = self.project.experiments[hyperparameters.experiment]  # type:ignore
+        data_loader_name = experiment.data_loader
         data_dir = os.path.join(self.project.root_dir, "..", "data", data_loader_name)
         runtime = Mate(
             data_dir=data_dir,
@@ -378,13 +380,10 @@ class MateAPI:
             if self.config.auto_wandb is not None
             else False,
             project_name=self.project.name,
+            **hyperparameters.hyperparameters,
         )
-        runtime.save(os.path.join(self.mate_dir, "runtime.json"))
-        if self.config.verbose:
-            print(runtime)
-        # self.python("-m {self.project.experiments[experiment_name].module_path}")
-        exp_path = self.project[f"{path}.{name}"].module_path
-        exit_code, _ = self.python(f"-m {exp_path}")
+        exp_path = experiment.module_path
+        exit_code, _ = self.python(f"-m {exp_path}", input=runtime.json())
         if exit_code != 0:
             print(
                 f" [red]❌ Experiment {path}.{name} failed with exit code {exit_code} [/red]"

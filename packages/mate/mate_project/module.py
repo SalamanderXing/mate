@@ -10,14 +10,12 @@ from dirhash import dirhash
 import ipdb
 from .python import Python
 from .colors import colors
-from beartype import beartype
 import ast
 import re
 import yaml
 
 
 class Module:
-    @beartype
     def __init__(
         self,
         root_path: str,
@@ -96,7 +94,6 @@ class Module:
             docstring = ast.get_docstring(tree)
             return docstring if docstring else ""
 
-    @beartype
     def __parse_yaml(self) -> dict[str, Any]:
         # if self.name == "tu":
         #     ipdb.set_trace()

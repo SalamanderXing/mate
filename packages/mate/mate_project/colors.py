@@ -9,6 +9,6 @@ colors = Bunch(
         "experiments": "#ff6908",
         "analyses": "#8e44ad",
         "shared": "#2ecc71",
-        "experiment_bases": "magenta",
+        "hyperparameters": "magenta",
     }
 )

@@ -96,7 +96,12 @@ class Python:
     def version(self):
         return self.cfg["version"].split()[0]
 
-    def __call__(self, command: str, print_output: bool = True) -> tuple[int, str]:
+    def __call__(
+        self, command: str, print_output: bool = True, input: str | None = None
+    ) -> tuple[int, str]:
+        assert not (
+            (input is not None) and not print_output
+        ), "Cannot print output and not provide input"
         env = None
         if command.startswith("-m"):
             root_module = command.split(" ")[1].split(".")[0]
@@ -114,11 +119,35 @@ class Python:
                 text=True,
                 encoding="utf-8",
                 env=env,
+                input=input,
             )
             returncode = result.returncode
             output = result.stdout
         else:
-            returncode = subprocess.call(cmd, env=env)
+            if input is not None:
+                cmd += [input]
+
+            to_tar = cmd[2].split(".")[0]
+            tar_command = ["tar", "-cz"] + [to_tar]
+
+            zone = "us-central1-a"
+            ssh_command = [
+                "gcloud",
+                "compute",
+                "tpus",
+                "tpu-vm",
+                "ssh",
+                f"--zone={zone}",
+                "tpu-giulio-dev",
+                "--command",
+                f"tar -xz -C /home/bluesk/discrete-graph-diffusion && {' '.join(cmd)}",
+            ]
+            tar_process = subprocess.Popen(tar_command, stdout=subprocess.PIPE)
+            subprocess.call(ssh_command, env=env, stdin=tar_process.stdout)
+            tar_process.wait()
+
+            # Pass the file descriptor to subprocess.call
+            # returncode = subprocess.call(cmd, env=env)
 
         # returns the exit code as well as the output
         return returncode, output
