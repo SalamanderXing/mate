@@ -11,6 +11,6 @@ import sys
 
 mate = __Mate.load()
 
-# from beartype.claw import beartype_this_package
-#
-# beartype_this_package()
+from beartype.claw import beartype_this_package
+
+beartype_this_package()

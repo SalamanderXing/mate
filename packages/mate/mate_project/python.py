@@ -127,10 +127,39 @@ class Python:
             if input is not None:
                 cmd += [input]
 
+            def generate_tarball(to_tar):
+                tar_command = ["tar", "-cz", to_tar]
+                tar_process = subprocess.Popen(
+                    tar_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+                )
+                tar_output, _ = tar_process.communicate()
+                return tar_output
+
             to_tar = cmd[2].split(".")[0]
             tar_command = ["tar", "-cz"] + [to_tar]
 
+            print(f"[yellow]Running command: {' '.join(cmd)}[/yellow]")
             zone = "us-central1-a"
+            # ssh_command = [
+            #     "gcloud",
+            #     "compute",
+            #     "tpus",
+            #     "tpu-vm",
+            #     "ssh",
+            #     f"--zone={zone}",
+            #     "tpu-giulio-dev",
+            #     "--command",
+            #     f"tar -xz -C /home/bluesk/discrete-graph-diffusion",
+            # ]
+            # tar_process = subprocess.Popen(tar_command, stdout=subprocess.PIPE)
+            # subprocess.call(ssh_command, env=env, stdin=tar_process.stdout)
+            # tar_process.wait()
+
+            import pexpect
+            import base64
+
+            tarball_content = generate_tarball(to_tar)
+            encoded_tarball = base64.b64encode(tarball_content).decode("utf-8")
             ssh_command = [
                 "gcloud",
                 "compute",
@@ -139,12 +168,23 @@ class Python:
                 "ssh",
                 f"--zone={zone}",
                 "tpu-giulio-dev",
-                "--command",
-                f"tar -xz -C /home/bluesk/discrete-graph-diffusion && {' '.join(cmd)}",
             ]
-            tar_process = subprocess.Popen(tar_command, stdout=subprocess.PIPE)
-            subprocess.call(ssh_command, env=env, stdin=tar_process.stdout)
-            tar_process.wait()
+            # sub = subprocess.call(ssh_command, env=env, stdin=tar_process.stdout)
+            # sub.stdin.write(
+            #     f"(cd /home/bluesk/discrete-graph-diffusion && {' '.join(cmd)})"
+            # )
+            child = pexpect.spawn(" ".join(ssh_command))
+            # (venv) bluesk@t1v-n-5f29d40a-w-0:~$pe.expect(":~$")
+            child.expect("(venv)")
+            # child.sendline("tar -xz -C /home/bluesk/discrete-graph-diffusion")
+            child.sendline(
+                f"echo '{encoded_tarball}' | base64 --decode | tar -xz -C /home/bluesk/discrete-graph-diffusion"
+            )
+            child.sendline(
+                f"(cd /home/bluesk/discrete-graph-diffusion && {' '.join(cmd)})"
+            )
+            child.expect("(venv)")
+            child.interact()
 
             # Pass the file descriptor to subprocess.call
             # returncode = subprocess.call(cmd, env=env)

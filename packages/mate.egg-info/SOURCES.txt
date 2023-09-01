@@ -63,6 +63,7 @@ packages/mate/mate_project/__pycache__/experiment.cpython-311.pyc
 packages/mate/mate_project/__pycache__/experiments_module.cpython-311.opt-beartype0v15v0.pyc
 packages/mate/mate_project/__pycache__/experiments_module.cpython-311.pyc
 packages/mate/mate_project/__pycache__/hyperparameters_module.cpython-311.opt-beartype0v15v0.pyc
+packages/mate/mate_project/__pycache__/hyperparameters_module.cpython-311.pyc
 packages/mate/mate_project/__pycache__/mate_project.cpython-311.opt-beartype0v15v0.pyc
 packages/mate/mate_project/__pycache__/mate_project.cpython-311.pyc
 packages/mate/mate_project/__pycache__/module.cpython-311.opt-beartype0v15v0.pyc

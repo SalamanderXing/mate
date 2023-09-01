@@ -59,16 +59,21 @@ class Mate:
         # return Mate(**runtime)
 
         mate = None
-        input_data = None
-        if len(sys.argv) > 1:
-            received_json_str = sys.argv[1]
-            print(f"[red] received_json_str {received_json_str} [/red]")
+        input_data = {}
+        if len(sys.argv) > 1 and sys.argv[1] != "run":
+            input_data = {
+                a.split("=")[0]: a.split("=")[1] for a in sys.argv[1:] if "=" in a
+            }
+        if len(input_data) > 0:
             try:
-                input_data = json.loads(received_json_str)
-            except:
-                pass
-        if input_data is not None:
-            mate = Mate(**input_data)
+                mate = Mate(**input_data)
+            except TypeError as e:
+                if "got an unexpected keyword argument" in str(e) or "missing" in str(
+                    e
+                ):
+                    pass
+                else:
+                    raise e
         return mate
 
     def save(self, location: str):
@@ -77,9 +82,23 @@ class Mate:
 
     def json(self) -> str:
         """
-        Get the JSON representation of the current Mate instance.
+        Get the minified JSON representation of the current Mate instance.
         """
-        return json.dumps(self.to_dict())
+        return json.dumps(self.to_dict(), separators=(",", ":"))
+
+    def to_cli(self) -> str:
+        """
+        Get the CLI command that was used to run the current experiment.
+        """
+        return " ".join(f"{k}={v}" for k, v in self.to_dict().items())
+
+    def json_base64(self) -> str:
+        """
+        Get the base64 encoded JSON representation of the current Mate instance.
+        """
+        import base64
+
+        return base64.b64encode(self.json().encode("utf-8")).decode("utf-8")
 
     def to_dict(self):
         result = {
