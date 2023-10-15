@@ -6,7 +6,8 @@ import yaml
 import re
 import ast
 import json
-from dirhash import dirhash
+
+# from dirhash import dirhash
 import ipdb
 from .python import Python
 from .colors import colors

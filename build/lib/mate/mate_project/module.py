@@ -6,7 +6,8 @@ import yaml
 import re
 import ast
 import json
-from dirhash import dirhash
+
+# from dirhash import dirhash
 import ipdb
 from .python import Python
 from .colors import colors
@@ -34,15 +35,16 @@ class Module:
         self.__yaml = self.__parse_yaml()
         self.__mate_dir = os.path.join(root_path, ".matemodule")
 
-        self._hash = (
-            dirhash(
-                root_path,
-                "sha1",
-                ignore=["__pycache__", "README.md", "requirements.txt", ".matemodule"],
-            )
-            if (os.path.exists(self.root_dir) and os.path.isdir(self.root_dir))
-            else ""
-        )
+        # self._hash = (
+        #     dirhash(
+        #         root_path,
+        #         "sha1",
+        #         ignore=["__pycache__", "README.md", "requirements.txt", ".matemodule"],
+        #     )
+        #     if (os.path.exists(self.root_dir) and os.path.isdir(self.root_dir))
+        #     else ""
+        # )
+        self._hash = ""
         self._exports = self.__collect_exports()
         if self.__class__.__name__ == "Module":
             status_path = os.path.join(self.__mate_dir, "status.json")

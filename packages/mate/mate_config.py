@@ -90,6 +90,7 @@ class MateConfig(Config):
     verbose: Optional[bool] = None
     auto_wandb: Optional[bool] = None
     results_folder: str = ""
+    python_executable: Optional[str] = None
 
     def __init__(self, config):
         super().__init__(config)

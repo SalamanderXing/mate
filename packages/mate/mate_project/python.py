@@ -38,13 +38,13 @@ class Package:
 
 
 class Python:
-    def __init__(self, mate_dir: str, venv: bool = True) -> None:
+    def __init__(
+        self, mate_dir: str, venv: bool = True, executable_path: str | None = None
+    ) -> None:
         self.mate_dir = mate_dir
         self.venv_path = os.path.join(self.mate_dir, "venv")
         os.makedirs(self.venv_path, exist_ok=True)
-        self.python_path = (
-            os.path.join(self.venv_path, "bin", "python") if venv else sys.executable
-        )
+        self.python_path = executable_path if executable_path else sys.executable
         if venv and not os.path.exists(self.python_path):
             print(f"Creating virtual environment in {self.venv_path}")
             os.system(f"python -m venv {self.venv_path}")
@@ -99,7 +99,6 @@ class Python:
 
     def pip_install(self, *packages: str):
         self(f'-m pip install {" ".join(packages)}')
-        # adds the packages to the requirements file
 
     def pip(self, command: str):
         os.system(f"{self.python_path} -m pip {command}")
@@ -150,12 +149,13 @@ class Python:
             if ssh_command is not None:
                 to_tar = cmd[2].split(".")[0]
                 encoded_tarball = generate_encoded_tarball(to_tar)
+                key_to_expect = "(venv)"
                 child = pexpect.spawn(ssh_command)
-                child.expect("(venv)")
+                child.expect(key_to_expect)
                 child.sendline(
                     f"echo '{encoded_tarball}' | base64 --decode | tar -xz -C {remote_dir} && echo 'Done syncing'"
                 )
-                child.expect("(venv)")
+                child.expect(key_to_expect)
                 child.sendline(f"mkdir -p {remote_dir}")
                 child.sendline(
                     f"(bash -c 'cd {remote_dir} && {' '.join(cmd)}; exit'); exit"

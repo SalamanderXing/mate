@@ -97,6 +97,7 @@ class MateAPI:
         self.python = Python(
             self.mate_dir,
             venv=self.config.venv if not (self.config.venv is None) else True,
+            executable_path=self.config.python_executable,
         )
         self.project = MateProject(root, self.python)
         self.tmp_dir = os.path.join(self.mate_dir, "tmp")
@@ -370,7 +371,7 @@ class MateAPI:
         results_dir = os.path.join(base_results, path, name)
         hyperparameters = self.project[path][name]
         experiment = self.project.experiments[hyperparameters.experiment]  # type:ignore
-        data_loader_name = experiment.data_loader
+        data_loader_name = experiment.data_loader or "default"
         data_dir = os.path.join(self.project.root_dir, "..", "data", data_loader_name)
         runtime = Mate(
             data_dir=data_dir,
